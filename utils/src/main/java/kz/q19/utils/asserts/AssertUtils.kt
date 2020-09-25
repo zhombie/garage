@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package kz.q19.utils.assert
+package kz.q19.utils.asserts
 
 object AssertUtils {
 
