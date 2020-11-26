@@ -13,8 +13,7 @@ import org.json.JSONObject
 fun JSONObject.getIntOrNull(name: String): Int? =
     try {
         if (isNull(name)) null else getInt(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         val strValue = getStringOrNull(name)
         strValue?.toIntOrNull()
     }
@@ -22,56 +21,49 @@ fun JSONObject.getIntOrNull(name: String): Int? =
 fun JSONObject.getDoubleOrNull(name: String): Double? =
     try {
         if (isNull(name)) null else getDouble(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getLongOrNull(name: String): Long? =
     try {
         if (isNull(name)) null else getLong(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getStringOrNull(name: String): String? =
     try {
         if (isNull(name)) null else getString(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getBooleanOrNull(name: String): Boolean? =
     try {
         if (isNull(name)) null else getBoolean(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getObjectOrNull(name: String): JSONObject? =
     try {
         if (isNull(name)) null else getJSONObject(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getArrayOrNull(name: String): JSONArray? =
     try {
         if (isNull(name)) null else getJSONArray(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         null
     }
 
 fun JSONObject.getArrayOrEmpty(name: String): JSONArray =
     try {
         if (isNull(name)) JSONArray() else getJSONArray(name)
-    }
-    catch (e: JSONException) {
+    } catch (e: JSONException) {
         JSONArray()
     }
 
@@ -111,4 +103,17 @@ fun json(lambda: JSONObject.() -> Unit): JSONObject {
         e.printStackTrace()
     }
     return jsonObject
+}
+
+
+fun JSONObject.putIfValueNotNull(key: String, any: Any?) {
+    if (any is String?) {
+        if (!any.isNullOrBlank()) {
+            put(key, any)
+        }
+    } else {
+        if (any != null) {
+            put(key, any)
+        }
+    }
 }
