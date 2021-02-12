@@ -14,9 +14,9 @@ import androidx.annotation.RequiresApi
  * @param roundMode mode for corners
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class RoundOutlineProvider(
-    val outlineRadius: Float = NO_OUTLINE_RADIUS,
-    val roundMode: RoundMode = RoundMode.NONE
+class RoundOutlineProvider constructor(
+    var outlineRadius: Float = NO_OUTLINE_RADIUS,
+    var roundMode: RoundMode = RoundMode.NONE
 ) : ViewOutlineProvider() {
 
     companion object {
