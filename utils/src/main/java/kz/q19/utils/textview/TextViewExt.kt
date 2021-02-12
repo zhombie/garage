@@ -11,7 +11,7 @@ enum class CompoundDrawableAlignment {
     BOTTOM
 }
 
-fun TextView.showCompoundDrawableOnfLeft(@DrawableRes drawableRes: Int, padding: Int? = null) {
+fun TextView.showCompoundDrawableOnLeft(@DrawableRes drawableRes: Int, padding: Int? = null) {
     showCompoundDrawable(drawableRes, CompoundDrawableAlignment.LEFT, padding)
 }
 

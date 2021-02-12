@@ -10,14 +10,14 @@ import org.json.JSONObject
  * val jsonAgain = json?.toString() // "{"key": "value"}"
  * val stringFromJson = json?.getString("key") // "value"
  */
-val String.jsonObject: JSONObject?
+val String.asJSONObject: JSONObject?
     get() = try {
         JSONObject(this)
     } catch (e: JSONException) {
         null
     }
 
-val String.jsonArray: JSONArray?
+val String.asJSONArray: JSONArray?
     get() = try {
         JSONArray(this)
     } catch (e: JSONException) {

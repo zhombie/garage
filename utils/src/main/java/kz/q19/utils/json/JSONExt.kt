@@ -46,21 +46,21 @@ fun JSONObject.getBooleanOrNull(name: String): Boolean? =
         null
     }
 
-fun JSONObject.getObjectOrNull(name: String): JSONObject? =
+fun JSONObject.getJSONObjectOrNull(name: String): JSONObject? =
     try {
         if (isNull(name)) null else getJSONObject(name)
     } catch (e: JSONException) {
         null
     }
 
-fun JSONObject.getArrayOrNull(name: String): JSONArray? =
+fun JSONObject.getJSONArrayOrNull(name: String): JSONArray? =
     try {
         if (isNull(name)) null else getJSONArray(name)
     } catch (e: JSONException) {
         null
     }
 
-fun JSONObject.getArrayOrEmpty(name: String): JSONArray =
+fun JSONObject.getJSONArrayOrEmpty(name: String): JSONArray =
     try {
         if (isNull(name)) JSONArray() else getJSONArray(name)
     } catch (e: JSONException) {

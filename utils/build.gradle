@@ -1,15 +1,17 @@
 plugins {
     id 'com.android.library'
+
     id 'kotlin-android'
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
+
         versionCode 1
         versionName "1.0"
 
@@ -25,7 +27,9 @@ android {
 }
 
 dependencies {
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
