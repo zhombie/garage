@@ -2,6 +2,7 @@ package kz.q19.utils.android
 
 import android.app.ActivityManager
 import android.app.NotificationManager
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -27,6 +28,9 @@ val Context.activityManager: ActivityManager?
 
 val Context.audioManager: AudioManager?
     get() = getSystemServiceCompat(AudioManager::class.java)
+
+val Context.clipboardManager: ClipboardManager?
+    get() = getSystemServiceCompat(ClipboardManager::class.java)
 
 val Context.connectivityManager: ConnectivityManager?
     get() = getSystemServiceCompat(ConnectivityManager::class.java)
