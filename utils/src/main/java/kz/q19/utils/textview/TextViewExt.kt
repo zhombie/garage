@@ -11,6 +11,37 @@ enum class CompoundDrawableAlignment {
     BOTTOM
 }
 
+fun TextView.getCompoundDrawableOnLeft(): Drawable? {
+    return getCompoundDrawable(CompoundDrawableAlignment.LEFT)
+}
+
+fun TextView.getCompoundDrawableOnTop(): Drawable? {
+    return getCompoundDrawable(CompoundDrawableAlignment.TOP)
+}
+
+fun TextView.getCompoundDrawableOnRight(): Drawable? {
+    return getCompoundDrawable(CompoundDrawableAlignment.RIGHT)
+}
+
+fun TextView.getCompoundDrawableOnBottom(): Drawable? {
+    return getCompoundDrawable(CompoundDrawableAlignment.BOTTOM)
+}
+
+fun TextView.getCompoundDrawable(
+    alignment: CompoundDrawableAlignment
+): Drawable? {
+    if (compoundDrawables.isNullOrEmpty()) return null
+    val index = when (alignment) {
+        CompoundDrawableAlignment.LEFT -> 0
+        CompoundDrawableAlignment.TOP -> 1
+        CompoundDrawableAlignment.RIGHT -> 2
+        CompoundDrawableAlignment.BOTTOM -> 3
+    }
+    if (index >= compoundDrawables.size) return null
+    return compoundDrawables[index]
+}
+
+
 fun TextView.showCompoundDrawableOnLeft(@DrawableRes drawableRes: Int, padding: Int? = null) {
     showCompoundDrawable(drawableRes, CompoundDrawableAlignment.LEFT, padding)
 }
@@ -29,9 +60,10 @@ fun TextView.showCompoundDrawableOnBottom(@DrawableRes drawableRes: Int, padding
 
 fun TextView.showCompoundDrawable(
     @DrawableRes drawableRes: Int,
-    compoundDrawableAlignment: CompoundDrawableAlignment, padding: Int? = null
+    alignment: CompoundDrawableAlignment,
+    padding: Int? = null
 ) {
-    when (compoundDrawableAlignment) {
+    when (alignment) {
         CompoundDrawableAlignment.LEFT ->
             setCompoundDrawablesWithIntrinsicBounds(drawableRes, 0, 0, 0)
         CompoundDrawableAlignment.TOP ->
@@ -65,13 +97,13 @@ fun TextView.showCompoundDrawableOnBottom(drawable: Drawable?, padding: Int? = n
 
 fun TextView.showCompoundDrawable(
     drawable: Drawable?,
-    compoundDrawableAlignment: CompoundDrawableAlignment,
+    alignment: CompoundDrawableAlignment,
     padding: Int? = null
 ) {
     if (drawable == null) {
         return
     }
-    when (compoundDrawableAlignment) {
+    when (alignment) {
         CompoundDrawableAlignment.LEFT ->
             setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
         CompoundDrawableAlignment.TOP ->
