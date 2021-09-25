@@ -1,3 +1,3 @@
 include ':utils'
 include ':sample'
-rootProject.name = 'Utils'
+rootProject.name = 'q19.utils'
