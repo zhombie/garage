@@ -30,6 +30,7 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // TODO: Move to new module with only RecyclerView utils
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
