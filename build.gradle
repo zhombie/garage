@@ -13,13 +13,77 @@ buildscript {
     }
 }
 
+/**
+ * Shared configs across subprojects
+ */
+ext.projectArtifactId = { project ->
+    if (project.name == 'activity' || project.name == 'context' ||
+            project.name == 'drawable' || project.name == 'file' ||
+            project.name == 'fragment' || project.name == 'json' ||
+            project.name == 'kotlin' || project.name == 'recyclerview' ||
+            project.name == 'text' || project.name == 'textview' ||
+            project.name == 'view' || project.name == 'window') {
+        return project.name
+    } else {
+        return null
+    }
+}
+
 allprojects {
+    group = 'com.github.zhombie.utils'
+    version = '2.0.0'
+    project.ext.artifactId = rootProject.ext.projectArtifactId(project)
+
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 }
+
+/**
+ * Publishing and signing info
+ */
+subprojects { project ->
+    if (project.ext.artifactId == null) return
+
+    apply plugin: 'maven-publish'
+
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                groupId project.group
+                artifactId project.ext.artifactId
+                version project.version
+
+                pom {
+                    name = project.name
+                    url = "https://github.com/zhombie/q19.utils"
+
+                    developers {
+                        developer {
+                            name = 'zhombie'
+                        }
+                    }
+                }
+
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    project.configurations.api.allDependencies.each { dependency ->
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dependency.group)
+                        dependencyNode.appendNode('artifactId', dependency.name)
+                        dependencyNode.appendNode('version', dependency.version)
+                    }
+                }
+
+                afterEvaluate {
+                    artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                }
+            }
+        }
+    }
+}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
