@@ -9,7 +9,7 @@ android {
     buildToolsVersion '31.0.0'
 
     defaultConfig {
-        applicationId 'kz.q19.utils'
+        applicationId 'kz.q19.utils.utils'
 
         minSdkVersion 23
         targetSdkVersion 31

@@ -1,10 +1,10 @@
-package kz.q19.utils
+package kz.q19.utils.utils
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import kz.zhombie.activity.bind
+import kz.q19.utils.activity.bind
 
 class MainActivity : AppCompatActivity() {
 
