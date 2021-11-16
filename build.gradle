@@ -37,6 +37,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -47,8 +48,8 @@ subprojects { project ->
     if (project.ext.artifactId == null) return
 
     apply plugin: 'com.android.library'
-    apply plugin: 'kotlin-android'
     apply plugin: 'maven-publish'
+    apply plugin: 'kotlin-android'
 
     publishing {
         publications {
