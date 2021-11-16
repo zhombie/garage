@@ -46,6 +46,8 @@ allprojects {
 subprojects { project ->
     if (project.ext.artifactId == null) return
 
+    apply plugin: 'com.android.library'
+    apply plugin: 'kotlin-android'
     apply plugin: 'maven-publish'
 
     publishing {
