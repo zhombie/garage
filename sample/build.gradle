@@ -1,6 +1,21 @@
+plugins {
+    id 'com.android.application'
+
+    id 'kotlin-android'
+}
+
 android {
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
+
     defaultConfig {
         applicationId 'kz.q19.utils'
+
+        minSdkVersion 23
+        targetSdkVersion 31
+
+        versionCode 1
+        versionName '1.0'
     }
 
     buildTypes {
@@ -12,6 +27,15 @@ android {
 
     buildFeatures {
         buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 

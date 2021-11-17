@@ -39,15 +39,11 @@ allprojects {
  * Publishing and signing info
  */
 subprojects { project ->
-    if (name == 'sample') {
-        apply plugin: 'com.android.application'
-    } else {
-        apply plugin: 'com.android.library'
-    }
+    if (project.ext.artifactId == null) return
 
+    apply plugin: 'com.android.library'
     apply plugin: 'maven-publish'
     apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-kapt'
 
     android {
         compileSdkVersion 31
