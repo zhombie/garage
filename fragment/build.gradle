@@ -1,5 +1,3 @@
-apply from: "${project.rootDir}/library.gradle"
-
 android {
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
