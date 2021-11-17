@@ -1,4 +1,4 @@
-package kz.q19.utils.utils
+package kz.q19.utils
 
 import android.os.Bundle
 import android.widget.TextView

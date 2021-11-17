@@ -1,3 +1,16 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+rootProject.name = 'q19.utils'
+
+include ':sample'
+
 include ':activity'
 include ':recyclerview'
 include ':view'
@@ -11,5 +24,3 @@ include ':kotlin'
 include ':file'
 include ':json'
 include ':text'
-include ':sample'
-rootProject.name = 'q19.utils'

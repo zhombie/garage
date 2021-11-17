@@ -33,20 +33,12 @@ allprojects {
     group = 'com.github.zhombie.utils'
     version = '2.0.0'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
-
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-    }
 }
 
 /**
  * Publishing and signing info
  */
 subprojects { project ->
-//    if (project.ext.artifactId == null) return
-
     if (name == 'sample') {
         apply plugin: 'com.android.application'
     } else {
@@ -88,7 +80,7 @@ subprojects { project ->
         }
 
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
     }
 
