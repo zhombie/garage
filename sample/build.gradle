@@ -51,6 +51,13 @@ dependencies {
     // Core
     implementation 'androidx.core:core-ktx:1.7.0'
 
+    // Material Design Components
+    implementation "com.google.android.material:material:1.4.0"
+
+    // LeakCanary
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
     // Library
     implementation project(':activity')
     implementation project(':context')
@@ -59,6 +66,8 @@ dependencies {
     implementation project(':fragment')
     implementation project(':json')
     implementation project(':kotlin')
+    implementation project(':location:compass')
+    implementation project(':location:core')
     implementation project(':recyclerview')
     implementation project(':text')
     implementation project(':textview')

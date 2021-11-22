@@ -2,16 +2,15 @@ android {
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
     }
-
-    resourcePrefix 'recyclerview_'
 }
 
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    // RecyclerView
-    api 'androidx.recyclerview:recyclerview:1.2.1'
+    // Core
+    implementation 'androidx.core:core-ktx:1.7.0'
 
-    implementation project(':view')
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 }

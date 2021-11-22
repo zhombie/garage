@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".compass.CompassActivity" />
+
+        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        
     </application>
 
 </manifest>

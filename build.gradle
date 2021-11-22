@@ -17,10 +17,13 @@ buildscript {
  * Shared configs across subprojects
  */
 ext.projectArtifactId = { project ->
+    logger.info('project: {}', project.name)
     if (project.name == 'activity' || project.name == 'context' ||
             project.name == 'drawable' || project.name == 'file' ||
             project.name == 'fragment' || project.name == 'json' ||
-            project.name == 'kotlin' || project.name == 'recyclerview' ||
+            project.name == 'kotlin' ||
+            project.name == 'core' || project.name == 'compass' ||
+            project.name == 'recyclerview' ||
             project.name == 'text' || project.name == 'textview' ||
             project.name == 'view' || project.name == 'window') {
         return project.name
