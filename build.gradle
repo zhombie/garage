@@ -17,16 +17,27 @@ buildscript {
  * Shared configs across subprojects
  */
 ext.projectArtifactId = { project ->
-    logger.info('project: {}', project.name)
-    if (project.name == 'activity' || project.name == 'context' ||
-            project.name == 'drawable' || project.name == 'file' ||
-            project.name == 'fragment' || project.name == 'json' ||
-            project.name == 'kotlin' ||
-            project.name == 'lifecycle' ||
-            project.name == 'core' || project.name == 'compass' ||
-            project.name == 'recyclerview' ||
-            project.name == 'text' || project.name == 'textview' ||
-            project.name == 'view' || project.name == 'window') {
+    if (
+        project.name == 'activity' ||
+        project.name == 'context' ||
+        project.name == 'drawable' ||
+        project.name == 'file' ||
+        project.name == 'fragment' ||
+        project.name == 'json' ||
+        project.name == 'kotlin' ||
+
+        // lifecycle
+        project.name == 'livedata' ||
+
+        // location
+        project.name == 'core' || project.name == 'compass' ||
+
+        project.name == 'recyclerview' ||
+        project.name == 'text' ||
+        project.name == 'textview' ||
+        project.name == 'view' ||
+        project.name == 'window'
+    ) {
         return project.name
     } else {
         return null
