@@ -22,6 +22,7 @@ ext.projectArtifactId = { project ->
             project.name == 'drawable' || project.name == 'file' ||
             project.name == 'fragment' || project.name == 'json' ||
             project.name == 'kotlin' ||
+            project.name == 'lifecycle' ||
             project.name == 'core' || project.name == 'compass' ||
             project.name == 'recyclerview' ||
             project.name == 'text' || project.name == 'textview' ||
@@ -42,7 +43,7 @@ allprojects {
  * Publishing and signing info
  */
 subprojects { project ->
-    if (project.ext.artifactId == null) return
+    if (project.name == "sample") return
 
     apply plugin: 'com.android.library'
     apply plugin: 'maven-publish'
@@ -78,9 +79,6 @@ subprojects { project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
-        }
     }
 
     publishing {

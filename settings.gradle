@@ -19,6 +19,8 @@ include ':fragment'
 include ':json'
 include ':kotlin'
 
+include ':lifecycle:livedata'
+
 include ':location:core'
 include ':location:compass'
 

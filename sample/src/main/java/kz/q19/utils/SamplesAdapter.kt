@@ -1,40 +1,29 @@
 package kz.q19.utils
 
 import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import kz.q19.utils.recyclerview.BaseAdapter
+import kz.q19.utils.recyclerview.BaseViewHolder
 import kz.q19.utils.recyclerview.bind
-import kz.q19.utils.view.inflate
 
 class SamplesAdapter constructor(
-    private val samples: List<Sample>,
-    private val onClick: (sample: Sample) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    samples: List<Sample>,
+    private val onClickAction: (sample: Sample, position: Int) -> Unit
+) : BaseAdapter<Sample>(samples) {
 
-    private fun getItem(position: Int): Sample {
-        return samples[position]
-    }
+    override fun getLayoutId(): Int = R.layout.cell_sample
 
-    override fun getItemCount(): Int = samples.size
+    override fun onCreateViewHolder(view: View): BaseViewHolder<Sample> = ViewHolder(view)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(parent.inflate(R.layout.cell_sample))
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is ViewHolder) {
-            holder.bind(getItem(position))
-        }
-    }
-
-    private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private inner class ViewHolder constructor(
+        view: View
+    ) : BaseViewHolder<Sample>(view) {
         private val button by bind<MaterialButton>(R.id.button)
 
-        fun bind(sample: Sample) {
-            button.text = sample.title
+        override fun onBind(item: Sample, position: Int) {
+            button.text = item.title
 
-            button.setOnClickListener { onClick(sample) }
+            button.setOnClickListener { onClickAction(item, position) }
         }
     }
 
