@@ -17,37 +17,42 @@ buildscript {
  * Shared configs across subprojects
  */
 ext.projectArtifactId = { project ->
-    if (
-        project.name == 'activity' ||
-        project.name == 'context' ||
-        project.name == 'drawable' ||
-        project.name == 'file' ||
-        project.name == 'fragment' ||
-        project.name == 'json' ||
-        project.name == 'kotlin' ||
+    switch (project.name) {
+        // Single module
+        case 'activity':
+        case 'context':
+        case 'drawable':
+        case 'file':
+        case 'fragment':
+        case 'json':
+        case 'kotlin':
+        case 'recyclerview':
+        case 'text':
+        case 'textview':
+        case 'view':
+        case 'window':
+            return project.name
 
+        // Nested module
         // lifecycle
-        project.name == 'livedata' ||
+        case 'livedata':
 
         // location
-        project.name == 'core' || project.name == 'compass' ||
-
-        project.name == 'recyclerview' ||
-        project.name == 'text' ||
-        project.name == 'textview' ||
-        project.name == 'view' ||
-        project.name == 'window'
-    ) {
-        return project.name
-    } else {
-        return null
+        case 'core':
+        case 'compass':
+            return project.parent.name + ':' + project.name
     }
+    return null
 }
 
 allprojects {
     group = 'com.github.zhombie.utils'
-    version = '2.0.0'
+    version = '2.0.1'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
+
+    if (project.ext.artifactId != null) {
+        println "ArtifactId [${project.ext.artifactId}] is set"
+    }
 }
 
 static def getSampleModuleName(project) {
@@ -89,8 +94,8 @@ subprojects { project ->
             minSdkVersion 23
             targetSdkVersion 31
 
-            versionCode 2
-            versionName "2.0.0"
+            versionCode 3
+            versionName "2.0.1"
         }
 
         buildTypes {
