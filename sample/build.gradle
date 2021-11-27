@@ -66,6 +66,7 @@ dependencies {
     implementation project(':fragment')
     implementation project(':json')
     implementation project(':kotlin')
+    implementation project(':lifecycle:livedata')
     implementation project(':location:compass')
     implementation project(':location:core')
     implementation project(':recyclerview')

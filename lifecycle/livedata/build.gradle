@@ -2,6 +2,8 @@ android {
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
     }
+
+    resourcePrefix 'lifecycle_livedata_'
 }
 
 dependencies {

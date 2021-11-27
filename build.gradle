@@ -50,11 +50,32 @@ allprojects {
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 }
 
+static def getSampleModuleName(project) {
+    if (project.name == "sample") {
+        println "Project [${project.name}] is sample module"
+        return project.name
+    }
+    return null
+}
+
+static def getParentFolderModuleName(project) {
+    def allProjects = project.getAllprojects()
+    if (allProjects.size() > 1) {
+        def name = allProjects.first().name
+        println "Project [${name}] has submodules"
+        return name
+    }
+    return null
+}
+
 /**
  * Publishing and signing info
  */
 subprojects { project ->
-    if (project.name == "sample") return
+    println "Subproject: ${project.name}"
+
+    if (getSampleModuleName(project) != null) return
+    if (getParentFolderModuleName(project) != null) return
 
     apply plugin: 'com.android.library'
     apply plugin: 'maven-publish'
@@ -70,8 +91,6 @@ subprojects { project ->
 
             versionCode 1
             versionName "1.0"
-
-            consumerProguardFiles "consumer-rules.pro"
         }
 
         buildTypes {
@@ -90,6 +109,9 @@ subprojects { project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_11.toString()
+        }
     }
 
     publishing {

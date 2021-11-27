@@ -16,6 +16,7 @@ abstract class LocationListenerWrapper constructor(
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+        @Suppress("DEPRECATION")
         locationListenerReference.get()?.onStatusChanged(provider, status, extras)
     }
 
