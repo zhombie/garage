@@ -40,14 +40,14 @@ ext.projectArtifactId = { project ->
         // location
         case 'core':
         case 'compass':
-            return project.parent.name + ':' + project.name
+            return project.parent.name + '-' + project.name
     }
     return null
 }
 
 allprojects {
     group = 'com.github.zhombie.utils'
-    version = '2.0.1'
+    version = '2.0.2'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     if (project.ext.artifactId != null) {
@@ -94,8 +94,8 @@ subprojects { project ->
             minSdkVersion 23
             targetSdkVersion 31
 
-            versionCode 3
-            versionName "2.0.1"
+            versionCode 4
+            versionName "2.0.2"
         }
 
         buildTypes {
