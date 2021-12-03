@@ -12,6 +12,7 @@ import kz.garage.samples.activity.Activity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.location.LocationActivity
 import kz.garage.samples.recyclerview.RecyclerViewActivity
+import kz.garage.samples.window.WindowActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             Sample("fragment", "Fragment", null),
             Sample("location", "Location", null),
             Sample("recyclerview", "RecyclerView", null),
+            Sample("window", "Window", null),
         )
     }
 
@@ -63,6 +65,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(LocationActivity.newIntent(this))
             "recyclerview" ->
                 startActivity(RecyclerViewActivity.newIntent(this))
+            "window" ->
+                startActivity(WindowActivity.newIntent(this))
         }
     }
 
