@@ -46,9 +46,9 @@ ext.projectArtifactId = { project ->
 }
 
 allprojects {
-    group = 'com.github.zhombie.q19.utils'
-    project.ext.version_code = 5
-    version = '2.0.3'
+    group = 'com.github.zhombie.garage'
+    project.ext.version_code = 1
+    version = '1.0.0'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     if (project.group != null) {
@@ -135,7 +135,7 @@ subprojects { project ->
 
                 pom {
                     name = project.name
-                    url = "https://github.com/zhombie/q19.utils"
+                    url = "https://github.com/zhombie/garage"
 
                     developers {
                         developer {

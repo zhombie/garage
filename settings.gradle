@@ -7,7 +7,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = 'q19.utils'
+rootProject.name = 'garage'
 
 include ':sample'
 
