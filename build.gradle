@@ -36,10 +36,14 @@ ext.projectArtifactId = { project ->
         // Nested module
         // lifecycle
         case 'livedata':
+        case 'viewmodel':
 
         // location
         case 'core':
         case 'compass':
+
+        // material
+        case 'tablayout':
             return project.parent.name + '-' + project.name
     }
     return null

@@ -19,10 +19,16 @@ include ':fragment'
 include ':json'
 include ':kotlin'
 
+// lifecycle
 include ':lifecycle:livedata'
+include ':lifecycle:viewmodel'
 
+// location
 include ':location:core'
 include ':location:compass'
+
+// material
+include ':material:tablayout'
 
 include ':recyclerview'
 include ':text'
