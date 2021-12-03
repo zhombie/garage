@@ -46,9 +46,14 @@ ext.projectArtifactId = { project ->
 }
 
 allprojects {
-    group = 'com.github.zhombie.utils'
-    version = '2.0.2'
+    group = 'com.github.zhombie.q19.utils'
+    project.ext.version_code = 5
+    version = '2.0.3'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
+
+    if (project.group != null) {
+        println "Group [${project.group}] is set"
+    }
 
     if (project.ext.artifactId != null) {
         println "ArtifactId [${project.ext.artifactId}] is set"
@@ -94,8 +99,8 @@ subprojects { project ->
             minSdkVersion 23
             targetSdkVersion 31
 
-            versionCode 4
-            versionName "2.0.2"
+            versionCode project.ext.version_code
+            versionName project.version
         }
 
         buildTypes {
