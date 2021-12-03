@@ -18,9 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".compass.CompassActivity" />
-
-        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        <activity android:name=".samples.activity.Activity" />
+        <activity android:name=".samples.fragment.FragmentActivity" />
+        <activity android:name=".samples.location.LocationActivity" />
+        <activity android:name=".samples.location.compass.CompassActivity" />
+        <activity android:name=".samples.recyclerview.RecyclerViewActivity" />
         
     </application>
 

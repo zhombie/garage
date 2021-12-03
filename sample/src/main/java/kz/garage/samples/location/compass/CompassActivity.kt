@@ -1,4 +1,4 @@
-package kz.garage.compass
+package kz.garage.samples.location.compass
 
 import android.content.Context
 import android.content.Intent

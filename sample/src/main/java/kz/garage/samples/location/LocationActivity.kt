@@ -1,19 +1,27 @@
-package kz.garage
+package kz.garage.samples.location
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import kz.garage.R
+import kz.garage.Sample
+import kz.garage.SamplesAdapter
 import kz.garage.activity.bind
+import kz.garage.activity.toast
 import kz.garage.recyclerview.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
-import kz.garage.samples.activity.Activity
-import kz.garage.samples.fragment.FragmentActivity
-import kz.garage.samples.location.LocationActivity
-import kz.garage.samples.recyclerview.RecyclerViewActivity
+import kz.garage.samples.location.compass.CompassActivity
 
-class MainActivity : AppCompatActivity() {
+class LocationActivity : AppCompatActivity() {
+
+    companion object {
+        fun newIntent(context: Context): Intent =
+            Intent(context, LocationActivity::class.java)
+    }
 
     private val textView by bind<TextView>(R.id.textView)
     private val recyclerView by bind<RecyclerView>(R.id.recyclerView)
@@ -22,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_location)
 
         setupTitleView()
         setupRecyclerView()
@@ -46,24 +54,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun getSamples(): List<Sample> {
         return listOf(
-            Sample("activity", "Activity", null),
-            Sample("fragment", "Fragment", null),
-            Sample("location", "Location", null),
-            Sample("recyclerview", "RecyclerView", null),
+            Sample("core", "Core", null),
+            Sample("compass", "Compass", null),
         )
     }
 
     private fun onSampleClicked(sample: Sample) {
         when (sample.id) {
-            "activity" ->
-                startActivity(Activity.newIntent(this))
-            "fragment" ->
-                startActivity(FragmentActivity.newIntent(this))
-            "location" ->
-                startActivity(LocationActivity.newIntent(this))
-            "recyclerview" ->
-                startActivity(RecyclerViewActivity.newIntent(this))
+            "core" ->
+                toast("Coming soon")
+            "compass" ->
+                startActivity(CompassActivity.newIntent(this))
         }
     }
+
 
 }

@@ -10,8 +10,14 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // Activity
+//    implementation "androidx.activity:activity:1.4.0"
+
     // Annotation
     implementation "androidx.annotation:annotation:1.3.0"
+
+    // Core
+    implementation 'androidx.core:core-ktx:1.7.0'
 
     // View
     implementation project(':view')
