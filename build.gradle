@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.5.31'
+    ext.kotlin_version = '1.6.0'
    
     repositories {
         google()
@@ -34,6 +34,9 @@ ext.projectArtifactId = { project ->
             return project.name
 
         // Nested module
+        // file
+        case 'extension':
+
         // lifecycle
         case 'livedata':
         case 'viewmodel':
@@ -41,9 +44,13 @@ ext.projectArtifactId = { project ->
         // location
         case 'core':
         case 'compass':
+        case 'gms':
 
         // material
         case 'tablayout':
+
+        // multimedia
+        case 'store':
             return project.parent.name + '-' + project.name
     }
     return null

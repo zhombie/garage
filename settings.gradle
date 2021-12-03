@@ -14,7 +14,10 @@ include ':sample'
 include ':activity'
 include ':context'
 include ':drawable'
-include ':file'
+
+// file
+include ':file:extension'
+
 include ':fragment'
 include ':json'
 include ':kotlin'
@@ -26,9 +29,13 @@ include ':lifecycle:viewmodel'
 // location
 include ':location:core'
 include ':location:compass'
+include ':location:gms'
 
 // material
 include ':material:tablayout'
+
+// multimedia
+include ':multimedia:store'
 
 include ':recyclerview'
 include ':text'

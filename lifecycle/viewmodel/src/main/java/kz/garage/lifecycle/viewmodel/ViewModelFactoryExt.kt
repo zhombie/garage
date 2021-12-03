@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModelStoreOwner
 
 inline fun <reified T: ViewModel> ViewModelProvider.Factory.createViewModel(
     owner: ViewModelStoreOwner
-): T = ViewModelProvider(owner, this).get(T::class.java)
+): T = ViewModelProvider(owner, this)[T::class.java]
 
 
 inline fun <reified T: ViewModel> ViewModelProvider.Factory.createViewModel(
     store: ViewModelStore
-): T = ViewModelProvider(store, this).get(T::class.java)
+): T = ViewModelProvider(store, this)[T::class.java]

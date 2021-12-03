@@ -1,4 +1,4 @@
-package kz.garage.location.core
+package kz.garage.location.gms
 
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback

@@ -1,8 +1,9 @@
-package kz.garage.file
+package kz.garage.file.extension
 
 enum class Extension constructor(val value: String) {
     JPG("jpg"),
     JPEG("jpeg"),
+
     PNG("png"),
 
     TXT("txt"),
@@ -20,12 +21,17 @@ enum class Extension constructor(val value: String) {
     MP3("mp3"),
     M4A("m4a"),
     WAV("wav"),
+
     THREE_GP("3gp"),
     THREE_GPP("3gpp"),
+
     AMR("amr"),
+
     AAC("aac"),
+
     OPUS("opus"),
     OGG("ogg"),
+
     FLAC("flac"),
 
     MP4("mp4"),

@@ -3,10 +3,13 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    resourcePrefix 'location_core_'
+    resourcePrefix 'location_gms_'
 }
 
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // GMS
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 }

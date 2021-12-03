@@ -3,7 +3,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    resourcePrefix 'location_core_'
+    resourcePrefix 'multimedia_store_'
 }
 
 dependencies {
