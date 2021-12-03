@@ -58,8 +58,8 @@ ext.projectArtifactId = { project ->
 
 allprojects {
     group = 'com.github.zhombie.garage'
-    project.ext.version_code = 2
-    version = '1.0.1'
+    project.ext.version_code = 3
+    version = '1.0.2'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     if (project.group != null) {
