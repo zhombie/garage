@@ -28,7 +28,6 @@ ext.projectArtifactId = { project ->
         case 'activity':
         case 'context':
         case 'drawable':
-        case 'file':
         case 'fragment':
         case 'json':
         case 'kotlin':
@@ -64,22 +63,26 @@ ext.projectArtifactId = { project ->
 
 allprojects {
     group = 'com.github.zhombie.garage'
-    project.ext.version_code = 5
-    version = '1.0.4'
+    project.ext.version_code = 6
+    version = '1.0.5'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     if (project.group != null) {
-        println "Group [${project.group}] is set"
-    }
-
-    if (project.ext.artifactId != null) {
-        println "ArtifactId [${project.ext.artifactId}] is set"
+        if (project.ext.artifactId == null) {
+            println "Group [${project.group}] is set to [${project.name}]"
+        } else {
+            println "Group [${project.group}] is set to [${project.name}] with id [${project.ext.artifactId}]"
+        }
     }
 }
 
 static def getSampleModuleName(project) {
-    if (project.name == "sample") {
-        println "Project [${project.name}] is sample module"
+    return getModuleName(project, "sample")
+}
+
+static def getModuleName(project, comparator) {
+    if (project.name == comparator) {
+        println "Project [${project.name}] is processed"
         return project.name
     }
     return null
