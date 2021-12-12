@@ -123,39 +123,47 @@ subprojects { project ->
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
 
-        setupCommonKotlinVersion(project, kotlin_version)
+        configurations.all {
+            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+                def requested = details.requested
+
+                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                    details.useVersion kotlin_version
+                }
+            }
+        }
     }
 
-    publishing {
-        publications {
-            aar(MavenPublication) {
-                groupId project.group
-                artifactId project.ext.artifactId
-                version project.version
+    afterEvaluate {
+        publishing {
+            publications {
+                aar(MavenPublication) {
+                    groupId project.group
+                    artifactId project.ext.artifactId
+                    version project.version
 
-                pom {
-                    name = project.name
-                    url = "https://github.com/zhombie/garage"
+                    pom {
+                        name = project.name
+                        url = "https://github.com/zhombie/garage"
 
-                    developers {
-                        developer {
-                            name = 'zhombie'
+                        developers {
+                            developer {
+                                name = 'zhombie'
+                            }
                         }
                     }
-                }
 
-                pom.withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-                    project.configurations.api.allDependencies.each { dependency ->
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', dependency.group)
-                        dependencyNode.appendNode('artifactId', dependency.name)
-                        dependencyNode.appendNode('version', dependency.version)
+                    pom.withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        project.configurations.api.allDependencies.each { dependency ->
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', dependency.group)
+                            dependencyNode.appendNode('artifactId', dependency.name)
+                            dependencyNode.appendNode('version', dependency.version)
+                        }
                     }
-                }
 
-                afterEvaluate {
-//                    from components.release
+    //                from components.release
                     artifact "$buildDir/outputs/aar/$project.name-release.aar"
                 }
             }
@@ -184,17 +192,6 @@ static def getParentFolderModuleName(project) {
         return name
     }
     return null
-}
-
-static def setupCommonKotlinVersion(project, version) {
-    project.configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
-                details.useVersion version
-            }
-        }
-    }
 }
 
 

@@ -61,7 +61,14 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    setupCommonKotlinVersion(project, kotlin_version)
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                details.useVersion kotlin_version
+            }
+        }
+    }
 }
 
 dependencies {
@@ -140,17 +147,5 @@ dependencies {
         implementation project(':textview')
         implementation project(':view')
         implementation project(':window')
-    }
-}
-
-
-static def setupCommonKotlinVersion(project, version) {
-    project.configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
-                details.useVersion version
-            }
-        }
     }
 }
