@@ -76,27 +76,6 @@ allprojects {
     }
 }
 
-static def getSampleModuleName(project) {
-    return getModuleName(project, "sample")
-}
-
-static def getModuleName(project, comparator) {
-    if (project.name == comparator) {
-        println "Project [${project.name}] is processed"
-        return project.name
-    }
-    return null
-}
-
-static def getParentFolderModuleName(project) {
-    def allProjects = project.getAllprojects()
-    if (allProjects.size() > 1) {
-        def name = allProjects.first().name
-        println "Project [${name}] has submodules"
-        return name
-    }
-    return null
-}
 
 /**
  * Publishing and signing info
@@ -144,14 +123,7 @@ subprojects { project ->
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
 
-        configurations.all {
-            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-                def requested = details.requested
-                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
-                    details.useVersion kotlin_version
-                }
-            }
-        }
+        setupCommonKotlinVersion(project, kotlin_version)
     }
 
     publishing {
@@ -186,6 +158,40 @@ subprojects { project ->
 //                    from components.release
                     artifact "$buildDir/outputs/aar/$project.name-release.aar"
                 }
+            }
+        }
+    }
+}
+
+
+static def getSampleModuleName(project) {
+    return getModuleName(project, "sample")
+}
+
+static def getModuleName(project, comparator) {
+    if (project.name == comparator) {
+        println "Project [${project.name}] is processed"
+        return project.name
+    }
+    return null
+}
+
+static def getParentFolderModuleName(project) {
+    def allProjects = project.getAllprojects()
+    if (allProjects.size() > 1) {
+        def name = allProjects.first().name
+        println "Project [${name}] has submodules"
+        return name
+    }
+    return null
+}
+
+static def setupCommonKotlinVersion(project, version) {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                details.useVersion version
             }
         }
     }
