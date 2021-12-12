@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773912886027",
+    "project_id": "garage-5c928",
+    "storage_bucket": "garage-5c928.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773912886027:android:bdf016762a6d037207800e",
+        "android_client_info": {
+          "package_name": "kz.garage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773912886027-1gn85s47m8123389mhcahhud8gmdsljg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCkOuVJ-S4MwtvyewcevnyDM-suburvQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773912886027-1gn85s47m8123389mhcahhud8gmdsljg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
