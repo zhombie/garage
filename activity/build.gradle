@@ -18,7 +18,4 @@ dependencies {
 
     // Core
     implementation 'androidx.core:core-ktx:1.7.0'
-
-    // View
-    implementation project(':view')
 }

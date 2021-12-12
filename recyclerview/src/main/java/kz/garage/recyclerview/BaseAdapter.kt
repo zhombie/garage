@@ -1,18 +1,17 @@
 package kz.garage.recyclerview
 
-import android.annotation.SuppressLint
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import kz.garage.view.inflate
 
 abstract class BaseAdapter<T> constructor(
     private var data: List<T> = emptyList()
 ) : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
     init {
-        addAll(data, true)
+        setData(data, true)
     }
 
     @LayoutRes
@@ -20,8 +19,7 @@ abstract class BaseAdapter<T> constructor(
 
     protected abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun addAll(data: List<T>, notify: Boolean) {
+    fun setData(data: List<T>, notify: Boolean) {
         this.data = data
 
         if (notify) {
@@ -36,10 +34,18 @@ abstract class BaseAdapter<T> constructor(
     override fun getItemCount(): Int = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> =
-        onCreateViewHolder(parent.inflate(getLayoutId()))
+        onCreateViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(getLayoutId(), parent, false)
+        )
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         getItem(position)?.let { holder.onBind(it, position) }
+    }
+
+    override fun onViewRecycled(holder: BaseViewHolder<T>) {
+        super.onViewRecycled(holder)
+        holder.onUnbind()
     }
 
 }

@@ -15,6 +15,7 @@ import kz.garage.activity.toast
 import kz.garage.recyclerview.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
 import kz.garage.samples.location.compass.CompassActivity
+import kz.garage.samples.location.gms.GMSActivity
 
 class LocationActivity : AppCompatActivity() {
 
@@ -56,6 +57,7 @@ class LocationActivity : AppCompatActivity() {
         return listOf(
             Sample("core", "Core", null),
             Sample("compass", "Compass", null),
+            Sample("gms", "GMS", null),
         )
     }
 
@@ -65,6 +67,8 @@ class LocationActivity : AppCompatActivity() {
                 toast("Coming soon")
             "compass" ->
                 startActivity(CompassActivity.newIntent(this))
+            "gms" ->
+                startActivity(GMSActivity.newIntent(this))
         }
     }
 

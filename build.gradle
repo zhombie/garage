@@ -7,9 +7,15 @@ buildscript {
     }
    
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:7.0.4'
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // Google Services
+        classpath 'com.google.gms:google-services:4.3.10'
+
+        // Secrets Gradle Plugin
+        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.0"
     }
 }
 

@@ -25,6 +25,12 @@ class SamplesAdapter constructor(
 
             button.setOnClickListener { onClickAction(item, position) }
         }
+
+        override fun onUnbind() {
+            button.text = null
+
+            button.setOnClickListener(null)
+        }
     }
 
 }

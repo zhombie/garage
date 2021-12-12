@@ -9,12 +9,14 @@ open class BaseViewHolder<T> constructor(
     view: View
 ) : RecyclerView.ViewHolder(view) {
 
-    val context: Context
+    protected val context: Context
         get() = itemView.context
 
-    val resources: Resources
+    protected val resources: Resources
         get() = itemView.context.resources
 
     open fun onBind(item: T, position: Int) {}
+
+    open fun onUnbind() {}
 
 }
