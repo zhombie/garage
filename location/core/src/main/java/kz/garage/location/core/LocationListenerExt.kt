@@ -17,6 +17,7 @@ inline fun Context.createLocationCallback(
             onLocationChanged.invoke(location)
         }
 
+        @Suppress("DEPRECATION")
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
             super.onStatusChanged(provider, status, extras)
             onStatusChanged.invoke(provider, status, extras)
