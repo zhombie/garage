@@ -10,7 +10,7 @@ import kz.garage.activity.keyboard.isKeyboardVisible
 import kz.garage.activity.keyboard.showKeyboard
 import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleName
-import kz.garage.window.addKeyboardVisibilityListener
+import kz.garage.window.keyboard.addKeyboardVisibilityListener
 
 class WindowActivity : AppCompatActivity() {
 

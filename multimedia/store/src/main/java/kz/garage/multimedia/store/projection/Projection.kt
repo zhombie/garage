@@ -1,4 +1,4 @@
-package kz.garage.multimedia.store
+package kz.garage.multimedia.store.projection
 
 import android.os.Build
 import android.provider.MediaStore

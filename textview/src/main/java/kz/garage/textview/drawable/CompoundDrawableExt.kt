@@ -1,4 +1,4 @@
-package kz.garage.textview
+package kz.garage.textview.drawable
 
 import android.graphics.drawable.Drawable
 import android.widget.TextView

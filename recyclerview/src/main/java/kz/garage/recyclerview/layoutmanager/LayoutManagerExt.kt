@@ -1,4 +1,4 @@
-package kz.garage.recyclerview
+package kz.garage.recyclerview.layoutmanager
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

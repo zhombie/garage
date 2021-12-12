@@ -1,4 +1,4 @@
-package kz.garage.drawable
+package kz.garage.drawable.tint
 
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable

@@ -1,4 +1,4 @@
-package kz.garage.text
+package kz.garage.text.html
 
 import android.os.Build
 import android.text.Html

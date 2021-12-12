@@ -1,4 +1,4 @@
-package kz.garage.lifecycle.viewmodel
+package kz.garage.lifecycle.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

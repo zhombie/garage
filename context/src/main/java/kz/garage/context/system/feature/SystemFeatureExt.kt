@@ -1,4 +1,4 @@
-package kz.garage.context
+package kz.garage.context.system.feature
 
 import android.content.Context
 import android.content.pm.PackageManager

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.garage.activity.intent.createIntent
 import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleName
-import kz.garage.recyclerview.setVerticalLinearLayoutManager
+import kz.garage.recyclerview.layoutmanager.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
 import kz.garage.samples.activity.Activity
 import kz.garage.samples.fragment.FragmentActivity

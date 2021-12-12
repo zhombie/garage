@@ -1,4 +1,4 @@
-package kz.garage.window
+package kz.garage.window.keyboard
 
 import android.view.View
 import android.view.Window
@@ -6,10 +6,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnLayout
 
-fun View.isKeyboardVisible(): Boolean {
-    return ViewCompat.getRootWindowInsets(this)
+internal fun View.isKeyboardVisible(): Boolean =
+    ViewCompat.getRootWindowInsets(this)
         ?.isVisible(WindowInsetsCompat.Type.ime()) == true
-}
 
 fun Window.addKeyboardVisibilityListener(block: (isVisible: Boolean) -> Unit) {
     decorView.doOnLayout {

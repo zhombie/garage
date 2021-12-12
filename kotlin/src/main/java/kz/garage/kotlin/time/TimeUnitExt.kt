@@ -1,4 +1,4 @@
-package kz.garage.kotlin
+package kz.garage.kotlin.time
 
 import java.util.concurrent.TimeUnit
 

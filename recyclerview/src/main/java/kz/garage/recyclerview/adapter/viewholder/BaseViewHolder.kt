@@ -1,4 +1,4 @@
-package kz.garage.recyclerview
+package kz.garage.recyclerview.adapter.viewholder
 
 import android.content.Context
 import android.content.res.Resources

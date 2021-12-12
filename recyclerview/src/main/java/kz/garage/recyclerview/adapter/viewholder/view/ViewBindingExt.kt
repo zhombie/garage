@@ -1,4 +1,4 @@
-package kz.garage.recyclerview
+package kz.garage.recyclerview.adapter.viewholder.view
 
 import android.view.View
 import androidx.annotation.IdRes

@@ -1,10 +1,11 @@
-package kz.garage.recyclerview
+package kz.garage.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
+import kz.garage.recyclerview.adapter.viewholder.BaseViewHolder
 
 abstract class BaseAdapter<T> constructor(
     private var data: List<T> = emptyList()

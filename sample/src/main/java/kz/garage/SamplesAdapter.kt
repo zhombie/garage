@@ -2,9 +2,9 @@ package kz.garage
 
 import android.view.View
 import com.google.android.material.button.MaterialButton
-import kz.garage.recyclerview.BaseAdapter
-import kz.garage.recyclerview.BaseViewHolder
-import kz.garage.recyclerview.bind
+import kz.garage.recyclerview.adapter.BaseAdapter
+import kz.garage.recyclerview.adapter.viewholder.BaseViewHolder
+import kz.garage.recyclerview.adapter.viewholder.view.bind
 
 class SamplesAdapter constructor(
     samples: List<Sample>,

@@ -23,9 +23,24 @@ android {
         versionName project.version
     }
 
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def googleMapsApiKey = properties.getProperty('google.maps.key')
+
     buildTypes {
-        release {
+        debug {
+            resValue 'string', 'google_maps_api_key', googleMapsApiKey
+
             minifyEnabled false
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            resValue 'string', 'google_maps_api_key', googleMapsApiKey
+
+            minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
