@@ -1,23 +1,21 @@
 package kz.garage.samples.window
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
-import kz.garage.activity.bind
-import kz.garage.activity.hideKeyboard
-import kz.garage.activity.isKeyboardVisible
-import kz.garage.activity.showKeyboard
+import kz.garage.activity.keyboard.hideKeyboard
+import kz.garage.activity.keyboard.isKeyboardVisible
+import kz.garage.activity.keyboard.showKeyboard
+import kz.garage.activity.view.bind
+import kz.garage.kotlin.simpleName
 import kz.garage.window.addKeyboardVisibilityListener
 
 class WindowActivity : AppCompatActivity() {
 
     companion object {
-        fun newIntent(context: Context): Intent =
-            Intent(context, WindowActivity::class.java)
+        private val TAG = simpleName()
     }
 
     private val textView by bind<MaterialTextView>(R.id.textView)

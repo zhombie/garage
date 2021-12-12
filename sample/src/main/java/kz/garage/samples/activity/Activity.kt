@@ -1,21 +1,19 @@
 package kz.garage.samples.activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import kz.garage.R
-import kz.garage.activity.bind
-import kz.garage.activity.hideKeyboard
-import kz.garage.activity.isKeyboardVisible
-import kz.garage.activity.showKeyboard
+import kz.garage.activity.keyboard.hideKeyboard
+import kz.garage.activity.keyboard.isKeyboardVisible
+import kz.garage.activity.keyboard.showKeyboard
+import kz.garage.activity.view.bind
+import kz.garage.kotlin.simpleName
 
 class Activity : AppCompatActivity() {
 
     companion object {
-        fun newIntent(context: Context): Intent =
-            Intent(context, Activity::class.java)
+        private val TAG = simpleName()
     }
 
     private val button by bind<MaterialButton>(R.id.button)

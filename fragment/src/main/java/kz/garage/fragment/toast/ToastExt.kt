@@ -1,4 +1,4 @@
-package kz.garage.fragment
+package kz.garage.fragment.toast
 
 import android.widget.Toast
 import androidx.annotation.StringRes

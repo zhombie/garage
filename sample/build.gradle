@@ -73,23 +73,49 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 
     // Library
-    implementation project(':activity')
-    implementation project(':context')
-    implementation project(':drawable')
-    implementation project(':file:extension')
-    implementation project(':fragment')
-    implementation project(':json')
-    implementation project(':kotlin')
-    implementation project(':lifecycle:livedata')
-    implementation project(':lifecycle:viewmodel')
-    implementation project(':location:compass')
-    implementation project(':location:core')
-    implementation project(':location:gms')
-    implementation project(':material:tablayout')
-    implementation project(':multimedia:store')
-    implementation project(':recyclerview')
-    implementation project(':text')
-    implementation project(':textview')
-    implementation project(':view')
-    implementation project(':window')
+    def isRemoteDependencyEnabled = false
+
+    if (isRemoteDependencyEnabled) {
+        def libraryVersion = '1.0.2'
+        implementation "com.github.zhombie.garage:activity:$libraryVersion"
+        implementation "com.github.zhombie.garage:context:$libraryVersion"
+        implementation "com.github.zhombie.garage:drawable:$libraryVersion"
+        implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
+        implementation "com.github.zhombie.garage:fragment:$libraryVersion"
+        implementation "com.github.zhombie.garage:json:$libraryVersion"
+        implementation "com.github.zhombie.garage:json:$libraryVersion"
+        implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
+        implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
+        implementation "com.github.zhombie.garage:lifecycle-viewmodel:$libraryVersion"
+        implementation "com.github.zhombie.garage:location-compass:$libraryVersion"
+        implementation "com.github.zhombie.garage:location-core:$libraryVersion"
+        implementation "com.github.zhombie.garage:location-gms:$libraryVersion"
+        implementation "com.github.zhombie.garage:material-tablayout:$libraryVersion"
+        implementation "com.github.zhombie.garage:multimedia-store:$libraryVersion"
+        implementation "com.github.zhombie.garage:recyclerview:$libraryVersion"
+        implementation "com.github.zhombie.garage:text:$libraryVersion"
+        implementation "com.github.zhombie.garage:textview:$libraryVersion"
+        implementation "com.github.zhombie.garage:view:$libraryVersion"
+        implementation "com.github.zhombie.garage:window:$libraryVersion"
+    } else {
+        implementation project(':activity')
+        implementation project(':context')
+        implementation project(':drawable')
+        implementation project(':file:extension')
+        implementation project(':fragment')
+        implementation project(':json')
+        implementation project(':kotlin')
+        implementation project(':lifecycle:livedata')
+        implementation project(':lifecycle:viewmodel')
+        implementation project(':location:compass')
+        implementation project(':location:core')
+        implementation project(':location:gms')
+        implementation project(':material:tablayout')
+        implementation project(':multimedia:store')
+        implementation project(':recyclerview')
+        implementation project(':text')
+        implementation project(':textview')
+        implementation project(':view')
+        implementation project(':window')
+    }
 }

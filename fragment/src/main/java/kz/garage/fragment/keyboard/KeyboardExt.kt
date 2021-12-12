@@ -1,4 +1,4 @@
-package kz.garage.fragment
+package kz.garage.fragment.keyboard
 
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat

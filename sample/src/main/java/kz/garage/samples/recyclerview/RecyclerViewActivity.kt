@@ -1,16 +1,14 @@
 package kz.garage.samples.recyclerview
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kz.garage.R
+import kz.garage.kotlin.simpleName
 
 class RecyclerViewActivity : AppCompatActivity() {
 
     companion object {
-        fun newIntent(context: Context): Intent =
-            Intent(context, RecyclerViewActivity::class.java)
+        private val TAG = simpleName()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

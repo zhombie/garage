@@ -3,9 +3,6 @@ package kz.garage.samples.location.gms
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
@@ -13,7 +10,6 @@ import android.util.Log
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
@@ -21,19 +17,19 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
-import kz.garage.activity.bind
-import kz.garage.activity.toast
+import kz.garage.activity.permission.isPermissionsGranted
+import kz.garage.activity.toast.toast
+import kz.garage.activity.view.bind
+import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.toMillis
 import kz.garage.location.core.isMocked
-import kz.garage.location.gms.AbstractLocationCallback
-import java.util.concurrent.TimeUnit
+import kz.garage.location.gms.createLocationCallback
 
+@SuppressLint("MissingPermission")
 class GMSActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = GMSActivity::class.java.simpleName
-
-        fun newIntent(context: Context): Intent =
-            Intent(context, GMSActivity::class.java)
+        private val TAG = simpleName()
     }
 
     private val locationPermissions by lazy(LazyThreadSafetyMode.NONE) {
@@ -64,60 +60,46 @@ class GMSActivity : AppCompatActivity() {
     private val locationRequest by lazy(LazyThreadSafetyMode.NONE) {
         LocationRequest.create()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-            .setFastestInterval(TimeUnit.SECONDS.toMillis(5))
-            .setInterval(TimeUnit.SECONDS.toMillis(10))
-            .setMaxWaitTime(TimeUnit.SECONDS.toMillis(20))
+            .setFastestInterval(5L.toMillis())
+            .setInterval(10L.toMillis())
+            .setMaxWaitTime(20L.toMillis())
     }
 
     private var cancellationTokenSource: CancellationTokenSource? = null
 
     private val locationCallback by lazy(LazyThreadSafetyMode.NONE) {
-        object : AbstractLocationCallback(object : LocationCallback() {
+        createLocationCallback(
+            onLocationResult = { locationResult ->
+                Log.d(TAG, "onLocationResult() -> $locationResult")
 
-            @SuppressLint("MissingPermission")
-            override fun onLocationAvailability(locationAvailability: LocationAvailability) {
-                super.onLocationAvailability(locationAvailability)
-
+                onLocationReceived(locationResult.lastLocation)
+            },
+            onLocationAvailability = { locationAvailability ->
                 Log.d(TAG, "onLocationAvailability() -> $locationAvailability")
 
-                if (locationPermissions.all {
-                        ActivityCompat.checkSelfPermission(this@GMSActivity, it) == PackageManager.PERMISSION_GRANTED
-                }) {
+                onLocationStatusReceived(locationAvailability.isLocationAvailable)
+
+                if (isPermissionsGranted(locationPermissions)) {
                     cancellationTokenSource = CancellationTokenSource()
+
                     fusedLocationProviderClient?.getCurrentLocation(
                         locationRequest.priority,
                         requireNotNull(cancellationTokenSource).token
-                    )?.addOnCompleteListener {
-                        if (it.isSuccessful) {
+                    )?.addOnCompleteListener(this) {
+                        if (it.isSuccessful && it.isComplete) {
                             onLocationReceived(it.result)
                         }
                     }
                 } else {
                     fusedLocationProviderClient?.lastLocation
-                        ?.addOnCompleteListener {
-                            if (it.isSuccessful) {
+                        ?.addOnCompleteListener(this) {
+                            if (it.isSuccessful && it.isComplete) {
                                 onLocationReceived(it.result)
                             }
                         }
                 }
             }
-
-            override fun onLocationResult(locationResult: LocationResult) {
-                super.onLocationResult(locationResult)
-
-                Log.d(TAG, "onLocationResult() -> $locationResult")
-
-                onLocationReceived(locationResult.lastLocation)
-            }
-
-            private fun onLocationReceived(location: Location) {
-                if (location.isMocked()) {
-                    Log.e(TAG, "onLocationReceived() -> mock: $location")
-                }
-
-                textView.text = location.toString()
-            }
-        }) {}
+        )
     }
 
     private var fusedLocationProviderClient: FusedLocationProviderClient? = null
@@ -134,25 +116,34 @@ class GMSActivity : AppCompatActivity() {
 
         apiAvailability
             .checkApiAvailability(requireNotNull(fusedLocationProviderClient))
-            .addOnCompleteListener {
-            if (it.isSuccessful) {
-                Log.d(TAG, "checkApiAvailability() -> [SUCCESS] ${it.result}")
-                checkLocationSettings()
-            } else {
-                Log.d(TAG, "checkApiAvailability() -> [FAILED] ${it.exception}")
-                val status = apiAvailability.isGooglePlayServicesAvailable(this)
-                if (apiAvailability.isUserResolvableError(status)) {
-                    val dialog = apiAvailability.getErrorDialog(this, status, 666)
-                    if (dialog == null) {
-                        toast("There is no Google API")
-                    } else {
-                        dialog.show()
-                    }
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful && task.isComplete) {
+                    Log.d(TAG, "checkApiAvailability() -> [SUCCESS] ${task.result}")
+
+                    checkLocationSettings()
                 } else {
-                    toast("There is no Google API")
+                    Log.d(TAG, "checkApiAvailability() -> [FAILED] ${task.exception}")
+
+                    apiAvailability.makeGooglePlayServicesAvailable(this)
+                        .addOnCompleteListener(this) {
+                            if (it.isSuccessful && it.isComplete) {
+                                toast("There is no Google API")
+                            } else {
+                                val status = apiAvailability.isGooglePlayServicesAvailable(this)
+                                if (apiAvailability.isUserResolvableError(status)) {
+                                    val dialog = apiAvailability.getErrorDialog(this, status, 666)
+                                    if (dialog == null) {
+                                        toast("There is no Google API")
+                                    } else {
+                                        dialog.show()
+                                    }
+                                } else {
+                                    toast("There is no Google API")
+                                }
+                            }
+                        }
                 }
             }
-        }
     }
 
     private fun checkLocationSettings() {
@@ -164,8 +155,8 @@ class GMSActivity : AppCompatActivity() {
                     .setAlwaysShow(true)
                     .build()
             )
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
+            .addOnCompleteListener(this) {
+                if (it.isSuccessful && it.isComplete) {
                     Log.d(TAG, "checkLocationSettings() -> [SUCCESS] ${it.result.locationSettingsStates}")
                     requestLocationUpdates()
                 } else {
@@ -175,19 +166,15 @@ class GMSActivity : AppCompatActivity() {
             }
     }
 
-    @SuppressLint("MissingPermission")
     private fun requestLocationUpdates() {
-        if (locationPermissions.all {
-                ActivityCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
-        }) {
+        if (isPermissionsGranted(locationPermissions)) {
             fusedLocationProviderClient?.requestLocationUpdates(
                 locationRequest,
                 locationCallback,
                 Looper.getMainLooper()
-            )?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val result = it.result
-                    Log.d(TAG, "requestLocationUpdates() -> [SUCCESS] $result")
+            )?.addOnCompleteListener(this) {
+                if (it.isSuccessful && it.isComplete) {
+                    Log.d(TAG, "requestLocationUpdates() -> [SUCCESS] $it.result")
                 } else {
                     Log.d(TAG, "requestLocationUpdates() -> [FAILED] ${it.exception}")
                 }
@@ -218,6 +205,18 @@ class GMSActivity : AppCompatActivity() {
         }
         checkLocationSettings()
         return false
+    }
+
+    private fun onLocationStatusReceived(isAvailable: Boolean) {
+        textView.text = "Location Status: $isAvailable"
+    }
+
+    private fun onLocationReceived(location: Location) {
+        if (location.isMocked()) {
+            Log.e(TAG, "onLocationReceived() -> mock: $location")
+        }
+
+        textView.text = location.toString()
     }
 
     override fun onDestroy() {

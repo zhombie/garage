@@ -1,4 +1,4 @@
-package kz.garage.activity
+package kz.garage.activity.keyboard
 
 import android.app.Activity
 import androidx.core.view.ViewCompat

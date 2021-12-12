@@ -1,4 +1,4 @@
-package kz.garage.activity
+package kz.garage.activity.toast
 
 import android.app.Activity
 import android.widget.Toast

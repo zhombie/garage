@@ -1,7 +1,5 @@
 package kz.garage.samples.location
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,18 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.garage.R
 import kz.garage.Sample
 import kz.garage.SamplesAdapter
-import kz.garage.activity.bind
-import kz.garage.activity.toast
+import kz.garage.activity.intent.createIntent
+import kz.garage.activity.view.bind
+import kz.garage.kotlin.simpleName
 import kz.garage.recyclerview.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
 import kz.garage.samples.location.compass.CompassActivity
+import kz.garage.samples.location.core.CoreActivity
 import kz.garage.samples.location.gms.GMSActivity
 
 class LocationActivity : AppCompatActivity() {
 
     companion object {
-        fun newIntent(context: Context): Intent =
-            Intent(context, LocationActivity::class.java)
+        private val TAG = simpleName()
     }
 
     private val textView by bind<TextView>(R.id.textView)
@@ -64,11 +63,11 @@ class LocationActivity : AppCompatActivity() {
     private fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "core" ->
-                toast("Coming soon")
+                startActivity(createIntent<CoreActivity>())
             "compass" ->
-                startActivity(CompassActivity.newIntent(this))
+                startActivity(createIntent<CompassActivity>())
             "gms" ->
-                startActivity(GMSActivity.newIntent(this))
+                startActivity(createIntent<GMSActivity>())
         }
     }
 

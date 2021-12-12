@@ -1,4 +1,4 @@
-package kz.garage.activity
+package kz.garage.activity.view
 
 import android.app.Activity
 import android.view.View

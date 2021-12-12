@@ -5,19 +5,18 @@ import android.location.LocationListener
 import android.os.Bundle
 import java.lang.ref.WeakReference
 
-abstract class AbstractLocationListener constructor(
+class AbstractLocationListener internal constructor(
     private val locationListenerReference: WeakReference<LocationListener>
 ) : LocationListener {
 
     constructor(locationListener: LocationListener) : this(WeakReference(locationListener))
 
     override fun onLocationChanged(location: Location) {
-        super.onLocationChanged(location)
         locationListenerReference.get()?.onLocationChanged(location)
     }
 
+    @Suppress("DEPRECATION")
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        @Suppress("DEPRECATION")
         super.onStatusChanged(provider, status, extras)
         locationListenerReference.get()?.onStatusChanged(provider, status, extras)
     }

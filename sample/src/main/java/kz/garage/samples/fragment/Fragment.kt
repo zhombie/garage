@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.google.android.material.button.MaterialButton
 import kz.garage.R
-import kz.garage.fragment.hideKeyboard
-import kz.garage.fragment.isKeyboardVisible
-import kz.garage.fragment.showKeyboard
+import kz.garage.fragment.keyboard.hideKeyboard
+import kz.garage.fragment.keyboard.isKeyboardVisible
+import kz.garage.fragment.keyboard.showKeyboard
 
 class Fragment : androidx.fragment.app.Fragment(R.layout.fragment) {
 

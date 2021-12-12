@@ -5,7 +5,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import kz.garage.activity.bind
+import kz.garage.activity.intent.createIntent
+import kz.garage.activity.view.bind
+import kz.garage.kotlin.simpleName
 import kz.garage.recyclerview.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
 import kz.garage.samples.activity.Activity
@@ -15,6 +17,10 @@ import kz.garage.samples.recyclerview.RecyclerViewActivity
 import kz.garage.samples.window.WindowActivity
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private val TAG = simpleName()
+    }
 
     private val textView by bind<TextView>(R.id.textView)
     private val recyclerView by bind<RecyclerView>(R.id.recyclerView)
@@ -58,15 +64,15 @@ class MainActivity : AppCompatActivity() {
     private fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "activity" ->
-                startActivity(Activity.newIntent(this))
+                startActivity(createIntent<Activity>())
             "fragment" ->
-                startActivity(FragmentActivity.newIntent(this))
+                startActivity(createIntent<FragmentActivity>())
             "location" ->
-                startActivity(LocationActivity.newIntent(this))
+                startActivity(createIntent<LocationActivity>())
             "recyclerview" ->
-                startActivity(RecyclerViewActivity.newIntent(this))
+                startActivity(createIntent<RecyclerViewActivity>())
             "window" ->
-                startActivity(WindowActivity.newIntent(this))
+                startActivity(createIntent<WindowActivity>())
         }
     }
 

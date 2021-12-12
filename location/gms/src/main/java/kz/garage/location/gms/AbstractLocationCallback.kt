@@ -5,7 +5,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import java.lang.ref.WeakReference
 
-abstract class AbstractLocationCallback constructor(
+class AbstractLocationCallback internal constructor(
     private val locationCallbackReference: WeakReference<LocationCallback>
 ) : LocationCallback() {
 
