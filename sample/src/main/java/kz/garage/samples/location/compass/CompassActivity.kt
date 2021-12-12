@@ -21,7 +21,7 @@ class CompassActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_compass)
+        setContentView(R.layout.activity_location_compass)
 
         textView.text = "Undefined"
         textView2.text = "Undefined"

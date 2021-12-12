@@ -1,61 +1,35 @@
 package kz.garage.samples.window
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
-import kz.garage.activity.keyboard.hideKeyboard
-import kz.garage.activity.keyboard.isKeyboardVisible
-import kz.garage.activity.keyboard.showKeyboard
-import kz.garage.activity.view.bind
+import kz.garage.Sample
+import kz.garage.activity.intent.createIntent
 import kz.garage.kotlin.simpleName
-import kz.garage.window.keyboard.addKeyboardVisibilityListener
+import kz.garage.samples.BaseNestedModuleActivity
+import kz.garage.samples.window.keyboard.KeyboardActivity
+import kz.garage.samples.window.size.WindowSizeActivity
 
-class WindowActivity : AppCompatActivity() {
+class WindowActivity : BaseNestedModuleActivity() {
 
     companion object {
         private val TAG = simpleName()
     }
 
-    private val textView by bind<MaterialTextView>(R.id.textView)
-    private val button by bind<MaterialButton>(R.id.button)
+    override fun getLayoutId(): Int = R.layout.activity_window
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_window)
+    override fun getHeaderTitle(): String = "Window"
 
-        setupKeyboardListener()
-        setupButton()
-    }
+    override fun getSamples(): List<Sample> =
+        listOf(
+            Sample("keyboard", "Keyboard", null),
+            Sample("window_size", "Window size", null)
+        )
 
-    private fun setupKeyboardListener() {
-        window.addKeyboardVisibilityListener { isVisible ->
-            if (isVisible) {
-                textView.text = "Visible"
-            } else {
-                textView.text = "Hidden"
-            }
-        }
-    }
-
-    private fun setupButton() {
-        toggleKeyboard()
-
-        button.setOnClickListener {
-            toggleKeyboard()
-        }
-    }
-
-    private fun toggleKeyboard() {
-        if (isKeyboardVisible()) {
-            if (hideKeyboard()) {
-                button.text = "Show keyboard"
-            }
-        } else {
-            if (showKeyboard()) {
-                button.text = "Hide keyboard"
-            }
+    override fun onSampleClicked(sample: Sample) {
+        when (sample.id) {
+            "keyboard" ->
+                startActivity(createIntent<KeyboardActivity>())
+            "window_size" ->
+                startActivity(createIntent<WindowSizeActivity>())
         }
     }
 

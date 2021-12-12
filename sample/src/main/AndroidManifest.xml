@@ -12,10 +12,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="MissingApplicationIcon">
 
+        <!-- Google Maps Configuration -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_api_key" />
 
+        <!-- Entry Point -->
         <activity
             android:name="kz.garage.MainActivity"
             android:exported="true">
@@ -25,14 +27,25 @@
             </intent-filter>
         </activity>
 
+        <!-- activity -->
         <activity android:name=".samples.activity.Activity" />
+
+        <!-- fragment -->
         <activity android:name=".samples.fragment.FragmentActivity" />
+
+        <!-- location -->
         <activity android:name=".samples.location.LocationActivity" />
         <activity android:name=".samples.location.core.CoreActivity" />
         <activity android:name=".samples.location.compass.CompassActivity" />
         <activity android:name=".samples.location.gms.GMSActivity" />
+
+        <!-- recyclerview -->
         <activity android:name=".samples.recyclerview.RecyclerViewActivity" />
+
+        <!-- window -->
         <activity android:name=".samples.window.WindowActivity" />
+        <activity android:name=".samples.window.keyboard.KeyboardActivity" />
+        <activity android:name=".samples.window.size.WindowSizeActivity" />
 
     </application>
 

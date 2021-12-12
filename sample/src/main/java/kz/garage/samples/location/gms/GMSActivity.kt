@@ -108,7 +108,7 @@ class GMSActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gms)
+        setContentView(R.layout.activity_location_gms)
 
         val apiAvailability = GoogleApiAvailability.getInstance()
 

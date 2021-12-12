@@ -20,7 +20,7 @@ abstract class BaseAdapter<T> constructor(
 
     protected abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
 
-    fun setData(data: List<T>, notify: Boolean) {
+    protected fun setData(data: List<T>, notify: Boolean) {
         this.data = data
 
         if (notify) {

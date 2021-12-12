@@ -12,4 +12,7 @@ dependencies {
 
     // Core
     implementation 'androidx.core:core-ktx:1.7.0'
+
+    // Window
+    implementation 'androidx.window:window:1.0.0-beta04'
 }

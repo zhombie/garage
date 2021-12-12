@@ -1,23 +1,17 @@
 package kz.garage.window
 
-import android.content.Context
-import android.graphics.Point
-import android.view.Display
+import android.app.Activity
+import android.util.Size
+import androidx.window.layout.WindowMetricsCalculator
 
-val Context.screenWidth: Int
-    get() {
-        val display: Display? = getDisplayCompat()
-        val size = Point()
-        // TODO: Get rid of deprecation
-        display?.getSize(size)
-        return size.x
-    }
+fun Activity.computeCurrentWindowSize(): Size {
+    val windowMetrics = WindowMetricsCalculator.getOrCreate()
+        .computeCurrentWindowMetrics(this)
+    return Size(windowMetrics.bounds.width(), windowMetrics.bounds.height())
+}
 
-val Context.screenHeight: Int
-    get() {
-        val display: Display? = getDisplayCompat()
-        val size = Point()
-        // TODO: Get rid of deprecation
-        display?.getSize(size)
-        return size.y
-    }
+fun Activity.computeMaximumWindowSize(): Size {
+    val windowMetrics = WindowMetricsCalculator.getOrCreate()
+        .computeMaximumWindowMetrics(this)
+    return Size(windowMetrics.bounds.width(), windowMetrics.bounds.height())
+}
