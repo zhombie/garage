@@ -108,8 +108,8 @@ subprojects { project ->
     if (getParentFolderModuleName(project) != null) return
 
     apply plugin: 'com.android.library'
-    apply plugin: 'maven-publish'
     apply plugin: 'kotlin-android'
+    apply plugin: 'maven-publish'
 
     android {
         compileSdkVersion 31
@@ -126,6 +126,7 @@ subprojects { project ->
         buildTypes {
             release {
                 minifyEnabled false
+
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
         }
@@ -142,15 +143,20 @@ subprojects { project ->
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
+
+        configurations.all {
+            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+                def requested = details.requested
+                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                    details.useVersion kotlin_version
+                }
+            }
+        }
     }
 
     publishing {
         publications {
             aar(MavenPublication) {
-                afterEvaluate {
-                    from components.release
-                }
-
                 groupId project.group
                 artifactId project.ext.artifactId
                 version project.version
@@ -177,6 +183,7 @@ subprojects { project ->
                 }
 
                 afterEvaluate {
+//                    from components.release
                     artifact "$buildDir/outputs/aar/$project.name-release.aar"
                 }
             }
