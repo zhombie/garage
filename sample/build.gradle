@@ -26,6 +26,9 @@ android {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     def googleMapsApiKey = properties.getProperty('google.maps.key')
+    if (googleMapsApiKey == null) {
+        googleMapsApiKey = 'AIzaSyBArep8mVDm22a0c4If9Vs4nvevN4Tfma8'
+    }
 
     buildTypes {
         debug {
