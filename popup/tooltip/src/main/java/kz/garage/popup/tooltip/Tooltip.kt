@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.annotation.StringRes
 
 // TODO: Do refactoring
+// Inspired by: https://github.com/jesualex/sTooltip
 class Tooltip private constructor(
     private val activity: Activity,
     private val refView: View,
