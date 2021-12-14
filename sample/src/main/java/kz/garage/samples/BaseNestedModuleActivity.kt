@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kz.garage.R
 import kz.garage.Sample
-import kz.garage.SamplesAdapter
 import kz.garage.activity.view.bind
 import kz.garage.recyclerview.layoutmanager.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
+import kz.garage.SamplesAdapter
 
 abstract class BaseNestedModuleActivity : AppCompatActivity() {
 

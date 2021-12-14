@@ -19,7 +19,7 @@
 
         <!-- Entry Point -->
         <activity
-            android:name="kz.garage.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +42,10 @@
         <activity android:name=".samples.location.core.CoreActivity" />
         <activity android:name=".samples.location.compass.CompassActivity" />
         <activity android:name=".samples.location.gms.GMSActivity" />
+
+        <!-- popup -->
+        <activity android:name=".samples.popup.PopupActivity" />
+        <activity android:name=".samples.popup.tooltip.TooltipActivity" />
 
         <!-- recyclerview -->
         <activity android:name=".samples.recyclerview.RecyclerViewActivity" />

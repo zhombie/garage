@@ -59,6 +59,9 @@ ext.projectArtifactId = { project ->
 
         // multimedia
         case 'store':
+
+        // popup
+        case 'tooltip':
             return project.parent.name + '-' + project.name
     }
     return null

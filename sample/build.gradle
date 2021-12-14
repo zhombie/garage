@@ -108,11 +108,11 @@ dependencies {
     if (isRemoteDependencyEnabled) {
         def libraryVersion = '1.0.2'
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
+        implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"
         implementation "com.github.zhombie.garage:context:$libraryVersion"
         implementation "com.github.zhombie.garage:drawable:$libraryVersion"
         implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
         implementation "com.github.zhombie.garage:fragment:$libraryVersion"
-        implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
@@ -122,6 +122,7 @@ dependencies {
         implementation "com.github.zhombie.garage:location-gms:$libraryVersion"
         implementation "com.github.zhombie.garage:material-tablayout:$libraryVersion"
         implementation "com.github.zhombie.garage:multimedia-store:$libraryVersion"
+        implementation "com.github.zhombie.garage:popup-tooltip:$libraryVersion"
         implementation "com.github.zhombie.garage:recyclerview:$libraryVersion"
         implementation "com.github.zhombie.garage:text:$libraryVersion"
         implementation "com.github.zhombie.garage:textview:$libraryVersion"
@@ -143,6 +144,7 @@ dependencies {
         implementation project(':location:gms')
         implementation project(':material:tablayout')
         implementation project(':multimedia:store')
+        implementation project(':popup:tooltip')
         implementation project(':recyclerview')
         implementation project(':text')
         implementation project(':textview')

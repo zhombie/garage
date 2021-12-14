@@ -1,0 +1,18 @@
+android {
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    resourcePrefix 'popup_tooltip_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Annotation
+    implementation "androidx.annotation:annotation:1.3.0"
+
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:1.4.0"
+}
