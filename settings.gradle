@@ -11,15 +11,28 @@ rootProject.name = 'garage'
 
 include ':sample'
 
+// activity
 include ':activity'
+
+// animation
+include ':animation:scale'
+
+// context
 include ':context'
+
+// drawable
 include ':drawable'
 
 // file
 include ':file:extension'
 
+// fragment
 include ':fragment'
+
+// json
 include ':json'
+
+// kotlin
 include ':kotlin'
 
 // lifecycle
@@ -37,8 +50,17 @@ include ':material:tablayout'
 // multimedia
 include ':multimedia:store'
 
+// recyclerview
 include ':recyclerview'
+
+// text
 include ':text'
+
+// textview
 include ':textview'
+
+// view
 include ':view'
+
+// window
 include ':window'

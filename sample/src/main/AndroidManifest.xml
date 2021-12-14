@@ -30,6 +30,10 @@
         <!-- activity -->
         <activity android:name=".samples.activity.Activity" />
 
+        <!-- animation -->
+        <activity android:name=".samples.animation.AnimationActivity" />
+        <activity android:name=".samples.animation.scale.ScaleAnimationActivity" />
+
         <!-- fragment -->
         <activity android:name=".samples.fragment.FragmentActivity" />
 

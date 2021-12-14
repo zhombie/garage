@@ -39,6 +39,9 @@ ext.projectArtifactId = { project ->
             return project.name
 
         // Nested module
+        // animation
+        case 'scale':
+
         // file
         case 'extension':
 
@@ -119,9 +122,6 @@ subprojects { project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
-        }
 
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->

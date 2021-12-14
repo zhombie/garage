@@ -1,0 +1,12 @@
+android {
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    resourcePrefix 'animation_scale_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}

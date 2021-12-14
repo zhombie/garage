@@ -4,6 +4,7 @@ import kz.garage.activity.intent.createIntent
 import kz.garage.kotlin.simpleName
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.activity.Activity
+import kz.garage.samples.animation.AnimationActivity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.location.LocationActivity
 import kz.garage.samples.recyclerview.RecyclerViewActivity
@@ -22,6 +23,7 @@ class MainActivity : BaseNestedModuleActivity() {
     override fun getSamples(): List<Sample> =
         listOf(
             Sample("activity", "Activity", null),
+            Sample("animation", "Animation", null),
             Sample("fragment", "Fragment", null),
             Sample("location", "Location", null),
             Sample("recyclerview", "RecyclerView", null),
@@ -32,6 +34,8 @@ class MainActivity : BaseNestedModuleActivity() {
         when (sample.id) {
             "activity" ->
                 startActivity(createIntent<Activity>())
+            "animation" ->
+                startActivity(createIntent<AnimationActivity>())
             "fragment" ->
                 startActivity(createIntent<FragmentActivity>())
             "location" ->

@@ -129,6 +129,7 @@ dependencies {
         implementation "com.github.zhombie.garage:window:$libraryVersion"
     } else {
         implementation project(':activity')
+        implementation project(':animation:scale')
         implementation project(':context')
         implementation project(':drawable')
         implementation project(':file:extension')
