@@ -1,12 +1,12 @@
 package kz.garage.permission.builder
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import kz.garage.permission.request.DefaultPermissionRequest
 import kz.garage.permission.request.PermissionRequest
 import kz.garage.permission.request.handler.factory.RequestHandlerFactory
 
 class DefaultPermissionRequestBuilder internal constructor(
-    private val activity: AppCompatActivity
+    private val activity: Activity
 ) : AbstractPermissionRequestBuilder() {
 
     override fun createRequest(

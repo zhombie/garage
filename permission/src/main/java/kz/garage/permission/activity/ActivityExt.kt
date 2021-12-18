@@ -1,46 +1,70 @@
 package kz.garage.permission.activity
 
+import android.app.Activity
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import kz.garage.permission.request.status.PermissionStatus
 
-fun AppCompatActivity.isPermissionGranted(permission: String): Boolean =
+// [BEGIN] isPermissionGranted()
+
+fun Activity.isPermissionGranted(permission: String): Boolean =
     ActivityCompat
         .checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
 
-@JvmName("isPermissionsGrantedArray")
-fun AppCompatActivity.isPermissionsGranted(permissions: Array<String>): Boolean =
-    isPermissionsGranted(*permissions)
-
-@JvmName("isPermissionsGrantedArgs")
-fun AppCompatActivity.isPermissionsGranted(vararg permissions: String): Boolean =
+fun Activity.isPermissionsGranted(permissions: Array<String>): Boolean =
     permissions.all { isPermissionGranted(it) }
 
-fun AppCompatActivity.shouldShowRationale(permission: String) =
+fun Activity.isPermissionsGranted(permissions: Collection<String>): Boolean =
+    permissions.all { isPermissionGranted(it) }
+
+@JvmName("isPermissionsGrantedArgs")
+fun Activity.isPermissionsGranted(vararg permissions: String): Boolean =
+    permissions.all { isPermissionGranted(it) }
+
+// [END] isPermissionGranted()
+
+// [BEGIN] shouldShowRationale()
+
+fun Activity.shouldShowRationale(permission: String) =
     ActivityCompat.shouldShowRequestPermissionRationale(this, permission)
 
-@JvmName("shouldShowRationaleArray")
-fun AppCompatActivity.shouldShowRationale(permissions: Array<String>) =
-    shouldShowRationale(*permissions)
-
-@JvmName("shouldShowRationaleArgs")
-fun AppCompatActivity.shouldShowRationale(vararg permissions: String) =
+fun Activity.shouldShowRationale(permissions: Array<String>) =
     permissions.all { shouldShowRationale(it) }
 
-@JvmName("checkPermissionsStatusArray")
-fun AppCompatActivity.checkPermissionsStatus(
+fun Activity.shouldShowRationale(permissions: Collection<String>) =
+    permissions.all { shouldShowRationale(it) }
+
+@JvmName("shouldShowRationaleArgs")
+fun Activity.shouldShowRationale(vararg permissions: String) =
+    permissions.all { shouldShowRationale(it) }
+
+// [END] shouldShowRationale()
+
+// [BEGIN] checkPermissionsStatus()
+
+fun Activity.checkPermissionsStatus(
     permissions: Array<String>
-): List<PermissionStatus> = checkPermissionsStatus(*permissions)
+): List<PermissionStatus> =
+    permissions.map { permission -> process(permission) }
+
+fun Activity.checkPermissionsStatus(
+    permissions: Collection<String>
+): List<PermissionStatus> =
+    permissions.map { permission -> process(permission) }
 
 @JvmName("checkPermissionsStatusArgs")
-fun AppCompatActivity.checkPermissionsStatus(
+fun Activity.checkPermissionsStatus(
     vararg permissions: String
-): List<PermissionStatus> {
-    return permissions.map { permission ->
-        if (isPermissionGranted(permission)) {
-            return@map PermissionStatus.Granted(permission)
-        }
+): List<PermissionStatus> =
+    permissions.map { permission -> process(permission) }
+
+// [END] checkPermissionsStatus()
+
+
+private fun Activity.process(permission: String): PermissionStatus {
+    return if (isPermissionGranted(permission)) {
+        PermissionStatus.Granted(permission)
+    } else {
         if (shouldShowRationale(permission)) {
             PermissionStatus.Denied.ShouldShowRationale(permission)
         } else {

@@ -84,19 +84,7 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
         val pendingPermissions = pendingPermissions
         this.pendingPermissions = null
         if (pendingPermissions == null) {
-            dispatch(
-                result.map {
-                    val permission = it.key
-                    when {
-                        isPermissionGranted(permission) ->
-                            PermissionStatus.Granted(permission)
-                        shouldShowRationale(permission) ->
-                            PermissionStatus.Denied.ShouldShowRationale(permission)
-                        else ->
-                            PermissionStatus.Denied.Permanently(permission)
-                    }
-                }
-            )
+            dispatch(checkPermissionsStatus(result.keys))
         } else {
             dispatch(
                 pendingPermissions.map { permission ->

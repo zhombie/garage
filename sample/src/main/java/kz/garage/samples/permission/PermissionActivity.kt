@@ -15,7 +15,7 @@ import kz.garage.R
 import kz.garage.activity.toast.toast
 import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.permission.permissionRequestBuilder
+import kz.garage.permission.permissionRequest
 import kz.garage.permission.request.status.isAllGranted
 import kz.garage.permission.request.status.isAllPermanentlyDenied
 import kz.garage.permission.send
@@ -34,7 +34,7 @@ class PermissionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_permission)
 
         requestPermissionsButton.setOnClickListener {
-            permissionRequestBuilder(
+            permissionRequest(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             ).send { statuses ->
