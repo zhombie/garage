@@ -8,15 +8,22 @@ import kz.garage.permission.request.PermissionRequest
 import kz.garage.permission.request.handler.factory.RequestHandlerFactoryImpl
 import kz.garage.permission.request.status.PermissionStatus
 
-@JvmName("permissionRequestArray")
+// [BEGIN] permissionRequest()
+
 fun FragmentActivity.permissionRequest(permissions: Array<String>) =
     permissionRequestBuilder(permissions).build()
+
+fun FragmentActivity.permissionRequest(permissions: Collection<String>) =
+    permissionRequestBuilder(permissions.toTypedArray()).build()
 
 @JvmName("permissionRequestArgs")
 fun FragmentActivity.permissionRequest(vararg permissions: String) =
     permissionRequestBuilder(arrayOf(*permissions)).build()
 
-@JvmName("permissionRequestBuilderArray")
+// [END] permissionRequest()
+
+// [BEGIN] permissionRequestBuilder()
+
 fun FragmentActivity.permissionRequestBuilder(
     permissions: Array<String>
 ): PermissionRequestBuilder {
@@ -26,32 +33,55 @@ fun FragmentActivity.permissionRequestBuilder(
         .setRequestHandlerFactory(factory)
 }
 
+fun FragmentActivity.permissionRequestBuilder(
+    permissions: Collection<String>
+): PermissionRequestBuilder =
+    permissionRequestBuilder(permissions.toTypedArray())
+
 @JvmName("permissionRequestBuilderArgs")
 fun FragmentActivity.permissionRequestBuilder(
     vararg permissions: String
 ): PermissionRequestBuilder =
     permissionRequestBuilder(arrayOf(*permissions))
 
+// [END] permissionRequestBuilder()
 
-@JvmName("permissionRequestArray")
+// [BEGIN] permissionRequest()
+
 fun Fragment.permissionRequest(permissions: Array<String>) =
     permissionRequestBuilder(permissions).build()
+
+fun Fragment.permissionRequest(permissions: Collection<String>) =
+    permissionRequestBuilder(permissions.toTypedArray()).build()
 
 @JvmName("permissionRequestArgs")
 fun Fragment.permissionRequest(vararg permissions: String) =
     permissionRequestBuilder(arrayOf(*permissions)).build()
 
-@JvmName("permissionRequestBuilderArray")
+// [END] permissionRequest()
+
+// [BEGIN] permissionRequestBuilder()
+
+@Throws(IllegalStateException::class)
 fun Fragment.permissionRequestBuilder(
     permissions: Array<String>
 ): PermissionRequestBuilder =
     requireActivity().permissionRequestBuilder(permissions)
 
+@Throws(IllegalStateException::class)
+fun Fragment.permissionRequestBuilder(
+    permissions: Collection<String>
+): PermissionRequestBuilder =
+    requireActivity().permissionRequestBuilder(permissions)
+
+@Throws(IllegalStateException::class)
 @JvmName("permissionRequestBuilderArgs")
 fun Fragment.permissionRequestBuilder(
     vararg permissions: String
 ): PermissionRequestBuilder =
-    requireActivity().permissionRequestBuilder(arrayOf(*permissions))
+    requireActivity().permissionRequestBuilder(*permissions)
+
+// [END] permissionRequestBuilder()
 
 
 inline fun PermissionRequest.send(

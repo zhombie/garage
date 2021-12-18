@@ -17,7 +17,7 @@ import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.permission.permissionRequest
 import kz.garage.permission.request.status.isAllGranted
-import kz.garage.permission.request.status.isAllPermanentlyDenied
+import kz.garage.permission.request.status.isAnyPermanentlyDenied
 import kz.garage.permission.send
 
 class PermissionActivity : AppCompatActivity() {
@@ -44,7 +44,7 @@ class PermissionActivity : AppCompatActivity() {
                     statuses.isAllGranted() -> {
                         toast("All permissions granted")
                     }
-                    statuses.isAllPermanentlyDenied() -> {
+                    statuses.isAnyPermanentlyDenied() -> {
                         MaterialAlertDialogBuilder(this)
                             .setTitle("Permissions denied")
                             .setMessage("Please, grant permissions, because the app could not work without them")
