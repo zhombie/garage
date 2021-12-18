@@ -3,14 +3,14 @@ package kz.garage.samples.popup
 import kz.garage.R
 import kz.garage.Sample
 import kz.garage.activity.intent.createIntent
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.popup.tooltip.TooltipActivity
 
 class PopupActivity : BaseNestedModuleActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<PopupActivity>()
     }
 
     override fun getLayoutId(): Int = R.layout.activity_popup

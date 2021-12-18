@@ -17,19 +17,19 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
-import kz.garage.activity.permission.isPermissionsGranted
 import kz.garage.activity.toast.toast
 import kz.garage.activity.view.bind
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 import kz.garage.kotlin.time.toMillis
 import kz.garage.location.core.isMocked
 import kz.garage.location.gms.createLocationCallback
+import kz.garage.permission.activity.isPermissionsGranted
 
 @SuppressLint("MissingPermission")
 class GMSActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<GMSActivity>()
     }
 
     private val locationPermissions by lazy(LazyThreadSafetyMode.NONE) {

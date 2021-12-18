@@ -8,12 +8,12 @@ import kz.garage.activity.keyboard.hideKeyboard
 import kz.garage.activity.keyboard.isKeyboardVisible
 import kz.garage.activity.keyboard.showKeyboard
 import kz.garage.activity.view.bind
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 
 class Activity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<Activity>()
     }
 
     private val button by bind<MaterialButton>(R.id.button)

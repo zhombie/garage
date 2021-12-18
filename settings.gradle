@@ -50,6 +50,9 @@ include ':material:tablayout'
 // multimedia
 include ':multimedia:store'
 
+// permission
+include ':permission'
+
 // popup
 include ':popup:tooltip'
 

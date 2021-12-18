@@ -10,14 +10,14 @@ import kz.garage.activity.keyboard.hideKeyboard
 import kz.garage.activity.keyboard.isKeyboardVisible
 import kz.garage.activity.keyboard.showKeyboard
 import kz.garage.activity.view.bind
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 import kz.garage.window.keyboard.addKeyboardVisibilityListener
 
 @SuppressLint("SetTextI18n")
 class KeyboardActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<KeyboardActivity>()
     }
 
     private val textView by bind<MaterialTextView>(R.id.textView)

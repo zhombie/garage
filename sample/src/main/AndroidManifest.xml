@@ -43,6 +43,9 @@
         <activity android:name=".samples.location.compass.CompassActivity" />
         <activity android:name=".samples.location.gms.GMSActivity" />
 
+        <!-- permission -->
+        <activity android:name=".samples.permission.PermissionActivity" />
+
         <!-- popup -->
         <activity android:name=".samples.popup.PopupActivity" />
         <activity android:name=".samples.popup.tooltip.TooltipActivity" />

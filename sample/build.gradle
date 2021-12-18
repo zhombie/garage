@@ -122,6 +122,7 @@ dependencies {
         implementation "com.github.zhombie.garage:location-gms:$libraryVersion"
         implementation "com.github.zhombie.garage:material-tablayout:$libraryVersion"
         implementation "com.github.zhombie.garage:multimedia-store:$libraryVersion"
+        implementation "com.github.zhombie.garage:permission:$libraryVersion"
         implementation "com.github.zhombie.garage:popup-tooltip:$libraryVersion"
         implementation "com.github.zhombie.garage:recyclerview:$libraryVersion"
         implementation "com.github.zhombie.garage:text:$libraryVersion"
@@ -144,6 +145,7 @@ dependencies {
         implementation project(':location:gms')
         implementation project(':material:tablayout')
         implementation project(':multimedia:store')
+        implementation project(':permission')
         implementation project(':popup:tooltip')
         implementation project(':recyclerview')
         implementation project(':text')

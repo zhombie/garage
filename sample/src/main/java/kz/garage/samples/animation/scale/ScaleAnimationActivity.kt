@@ -7,12 +7,12 @@ import kz.garage.R
 import kz.garage.activity.toast.toast
 import kz.garage.activity.view.bind
 import kz.garage.animation.scale.setScaleAnimationOnClick
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 
 class ScaleAnimationActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<ScaleAnimationActivity>()
     }
 
     private val button by bind<MaterialButton>(R.id.button)

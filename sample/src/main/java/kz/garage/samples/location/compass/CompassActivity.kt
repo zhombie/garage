@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
 import kz.garage.activity.view.bind
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 import kz.garage.location.compass.Compass
 
 class CompassActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<CompassActivity>()
     }
 
     private val textView by bind<MaterialTextView>(R.id.textView)

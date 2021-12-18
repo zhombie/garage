@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kz.garage.R
 import kz.garage.activity.view.bind
-import kz.garage.kotlin.simpleName
+import kz.garage.kotlin.simpleNameOf
 import kz.garage.window.computeMaximumWindowSize
 import kz.garage.window.computeCurrentWindowSize
 
@@ -14,7 +14,7 @@ import kz.garage.window.computeCurrentWindowSize
 class WindowSizeActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleName()
+        private val TAG = simpleNameOf<WindowSizeActivity>()
     }
 
     private val textView by bind<TextView>(R.id.textView)

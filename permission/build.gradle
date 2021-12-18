@@ -1,0 +1,24 @@
+android {
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    resourcePrefix 'permission_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Activity
+    implementation "androidx.activity:activity:1.4.0"
+
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:1.4.0"
+
+    // Fragment
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    // Core
+    implementation 'androidx.core:core-ktx:1.7.0'
+}
