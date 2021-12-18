@@ -13,4 +13,11 @@
         android:text="Request permissions"
         tools:ignore="HardcodedText" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/launchSettingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch settings"
+        tools:ignore="HardcodedText" />
+
 </LinearLayout>

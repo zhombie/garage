@@ -12,7 +12,7 @@ class DefaultPermissionRequest constructor(
 ) : AbstractPermissionRequest(), RequestHandler.Listener {
 
     init {
-        handler.attachListener(permissions, this)
+        handler.attachListener(this)
     }
 
     override fun checkStatus(): List<PermissionStatus> =

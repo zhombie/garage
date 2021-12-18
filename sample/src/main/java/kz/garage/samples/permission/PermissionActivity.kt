@@ -1,6 +1,7 @@
 package kz.garage.samples.permission
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -26,6 +27,7 @@ class PermissionActivity : AppCompatActivity() {
     }
 
     private val requestPermissionsButton by bind<MaterialButton>(R.id.requestPermissionsButton)
+    private val launchSettingsButton by bind<MaterialButton>(R.id.launchSettingsButton)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +49,7 @@ class PermissionActivity : AppCompatActivity() {
                             .setTitle("Permissions denied")
                             .setMessage("Please, grant permissions, because the app could not work without them")
                             .setPositiveButton("Settings") { _, _ ->
-                                val intent = createAppSettingsIntent()
-                                startActivity(intent)
+                                launchSettings()
                             }
                             .setNegativeButton(android.R.string.cancel, null)
                             .show()
@@ -56,9 +57,21 @@ class PermissionActivity : AppCompatActivity() {
                 }
             }
         }
+
+        launchSettingsButton.setOnClickListener {
+            launchSettings()
+        }
     }
 
-    private fun Context.createAppSettingsIntent() = Intent().apply {
+    private fun launchSettings() {
+        try {
+            startActivity(createAppSettingsIntent())
+        } catch (e: ActivityNotFoundException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun Context.createAppSettingsIntent(): Intent = Intent().apply {
         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
         data = Uri.fromParts("package", packageName, null)
     }
