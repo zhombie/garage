@@ -9,7 +9,7 @@ class RequestHandlerFactoryImpl constructor(
 ) : RequestHandlerFactory {
 
     companion object {
-        private const val FRAGMENT_TAG = "kz.garage.permission.fragment"
+        private const val FRAGMENT_TAG = "kz.garage.permission.request.fragment"
     }
 
     override fun provideHandler(): RequestHandler {

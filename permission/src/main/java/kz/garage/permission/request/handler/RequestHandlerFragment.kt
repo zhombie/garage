@@ -21,7 +21,7 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
     private var handlePendingPermissions: (() -> Unit)? = null
     private var pendingPermissions: Array<out String>? = null
 
-    private var listener: RequestHandler.Listener? = null
+    private val listeners = mutableMapOf<Set<String>, RequestHandler.Listener>()
 
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions(),
@@ -51,8 +51,8 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
         }
     }
 
-    override fun attachListener(listener: RequestHandler.Listener) {
-        this.listener = listener
+    override fun attachListener(permissions: Array<String>, listener: RequestHandler.Listener) {
+        listeners[permissions.toSet()] = listener
     }
 
     override fun handlePermissions(permissions: Array<String>) {
@@ -66,7 +66,7 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
     private fun handlePermissionsWhenAdded(permissions: Array<String>) {
         val currentStatuses = checkPermissionsStatus(permissions)
         if (currentStatuses.isAllGranted()) {
-            dispatch(currentStatuses)
+            dispatch(permissions, currentStatuses)
         } else {
             // The Fragment can process only one request at the same time
             if (pendingPermissions == null) {
@@ -84,9 +84,10 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
         val pendingPermissions = pendingPermissions
         this.pendingPermissions = null
         if (pendingPermissions == null) {
-            dispatch(checkPermissionsStatus(result.keys))
+            dispatch(pendingPermissions, checkPermissionsStatus(result.keys))
         } else {
             dispatch(
+                pendingPermissions,
                 pendingPermissions.map { permission ->
                     when {
                         result.getOrElse(permission) { isPermissionGranted(permission) } ->
@@ -101,8 +102,10 @@ class RequestHandlerFragment : Fragment(), RequestHandler {
         }
     }
 
-    private fun dispatch(statuses: List<PermissionStatus>) {
-        listener?.onPermissionsResult(statuses)
+    private fun dispatch(permissions: Array<out String>?, statuses: List<PermissionStatus>) {
+        if (!permissions.isNullOrEmpty()) {
+            listeners[permissions.toSet()]?.onPermissionsResult(statuses)
+        }
     }
 
 }

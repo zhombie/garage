@@ -88,8 +88,8 @@ inline fun PermissionRequest.send(
     crossinline callback: (List<PermissionStatus>) -> Unit
 ) {
     setEventListener { result ->
-        setEventListener(null)
         callback.invoke(result)
+        setEventListener(null)
     }
     send()
 }

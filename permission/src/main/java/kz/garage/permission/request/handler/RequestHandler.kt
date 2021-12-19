@@ -3,7 +3,7 @@ package kz.garage.permission.request.handler
 import kz.garage.permission.request.status.PermissionStatus
 
 interface RequestHandler {
-    fun attachListener(listener: Listener)
+    fun attachListener(permissions: Array<String>, listener: Listener)
 
     fun handlePermissions(permissions: Array<String>)
 

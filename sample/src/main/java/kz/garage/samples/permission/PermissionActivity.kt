@@ -7,7 +7,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -15,12 +14,13 @@ import kz.garage.R
 import kz.garage.activity.toast.toast
 import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.permission.permissionRequest
+import kz.garage.permission.permissionRequestBuilder
+import kz.garage.permission.request.PermissionRequest
+import kz.garage.permission.request.status.PermissionStatus
 import kz.garage.permission.request.status.isAllGranted
 import kz.garage.permission.request.status.isAnyPermanentlyDenied
-import kz.garage.permission.send
 
-class PermissionActivity : AppCompatActivity() {
+class PermissionActivity : AppCompatActivity(), PermissionRequest.Listener {
 
     companion object {
         private val TAG = simpleNameOf<PermissionActivity>()
@@ -29,37 +29,50 @@ class PermissionActivity : AppCompatActivity() {
     private val requestPermissionsButton by bind<MaterialButton>(R.id.requestPermissionsButton)
     private val launchSettingsButton by bind<MaterialButton>(R.id.launchSettingsButton)
 
+    private val permissionRequest by lazy {
+        permissionRequestBuilder(
+            Manifest.permission.CAMERA,
+            Manifest.permission.SEND_SMS
+        ).build()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
-        requestPermissionsButton.setOnClickListener {
-            permissionRequest(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ).send { statuses ->
-                Log.d(TAG, "statuses: ${statuses.joinToString()}")
+        permissionRequest.setEventListener(this)
 
-                when {
-                    statuses.isAllGranted() -> {
-                        toast("All permissions granted")
-                    }
-                    statuses.isAnyPermanentlyDenied() -> {
-                        MaterialAlertDialogBuilder(this)
-                            .setTitle("Permissions denied")
-                            .setMessage("Please, grant permissions, because the app could not work without them")
-                            .setPositiveButton("Settings") { _, _ ->
-                                launchSettings()
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
-                    }
-                }
-            }
+        requestPermissionsButton.setOnClickListener {
+            permissionRequest.send()
         }
 
         launchSettingsButton.setOnClickListener {
             launchSettings()
+        }
+    }
+
+    /**
+     * [PermissionRequest.Listener] implementation
+     */
+
+    override fun onPermissionsResult(result: List<PermissionStatus>) {
+        when {
+            result.isAllGranted() ->
+                toast("All permissions granted")
+            result.isAnyPermanentlyDenied() -> {
+                val deniedPermissions = result.filterIsInstance<PermissionStatus.Denied.Permanently>()
+                    .joinToString(", ") { it.permission }
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Permissions denied")
+                    .setMessage("Please, grant permissions to ${deniedPermissions}, because the app could not work without them")
+                    .setPositiveButton("Settings") { _, _ ->
+                        launchSettings()
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+            }
+            else ->
+                toast("Something else")
         }
     }
 
