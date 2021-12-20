@@ -15,6 +15,7 @@ include ':sample'
 include ':activity'
 
 // animation
+include ':animation:funhouse'
 include ':animation:scale'
 
 // context

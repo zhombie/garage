@@ -63,8 +63,7 @@ android {
 
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+            if (details.requested.group == 'org.jetbrains.kotlin') {
                 details.useVersion kotlin_version
             }
         }
@@ -108,6 +107,7 @@ dependencies {
     if (isRemoteDependencyEnabled) {
         def libraryVersion = '1.0.2'
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
+        implementation "com.github.zhombie.garage:animation-funhouse:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"
         implementation "com.github.zhombie.garage:context:$libraryVersion"
         implementation "com.github.zhombie.garage:drawable:$libraryVersion"
@@ -131,6 +131,7 @@ dependencies {
         implementation "com.github.zhombie.garage:window:$libraryVersion"
     } else {
         implementation project(':activity')
+        implementation project(':animation:funhouse')
         implementation project(':animation:scale')
         implementation project(':context')
         implementation project(':drawable')

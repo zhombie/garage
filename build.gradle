@@ -41,6 +41,7 @@ ext.projectArtifactId = { project ->
 
         // Nested module
         // animation
+        case 'funhouse':
         case 'scale':
 
         // file
@@ -129,9 +130,7 @@ subprojects { project ->
 
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-                def requested = details.requested
-
-                if (requested.group == 'org.jetbrains.kotlin' && requested.name == 'kotlin-reflect') {
+                if (details.requested.group == 'org.jetbrains.kotlin') {
                     details.useVersion kotlin_version
                 }
             }

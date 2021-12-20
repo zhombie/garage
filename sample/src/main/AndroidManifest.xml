@@ -40,6 +40,7 @@
 
         <!-- animation -->
         <activity android:name=".samples.animation.AnimationActivity" />
+        <activity android:name=".samples.animation.funhouse.FunhouseActivity" />
         <activity android:name=".samples.animation.scale.ScaleAnimationActivity" />
 
         <!-- fragment -->
