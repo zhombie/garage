@@ -3,9 +3,9 @@ package kz.garage.animation.funhouse.method.internal.attention
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
-import kz.garage.animation.funhouse.method.base.BaseAnimation
+import kz.garage.animation.funhouse.method.base.BaseSingleAnimation
 
-internal class Wave : BaseAnimation() {
+internal class Wave : BaseSingleAnimation() {
 
     override fun describe(view: View): AnimatorSet {
         val x = (view.width - view.paddingLeft - view.paddingRight) / 2F + view.paddingLeft

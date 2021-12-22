@@ -15,12 +15,9 @@ abstract class BaseAdapter<T> constructor(
         setData(data, true)
     }
 
-    @LayoutRes
-    protected abstract fun getLayoutId(): Int
+    fun getData(): List<T> = data
 
-    protected abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
-
-    protected fun setData(data: List<T>, notify: Boolean) {
+    fun setData(data: List<T>, notify: Boolean = true) {
         this.data = data
 
         if (notify) {
@@ -33,6 +30,11 @@ abstract class BaseAdapter<T> constructor(
     protected fun getPosition(item: T): Int = data.indexOf(item)
 
     override fun getItemCount(): Int = data.size
+
+    @LayoutRes
+    protected abstract fun getLayoutId(): Int
+
+    protected abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> =
         onCreateViewHolder(

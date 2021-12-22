@@ -1,7 +1,9 @@
 package kz.garage.animation.funhouse.method.factory
 
 import kz.garage.animation.funhouse.method.Method
-import kz.garage.animation.funhouse.method.base.BaseAnimation
+import kz.garage.animation.funhouse.method.Methods
+import kz.garage.animation.funhouse.method.base.BaseSingleAnimation
+import kz.garage.animation.funhouse.method.base.MultipleAnimations
 import kz.garage.animation.funhouse.method.internal.attention.*
 import kz.garage.animation.funhouse.method.internal.bounce.enter.*
 import kz.garage.animation.funhouse.method.internal.fade.enter.*
@@ -11,7 +13,7 @@ import kz.garage.animation.funhouse.method.internal.zoom.exit.*
 
 internal class DefaultAnimationFactory : AnimationFactory {
 
-    override fun create(method: Method): BaseAnimation? {
+    override fun create(method: Method): BaseSingleAnimation {
         return when (method) {
             // Attention
             Method.Attention.Bounce -> Bounce()
@@ -59,9 +61,41 @@ internal class DefaultAnimationFactory : AnimationFactory {
             Method.Zoom.OutUp -> ZoomOutUp()
             Method.Zoom.OutRight -> ZoomOutRight()
             Method.Zoom.OutDown -> ZoomOutDown()
-
-            else -> null
         }
     }
+
+    override fun create(methods: Methods): MultipleAnimations? =
+        if (methods.current.isNullOrEmpty()) {
+            if (methods.after.isNullOrEmpty()) {
+                if (methods.before.isNullOrEmpty()) {
+                    null
+                } else {
+                    MultipleAnimations(before = methods.before.map { create(it) })
+                }
+            } else {
+                if (methods.before.isNullOrEmpty()) {
+                    MultipleAnimations(after = methods.after.map { create(it) })
+                } else {
+                    MultipleAnimations(
+                        after = methods.after.map { create(it) },
+                        before = methods.before.map { create(it) }
+                    )
+                }
+            }
+        } else {
+            MultipleAnimations(
+                after = if (methods.after.isNullOrEmpty()) {
+                    null
+                } else {
+                    methods.after.map { create(it) }
+                },
+                current = methods.current.map { create(it) },
+                before = if (methods.before.isNullOrEmpty()) {
+                    null
+                } else {
+                    methods.before.map { create(it) }
+                }
+            )
+        }
 
 }

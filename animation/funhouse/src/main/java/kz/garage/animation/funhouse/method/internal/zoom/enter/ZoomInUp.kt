@@ -4,9 +4,9 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
 import android.view.ViewGroup
-import kz.garage.animation.funhouse.method.base.BaseAnimation
+import kz.garage.animation.funhouse.method.base.BaseSingleAnimation
 
-internal class ZoomInUp : BaseAnimation() {
+internal class ZoomInUp : BaseSingleAnimation() {
 
     override fun describe(view: View): AnimatorSet {
         val parent = view.parent
