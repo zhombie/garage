@@ -2,6 +2,7 @@ package kz.garage.animation.funhouse.method.base
 
 import android.animation.AnimatorSet
 import android.view.View
+import kz.garage.animation.funhouse.AnimationComposer
 
 internal abstract class BaseAnimation {
 
@@ -18,6 +19,6 @@ internal abstract class BaseAnimation {
 
     protected fun createAnimatorSet(): AnimatorSet = AnimatorSet()
 
-    abstract fun start(view: View)
+    abstract fun start(view: View, listener: AnimationComposer.Listener?)
 
 }

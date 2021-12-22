@@ -1,6 +1,8 @@
 package kz.garage.animation.funhouse.method.base
 
+import android.animation.Animator
 import android.view.View
+import kz.garage.animation.funhouse.AnimationComposer
 
 internal data class MultipleAnimations constructor(
     val after: List<BaseSingleAnimation>? = null,
@@ -8,8 +10,28 @@ internal data class MultipleAnimations constructor(
     val before: List<BaseSingleAnimation>? = null
 ) : BaseAnimation() {
 
-    override fun start(view: View) {
+    override fun start(view: View, listener: AnimationComposer.Listener?) {
         val animatorSet = createAnimatorSet()
+
+        if (listener != null) {
+            animatorSet.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                    listener.onStart(view, animation)
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    listener.onEnd(view, animation)
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    listener.onCancel(view, animation)
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                    listener.onRepeat(view, animation)
+                }
+            })
+        }
 
         if (current.isNullOrEmpty()) {
             if (after.isNullOrEmpty()) {

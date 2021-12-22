@@ -1,6 +1,7 @@
 package kz.garage.samples.animation.funhouse
 
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
@@ -27,7 +28,21 @@ class FunhouseActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             if (isExtensionFunctionUsed) {
-                it.animate(Method.Zoom.OutUp)
+                it.animate(
+                    Method.Zoom.OutUp,
+                    onStart = { _, _ ->
+                        Log.d(TAG, "onStart()")
+                    },
+                    onEnd = { _, _ ->
+                        Log.d(TAG, "onEnd()")
+                    },
+                    onCancel = { _, _ ->
+                        Log.d(TAG, "onCancel()")
+                    },
+                    onRepeat = { _, _ ->
+                        Log.d(TAG, "onRepeat()")
+                    }
+                )
             } else {
                 AnimationComposer()
                     .setDuration(175L)

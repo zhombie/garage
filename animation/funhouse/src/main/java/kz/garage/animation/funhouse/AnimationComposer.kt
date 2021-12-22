@@ -1,5 +1,6 @@
 package kz.garage.animation.funhouse
 
+import android.animation.Animator
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Interpolator
@@ -8,7 +9,6 @@ import kz.garage.animation.funhouse.method.Methods
 import kz.garage.animation.funhouse.method.base.Definition
 import kz.garage.animation.funhouse.method.factory.DefaultAnimationFactory
 
-// TODO: Add listeners
 // Inspired by: https://github.com/daimajia/AndroidViewAnimations,
 // https://github.com/gayanvoice/android-animations-kotlin
 class AnimationComposer {
@@ -90,7 +90,7 @@ class AnimationComposer {
         return this
     }
 
-    fun start(view: View) {
+    fun start(view: View, listener: Listener? = null) {
         when (getTotalCount()) {
             0 -> return
             1 -> {
@@ -102,7 +102,7 @@ class AnimationComposer {
                             interpolator = interpolator
                         )
                     )
-                    .start(view)
+                    .start(view, listener)
             }
             else -> {
                 DefaultAnimationFactory()
@@ -113,7 +113,7 @@ class AnimationComposer {
                             interpolator = interpolator
                         )
                     )
-                    ?.start(view)
+                    ?.start(view, listener)
             }
         }
     }
@@ -126,6 +126,13 @@ class AnimationComposer {
         !current.isNullOrEmpty() -> current?.first()
         !after.isNullOrEmpty() -> after?.first()
         else -> null
+    }
+
+    interface Listener {
+        fun onStart(view: View, animator: Animator?)
+        fun onEnd(view: View, animator: Animator?)
+        fun onCancel(view: View, animator: Animator?)
+        fun onRepeat(view: View, animator: Animator?)
     }
 
 }
