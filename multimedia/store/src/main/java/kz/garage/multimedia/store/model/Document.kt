@@ -10,7 +10,8 @@ data class Document constructor(
     override val folder: Folder?,
     override val history: History?,
     override val properties: Properties?,
-    override val localFile: LocalFile?
+    override val localFile: LocalFile?,
+    override val remoteAddress: RemoteAddress?
 ) : Content(
     id = id,
     uri = uri,
@@ -19,5 +20,6 @@ data class Document constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile
+    localFile = localFile,
+    remoteAddress = remoteAddress
 )

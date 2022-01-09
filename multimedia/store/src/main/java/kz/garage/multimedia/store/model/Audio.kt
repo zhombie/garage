@@ -12,7 +12,8 @@ data class Audio constructor(
     override val duration: Long,
     override val properties: Properties?,
     val album: Album?,
-    override val localFile: LocalFile?
+    override val localFile: LocalFile?,
+    override val remoteAddress: RemoteAddress?
 ) : Media(
     id = id,
     uri = uri,
@@ -22,6 +23,7 @@ data class Audio constructor(
     history = history,
     properties = properties,
     localFile = localFile,
+    remoteAddress = remoteAddress
 ), Media.Playable {
 
     data class Album constructor(

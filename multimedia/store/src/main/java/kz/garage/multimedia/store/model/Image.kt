@@ -11,7 +11,8 @@ data class Image constructor(
     override val history: History?,
     override val resolution: Resolution?,
     override val properties: Properties?,
-    override val localFile: LocalFile?
+    override val localFile: LocalFile?,
+    override val remoteAddress: RemoteAddress?
 ) : Media(
     id = id,
     uri = uri,
@@ -20,7 +21,8 @@ data class Image constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile
+    localFile = localFile,
+    remoteAddress = remoteAddress
 ), Media.Visual {
 
     constructor(
@@ -35,7 +37,8 @@ data class Image constructor(
         history = null,
         resolution = null,
         properties = null,
-        localFile = null
+        localFile = null,
+        remoteAddress = null
     )
 
     constructor(
@@ -53,7 +56,8 @@ data class Image constructor(
         history = history,
         resolution = null,
         properties = null,
-        localFile = localFile
+        localFile = localFile,
+        remoteAddress = null
     )
 
 }

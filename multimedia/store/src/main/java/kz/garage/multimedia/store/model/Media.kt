@@ -10,7 +10,8 @@ open class Media internal constructor(
     override val folder: Folder?,
     override val history: History?,
     override val properties: Properties?,
-    override val localFile: LocalFile?
+    override val localFile: LocalFile?,
+    override val remoteAddress: RemoteAddress?
 ) : Content(
     id = id,
     uri = uri,
@@ -19,7 +20,8 @@ open class Media internal constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile
+    localFile = localFile,
+    remoteAddress = remoteAddress
 ) {
 
     interface Playable {
@@ -32,17 +34,24 @@ open class Media internal constructor(
          */
         val duration: Long
 
-        fun hasUndefinedDuration(): Boolean {
-            return duration == UNDEFINED_DURATION
-        }
+        fun isDurationUndefined(): Boolean =
+            duration == UNDEFINED_DURATION
     }
 
     interface Visual {
         val resolution: Resolution?
     }
 
-    override fun toString(): String {
-        return "${Media::class.java.simpleName}(id=$id, uri=$uri, title=$title, displayName=$displayName, folder=$folder, history=$history, properties=$properties, localFile=$localFile)"
-    }
+    override fun toString(): String =
+        "${Media::class.java.simpleName}(" +
+            "id=$id, " +
+            "uri=$uri, " +
+            "title=$title, " +
+            "displayName=$displayName, " +
+            "folder=$folder, " +
+            "history=$history, " +
+            "properties=$properties, " +
+            "localFile=$localFile," +
+            "remoteAddress=$remoteAddress)"
 
 }
