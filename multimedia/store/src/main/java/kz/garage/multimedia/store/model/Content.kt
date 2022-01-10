@@ -76,6 +76,9 @@ open class Content constructor(
 
         constructor(url: String) : this(Uri.parse(url))
 
+        val url: String
+            get() = uri.toString()
+
     }
 
     /**
@@ -108,6 +111,85 @@ open class Content constructor(
     }
 
     fun isLocalFileExist(): Boolean = localFile?.exists() == true
+
+    open fun clone(localFile: LocalFile?): Content {
+        if (this.localFile == null && localFile == null) return this
+        if (this.localFile == localFile) return this
+        return clone(
+            id = id,
+            uri = uri,
+            title = title,
+            displayName = displayName,
+            folder = folder,
+            history = history,
+            properties = properties,
+            localFile = localFile,
+            remoteAddress = remoteAddress
+        )
+    }
+
+    open fun clone(uri: Uri?): Content {
+        if (uri == null) return this
+        return clone(remoteAddress = RemoteAddress(uri))
+    }
+
+    open fun clone(url: String?): Content {
+        if (url.isNullOrBlank()) return this
+        return clone(remoteAddress = RemoteAddress(url = url))
+    }
+
+    open fun clone(remoteAddress: RemoteAddress?): Content {
+        if (this.remoteAddress == null && remoteAddress == null) return this
+        if (this.remoteAddress?.uri == remoteAddress?.uri) return this
+        return clone(
+            id = id,
+            uri = uri,
+            title = title,
+            displayName = displayName,
+            folder = folder,
+            history = history,
+            properties = properties,
+            localFile = localFile,
+            remoteAddress = remoteAddress
+        )
+    }
+
+    open fun clone(
+        id: Long? = null,
+        uri: Uri? = null,
+        title: String? = null,
+        displayName: String? = null,
+        folder: Folder? = null,
+        history: History? = null,
+        properties: Properties? = null,
+        localFile: LocalFile? = null,
+        remoteAddress: RemoteAddress? = null
+    ): Content {
+        return if (this.id == id &&
+            this.uri == uri &&
+            this.title == title &&
+            this.displayName == displayName &&
+            this.folder == folder &&
+            this.history == history &&
+            this.properties == properties &&
+            this.localFile == localFile &&
+            this.remoteAddress?.uri == remoteAddress?.uri
+        ) {
+            this
+        } else {
+            Content(
+                id = id ?: this.id,
+                uri = uri ?: this.uri,
+                title = title,
+                displayName = displayName,
+                folder = folder,
+                history = history,
+                properties = properties,
+                localFile = localFile,
+                remoteAddress = remoteAddress
+            )
+        }
+    }
 
     override fun toString(): String =
         "${Content::class.java.simpleName}(" +
