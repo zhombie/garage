@@ -2,7 +2,7 @@ package kz.garage.samples.animation
 
 import kz.garage.R
 import kz.garage.Sample
-import kz.garage.activity.intent.createIntent
+import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.animation.funhouse.FunhouseActivity
@@ -27,9 +27,9 @@ class AnimationActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "funhouse" ->
-                startActivity(createIntent<FunhouseActivity>())
+                startActivity<FunhouseActivity>()
             "scale" ->
-                startActivity(createIntent<ScaleAnimationActivity>())
+                startActivity<ScaleAnimationActivity>()
         }
     }
 

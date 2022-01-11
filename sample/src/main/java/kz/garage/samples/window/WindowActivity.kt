@@ -2,7 +2,7 @@ package kz.garage.samples.window
 
 import kz.garage.R
 import kz.garage.Sample
-import kz.garage.activity.intent.createIntent
+import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.window.keyboard.KeyboardActivity
@@ -27,9 +27,9 @@ class WindowActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "keyboard" ->
-                startActivity(createIntent<KeyboardActivity>())
+                startActivity<KeyboardActivity>()
             "window_size" ->
-                startActivity(createIntent<WindowSizeActivity>())
+                startActivity<WindowSizeActivity>()
         }
     }
 

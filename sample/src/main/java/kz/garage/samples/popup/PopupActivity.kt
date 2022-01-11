@@ -2,7 +2,7 @@ package kz.garage.samples.popup
 
 import kz.garage.R
 import kz.garage.Sample
-import kz.garage.activity.intent.createIntent
+import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.popup.tooltip.TooltipActivity
@@ -25,7 +25,7 @@ class PopupActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "tooltip" ->
-                startActivity(createIntent<TooltipActivity>())
+                startActivity<TooltipActivity>()
         }
     }
 

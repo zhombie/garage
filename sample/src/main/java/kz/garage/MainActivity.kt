@@ -1,6 +1,6 @@
 package kz.garage
 
-import kz.garage.activity.intent.createIntent
+import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.activity.Activity
@@ -37,21 +37,21 @@ class MainActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "activity" ->
-                startActivity(createIntent<Activity>())
+                startActivity<Activity>()
             "animation" ->
-                startActivity(createIntent<AnimationActivity>())
+                startActivity<AnimationActivity>()
             "fragment" ->
-                startActivity(createIntent<FragmentActivity>())
+                startActivity<FragmentActivity>()
             "location" ->
-                startActivity(createIntent<LocationActivity>())
+                startActivity<LocationActivity>()
             "permission" ->
-                startActivity(createIntent<PermissionActivity>())
+                startActivity<PermissionActivity>()
             "popup" ->
-                startActivity(createIntent<PopupActivity>())
+                startActivity<PopupActivity>()
             "recyclerview" ->
-                startActivity(createIntent<RecyclerViewActivity>())
+                startActivity<RecyclerViewActivity>()
             "window" ->
-                startActivity(createIntent<WindowActivity>())
+                startActivity<WindowActivity>()
         }
     }
 

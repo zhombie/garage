@@ -2,7 +2,7 @@ package kz.garage.samples.location
 
 import kz.garage.R
 import kz.garage.Sample
-import kz.garage.activity.intent.createIntent
+import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.location.compass.CompassActivity
@@ -29,11 +29,11 @@ class LocationActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "core" ->
-                startActivity(createIntent<CoreActivity>())
+                startActivity<CoreActivity>()
             "compass" ->
-                startActivity(createIntent<CompassActivity>())
+                startActivity<CompassActivity>()
             "gms" ->
-                startActivity(createIntent<GMSActivity>())
+                startActivity<GMSActivity>()
         }
     }
 
