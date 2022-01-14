@@ -4,9 +4,11 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
 
-    id 'com.google.gms.google-services'  // Google Services
+    // Google Services
+    id 'com.google.gms.google-services'
 
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'  // Secrets Gradle Plugin
+    // Secrets Gradle Plugin
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -90,22 +92,22 @@ dependencies {
 
     // Google Play Services
     implementation 'com.google.android.gms:play-services-basement:18.0.0'
-    implementation 'com.google.android.gms:play-services-location:19.0.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.1'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 
     // Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx:20.0.2'
 
     // LeakCanary
-    // debugImplementation because LeakCanary should only run in debug builds.
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    // debugImplementation because LeakCanary should only run in debug builds
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
 
     // Library
     def isRemoteDependencyEnabled = false
 
     if (isRemoteDependencyEnabled) {
-        def libraryVersion = '1.0.2'
+        def libraryVersion = '1.1.2'
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-funhouse:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"

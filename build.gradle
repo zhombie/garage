@@ -71,8 +71,8 @@ ext.projectArtifactId = { project ->
 
 allprojects {
     group = 'com.github.zhombie.garage'
-    project.ext.version_code = 11
-    version = '1.1.1'
+    project.ext.version_code = 12
+    version = '1.1.2'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     if (project.group != null) {
@@ -127,6 +127,9 @@ subprojects { project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_11.toString()
+        }
 
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->
