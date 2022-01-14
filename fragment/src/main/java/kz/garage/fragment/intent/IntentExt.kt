@@ -1,14 +1,14 @@
-package kz.garage.activity.intent
+package kz.garage.fragment.intent
 
-import android.app.Activity
 import android.content.Intent
+import androidx.fragment.app.Fragment
 
-inline fun <reified T: Any> Activity.createIntent(
+inline fun <reified T: Any> Fragment.createIntent(
     noinline builder: Intent.() -> Unit = {}
-): Intent = Intent(this, T::class.java)
+): Intent = Intent(requireContext(), T::class.java)
     .apply(builder)
 
-inline fun <reified T: Any> Activity.startActivity(
+inline fun <reified T: Any> Fragment.startActivity(
     noinline builder: Intent.() -> Unit = {}
 ): Intent {
     val intent = createIntent<T>(builder)

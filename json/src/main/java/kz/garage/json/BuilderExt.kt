@@ -2,7 +2,7 @@ package kz.garage.json
 
 import org.json.JSONObject
 
-fun jsonObject(lambda: JSONObject.() -> Unit): JSONObject {
+inline fun jsonObject(lambda: JSONObject.() -> Unit): JSONObject {
     val jsonObject = JSONObject()
     try {
         jsonObject.apply(lambda)
