@@ -17,8 +17,8 @@ abstract class BaseAdapter<T> constructor(
 
     fun getData(): List<T> = data
 
-    fun setData(data: List<T>, notify: Boolean = true) {
-        this.data = data
+    fun setData(data: List<T>?, notify: Boolean = true) {
+        this.data = data ?: emptyList()
 
         if (notify) {
             notifyDataSetChanged()
@@ -48,6 +48,7 @@ abstract class BaseAdapter<T> constructor(
 
     override fun onViewRecycled(holder: BaseViewHolder<T>) {
         super.onViewRecycled(holder)
+
         holder.onUnbind()
     }
 

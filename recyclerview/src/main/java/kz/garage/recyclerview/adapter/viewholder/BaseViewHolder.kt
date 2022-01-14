@@ -1,19 +1,11 @@
 package kz.garage.recyclerview.adapter.viewholder
 
-import android.content.Context
-import android.content.res.Resources
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
+import kz.garage.recyclerview.adapter.ResourceViewHolder
 
 open class BaseViewHolder<T> constructor(
     view: View
-) : RecyclerView.ViewHolder(view) {
-
-    protected val context: Context
-        get() = itemView.context
-
-    protected val resources: Resources
-        get() = itemView.context.resources
+) : ResourceViewHolder(view) {
 
     open fun onBind(item: T, position: Int) {}
 
