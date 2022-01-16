@@ -46,6 +46,7 @@ ext.projectArtifactId = { project ->
 
         // file
         case 'extension':
+        case 'size':
 
         // lifecycle
         case 'livedata':

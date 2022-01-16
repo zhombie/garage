@@ -26,6 +26,7 @@ include ':drawable'
 
 // file
 include ':file:extension'
+include ':file:size'
 
 // fragment
 include ':fragment'

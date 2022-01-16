@@ -3,7 +3,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    resourcePrefix 'file_extension_'
+    resourcePrefix 'file_size_'
 }
 
 dependencies {
