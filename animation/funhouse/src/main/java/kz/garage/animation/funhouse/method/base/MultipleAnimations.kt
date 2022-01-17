@@ -2,7 +2,6 @@ package kz.garage.animation.funhouse.method.base
 
 import android.animation.Animator
 import android.view.View
-import kz.garage.animation.funhouse.AnimationComposer
 
 internal data class MultipleAnimations constructor(
     val after: List<BaseSingleAnimation>? = null,
@@ -10,9 +9,10 @@ internal data class MultipleAnimations constructor(
     val before: List<BaseSingleAnimation>? = null
 ) : BaseAnimation() {
 
-    override fun start(view: View, listener: AnimationComposer.Listener?) {
+    override fun start(view: View) {
         val animatorSet = createAnimatorSet()
 
+        val listener = getListener()
         if (listener != null) {
             animatorSet.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator?) {

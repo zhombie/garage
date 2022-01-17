@@ -3,15 +3,15 @@ package kz.garage.animation.funhouse.method.base
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.view.View
-import kz.garage.animation.funhouse.AnimationComposer
 
 internal abstract class BaseSingleAnimation : BaseAnimation() {
 
     abstract fun describe(view: View): AnimatorSet
 
-    override fun start(view: View, listener: AnimationComposer.Listener?) {
+    override fun start(view: View) {
         val animatorSet = describe(view)
 
+        val listener = getListener()
         if (listener != null) {
             animatorSet.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator?) {

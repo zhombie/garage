@@ -13,21 +13,19 @@ inline fun View.animate(
     crossinline onEnd: (view: View, animator: Animator?) -> Unit = { _, _ -> },
     crossinline onCancel: (view: View, animator: Animator?) -> Unit = { _, _ -> },
     crossinline onRepeat: (view: View, animator: Animator?) -> Unit = { _, _ -> }
-): AnimationComposer.Listener {
-    val listener = object : AnimationComposer.Listener {
-        override fun onStart(view: View, animator: Animator?) = onStart(view, animator)
-        override fun onEnd(view: View, animator: Animator?) = onEnd(view, animator)
-        override fun onCancel(view: View, animator: Animator?) = onCancel(view, animator)
-        override fun onRepeat(view: View, animator: Animator?) = onRepeat(view, animator)
-    }
-
-    AnimationComposer()
+): AnimationComposer {
+    val animationComposer = AnimationComposer()
         .setDuration(duration)
         .setInterpolator(interpolator)
+        .setListener(object : AnimationComposer.Listener {
+            override fun onStart(view: View, animator: Animator?) = onStart(view, animator)
+            override fun onEnd(view: View, animator: Animator?) = onEnd(view, animator)
+            override fun onCancel(view: View, animator: Animator?) = onCancel(view, animator)
+            override fun onRepeat(view: View, animator: Animator?) = onRepeat(view, animator)
+        })
         .play(method)
-        .start(this, listener)
-
-    return listener
+    animationComposer.start(this)
+    return animationComposer
 }
 
 inline fun View.animate(
@@ -38,19 +36,18 @@ inline fun View.animate(
     crossinline onEnd: (view: View, animator: Animator?) -> Unit = { _, _ -> },
     crossinline onCancel: (view: View, animator: Animator?) -> Unit = { _, _ -> },
     crossinline onRepeat: (view: View, animator: Animator?) -> Unit = { _, _ -> }
-): AnimationComposer.Listener {
-    val listener = object : AnimationComposer.Listener {
-        override fun onStart(view: View, animator: Animator?) = onStart(view, animator)
-        override fun onEnd(view: View, animator: Animator?) = onEnd(view, animator)
-        override fun onCancel(view: View, animator: Animator?) = onCancel(view, animator)
-        override fun onRepeat(view: View, animator: Animator?) = onRepeat(view, animator)
-    }
-
-    AnimationComposer()
+): AnimationComposer {
+    val animationComposer = AnimationComposer()
         .setDuration(duration)
         .setInterpolator(interpolator)
+        .setListener(object : AnimationComposer.Listener {
+            override fun onStart(view: View, animator: Animator?) = onStart(view, animator)
+            override fun onEnd(view: View, animator: Animator?) = onEnd(view, animator)
+            override fun onCancel(view: View, animator: Animator?) = onCancel(view, animator)
+            override fun onRepeat(view: View, animator: Animator?) = onRepeat(view, animator)
+        }
+        )
         .play(*methods)
-        .start(this, listener)
-
-    return listener
+    animationComposer.start(this)
+    return animationComposer
 }

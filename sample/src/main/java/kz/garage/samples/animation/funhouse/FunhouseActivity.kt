@@ -24,12 +24,14 @@ class FunhouseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animation_funhouse)
 
-        val isExtensionFunctionUsed = true
+        val isExtensionFunctionUsed = false
 
         button.setOnClickListener {
             if (isExtensionFunctionUsed) {
                 it.animate(
-                    Method.Zoom.OutUp,
+                    Method.Attention.Wobble,
+                    duration = 175L,
+                    interpolator = AccelerateDecelerateInterpolator(),
                     onStart = { _, _ ->
                         Log.d(TAG, "onStart()")
                     },
@@ -47,7 +49,10 @@ class FunhouseActivity : AppCompatActivity() {
                 AnimationComposer()
                     .setDuration(175L)
                     .setInterpolator(AccelerateDecelerateInterpolator())
-                    .play(Method.Zoom.OutUp)
+                    .play(Method.Attention.Wobble)
+                    .doOnStart { _, _ ->
+                        Log.d(TAG, "doOnStart()")
+                    }
                     .start(it)
             }
         }

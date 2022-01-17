@@ -25,6 +25,8 @@ class AnimationComposer {
     private var duration: Long = DEFAULT_DURATION
     private var interpolator: Interpolator = DEFAULT_INTERPOLATOR
 
+    private var listener: Listener? = null
+
     fun getBefore(): MutableList<Method>? = before
 
     fun getCurrent(): MutableList<Method>? = current
@@ -34,6 +36,8 @@ class AnimationComposer {
     fun getDuration(): Long = duration
 
     fun getInterpolator(): Interpolator = interpolator
+
+    fun getListener(): Listener? = listener
 
     fun play(method: Method): AnimationComposer {
         if (current == null) {
@@ -90,7 +94,55 @@ class AnimationComposer {
         return this
     }
 
-    fun start(view: View, listener: Listener? = null) {
+    fun setListener(listener: Listener?): AnimationComposer {
+        this.listener = listener
+        return this
+    }
+
+    inline fun doOnStart(
+        crossinline action: (view: View, animator: Animator?) -> Unit
+    ): AnimationComposer {
+        setListener(onStart = action)
+        return this
+    }
+
+    inline fun doOnEnd(
+        crossinline action: (view: View, animator: Animator?) -> Unit
+    ): AnimationComposer {
+        setListener(onEnd = action)
+        return this
+    }
+
+    inline fun doOnCancel(
+        crossinline action: (view: View, animator: Animator?) -> Unit
+    ): AnimationComposer {
+        setListener(onCancel = action)
+        return this
+    }
+
+    inline fun doOnRepeat(
+        crossinline action: (view: View, animator: Animator?) -> Unit
+    ): AnimationComposer {
+        setListener(onRepeat = action)
+        return this
+    }
+
+    inline fun setListener(
+        crossinline onStart: (view: View, animator: Animator?) -> Unit = { _, _ -> },
+        crossinline onEnd: (view: View, animator: Animator?) -> Unit = { _, _ -> },
+        crossinline onCancel: (view: View, animator: Animator?) -> Unit = { _, _ -> },
+        crossinline onRepeat: (view: View, animator: Animator?) -> Unit = { _, _ -> }
+    ): AnimationComposer {
+        setListener(object : Listener {
+            override fun onStart(view: View, animator: Animator?) = onStart(view, animator)
+            override fun onEnd(view: View, animator: Animator?) = onEnd(view, animator)
+            override fun onCancel(view: View, animator: Animator?) = onCancel(view, animator)
+            override fun onRepeat(view: View, animator: Animator?) = onRepeat(view, animator)
+        })
+        return this
+    }
+
+    fun start(view: View) {
         when (getTotalCount()) {
             0 -> return
             1 -> {
@@ -102,7 +154,8 @@ class AnimationComposer {
                             interpolator = interpolator
                         )
                     )
-                    .start(view, listener)
+                    .setListener(listener)
+                    .start(view)
             }
             else -> {
                 DefaultAnimationFactory()
@@ -113,7 +166,8 @@ class AnimationComposer {
                             interpolator = interpolator
                         )
                     )
-                    ?.start(view, listener)
+                    ?.setListener(listener)
+                    ?.start(view)
             }
         }
     }
