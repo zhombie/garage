@@ -1,6 +1,6 @@
 package kz.garage.animation.scale
 
-import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.Interpolator
 import android.view.animation.ScaleAnimation
 import java.lang.ref.WeakReference
+import kotlin.math.roundToInt
 
 // Inspired by: https://github.com/TheKhaeng/pushdown-anim-click,
 // https://gist.github.com/gokulkrizh/42aa995bd7845770588461fc7bf726be
@@ -19,7 +20,8 @@ class ScaleAnimation internal constructor(
     requestedEndDuration: Long = DEFAULT_END_DURATION,
     requestedPercentage: Float,
     private val onAnimationStart: () -> Unit = {},
-    private val onAnimationEnd: () -> Unit = {}
+    private val onAnimationEnd: () -> Unit = {},
+    private val onClickAction: (view: View) -> Unit = {}
 ) : View.OnTouchListener {
 
     companion object {
@@ -61,9 +63,11 @@ class ScaleAnimation internal constructor(
 
     init {
         view?.setOnTouchListener(this)
+        view?.setOnClickListener {
+            onClickAction.invoke(it)
+        }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         if (v == null) return false
 
@@ -80,6 +84,7 @@ class ScaleAnimation internal constructor(
                         onAnimationStart.invoke()
                     }
                 )
+
                 return true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
@@ -94,10 +99,30 @@ class ScaleAnimation internal constructor(
                         onAnimationEnd.invoke()
                     }
                 )
+
+                if (isMotionEventInsideView(v, event)) {
+                    v.performClick()
+                }
+
+                return true
             }
         }
 
         return false
+    }
+
+    private fun isMotionEventInsideView(view: View, event: MotionEvent): Boolean {
+        val viewRect = Rect(
+            view.left,
+            view.top,
+            view.right,
+            view.bottom
+        )
+
+        return viewRect.contains(
+            view.left + event.x.roundToInt(),
+            view.top + event.y.roundToInt()
+        )
     }
 
     private fun View.scaleAnimation(

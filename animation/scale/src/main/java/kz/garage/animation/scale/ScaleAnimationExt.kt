@@ -6,7 +6,7 @@ import java.lang.ref.WeakReference
 
 fun View.setScaleAnimationOnClick(
     percentage: Float = ScaleAnimation.DEFAULT_PERCENTAGE,
-    onAnimationEnd: () -> Unit = {}
+    onClickAction: (view: View) -> Unit
 ) = setScaleAnimationOnClick(
     startInterpolator = ScaleAnimation.DEFAULT_START_INTERPOLATOR,
     endInterpolator = ScaleAnimation.DEFAULT_END_INTERPOLATOR,
@@ -14,7 +14,8 @@ fun View.setScaleAnimationOnClick(
     endDuration = ScaleAnimation.DEFAULT_END_DURATION,
     percentage = percentage,
     onAnimationStart = {},
-    onAnimationEnd = onAnimationEnd
+    onAnimationEnd = {},
+    onClickAction = onClickAction
 )
 
 fun View.setScaleAnimationOnClick(
@@ -24,7 +25,8 @@ fun View.setScaleAnimationOnClick(
     endDuration: Long = ScaleAnimation.DEFAULT_END_DURATION,
     percentage: Float,
     onAnimationStart: () -> Unit = {},
-    onAnimationEnd: () -> Unit = {}
+    onAnimationEnd: () -> Unit = {},
+    onClickAction: (view: View) -> Unit = {}
 ): ScaleAnimation {
     return ScaleAnimation(
         viewReference = WeakReference(this),
@@ -34,6 +36,7 @@ fun View.setScaleAnimationOnClick(
         requestedEndDuration = endDuration,
         requestedPercentage = percentage,
         onAnimationStart = onAnimationStart,
-        onAnimationEnd = onAnimationEnd
+        onAnimationEnd = onAnimationEnd,
+        onClickAction = onClickAction
     )
 }
