@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">garage</string>
+    <string name="app_name" translatable="false">garage</string>
+
+    <string name="application">Application</string>
+    <string name="language">Language</string>
+    <string name="navigate">Navigate</string>
 </resources>

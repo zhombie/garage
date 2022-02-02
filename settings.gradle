@@ -41,6 +41,9 @@ include ':kotlin'
 include ':lifecycle:livedata'
 include ':lifecycle:viewmodel'
 
+// locale
+include ':locale'
+
 // location
 include ':location:core'
 include ':location:compass'

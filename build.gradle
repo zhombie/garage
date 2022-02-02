@@ -31,6 +31,7 @@ ext.projectArtifactId = { project ->
         case 'fragment':
         case 'json':
         case 'kotlin':
+        case 'locale':
         case 'permission':
         case 'recyclerview':
         case 'text':

@@ -114,11 +114,13 @@ dependencies {
         implementation "com.github.zhombie.garage:context:$libraryVersion"
         implementation "com.github.zhombie.garage:drawable:$libraryVersion"
         implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
+        implementation "com.github.zhombie.garage:file-size:$libraryVersion"
         implementation "com.github.zhombie.garage:fragment:$libraryVersion"
         implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-viewmodel:$libraryVersion"
+        implementation "com.github.zhombie.garage:locale:$libraryVersion"
         implementation "com.github.zhombie.garage:location-compass:$libraryVersion"
         implementation "com.github.zhombie.garage:location-core:$libraryVersion"
         implementation "com.github.zhombie.garage:location-gms:$libraryVersion"
@@ -138,11 +140,13 @@ dependencies {
         implementation project(':context')
         implementation project(':drawable')
         implementation project(':file:extension')
+        implementation project(':file:size')
         implementation project(':fragment')
         implementation project(':json')
         implementation project(':kotlin')
         implementation project(':lifecycle:livedata')
         implementation project(':lifecycle:viewmodel')
+        implementation project(':locale')
         implementation project(':location:compass')
         implementation project(':location:core')
         implementation project(':location:gms')

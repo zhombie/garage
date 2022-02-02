@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="application">Приложение</string>
+    <string name="language">Язык</string>
+    <string name="navigate">Навигация</string>
+</resources>
