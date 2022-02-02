@@ -1,15 +1,16 @@
 package kz.garage.animation.scale
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.Animation
 import android.view.animation.Interpolator
+import android.view.animation.ScaleAnimation
 import java.lang.ref.WeakReference
 
-// Inspired by: https://github.com/TheKhaeng/pushdown-anim-click
+// Inspired by: https://github.com/TheKhaeng/pushdown-anim-click,
+// https://gist.github.com/gokulkrizh/42aa995bd7845770588461fc7bf726be
 class ScaleAnimation internal constructor(
     private val viewReference: WeakReference<View>,
     val startInterpolator: Interpolator = DEFAULT_START_INTERPOLATOR,
@@ -19,7 +20,7 @@ class ScaleAnimation internal constructor(
     requestedPercentage: Float,
     private val onAnimationStart: () -> Unit = {},
     private val onAnimationEnd: () -> Unit = {}
-) {
+) : View.OnTouchListener {
 
     companion object {
         var DEFAULT_START_INTERPOLATOR: Interpolator = AccelerateDecelerateInterpolator()
@@ -55,63 +56,87 @@ class ScaleAnimation internal constructor(
 
     val scale: Float = percentage / 100F
 
-    private var scaleAnimatorSet: AnimatorSet? = null
+    private var startScaleAnimation: ScaleAnimation? = null
+    private var endScaleAnimation: ScaleAnimation? = null
 
     init {
-        view?.setOnClickListener {
-            if (scaleAnimatorSet?.isRunning == true) {
-                scaleAnimatorSet?.end()
-                scaleAnimatorSet = null
-                return@setOnClickListener
-            }
-
-            val startScaleX = ObjectAnimator.ofFloat(it, "scaleX", scale)
-            val startScaleY = ObjectAnimator.ofFloat(it, "scaleY", scale)
-            val endScaleX = ObjectAnimator.ofFloat(it, "scaleX", it.scaleX)
-            val endScaleY = ObjectAnimator.ofFloat(it, "scaleY", it.scaleY)
-
-            startScaleX.interpolator = startInterpolator
-            startScaleX.duration = startDuration
-
-            startScaleY.interpolator = startInterpolator
-            startScaleY.duration = startDuration
-
-            endScaleX.interpolator = endInterpolator
-            endScaleX.duration = endDuration
-
-            endScaleY.interpolator = endInterpolator
-            endScaleY.duration = endDuration
-
-            scaleAnimatorSet = AnimatorSet()
-
-            scaleAnimatorSet
-                ?.play(startScaleX)
-                ?.with(startScaleY)
-
-            scaleAnimatorSet
-                ?.play(endScaleX)
-                ?.after(startScaleX)
-                ?.with(endScaleY)
-
-            scaleAnimatorSet?.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationStart(animation: Animator?) {
-                    super.onAnimationStart(animation)
-                    onAnimationStart.invoke()
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    super.onAnimationEnd(animation)
-                    onAnimationEnd.invoke()
-                }
-            })
-
-            scaleAnimatorSet?.start()
-        }
+        view?.setOnTouchListener(this)
     }
 
-    fun end() {
-        scaleAnimatorSet?.end()
-        scaleAnimatorSet = null
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        if (v == null) return false
+
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                startScaleAnimation = v.scaleAnimation(
+                    fromX = 1.0f,
+                    toX = scale,
+                    fromY = 1.0f,
+                    toY = scale,
+                    duration = startDuration,
+                    interpolator = startInterpolator,
+                    onStart = {
+                        onAnimationStart.invoke()
+                    }
+                )
+                return true
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                endScaleAnimation = v.scaleAnimation(
+                    fromX = scale,
+                    toX = 1.0f,
+                    fromY = scale,
+                    toY = 1.0f,
+                    duration = endDuration,
+                    interpolator = endInterpolator,
+                    onEnd = {
+                        onAnimationEnd.invoke()
+                    }
+                )
+            }
+        }
+
+        return false
+    }
+
+    private fun View.scaleAnimation(
+        fromX: Float,
+        toX: Float,
+        fromY: Float,
+        toY: Float,
+        duration: Long,
+        interpolator: Interpolator = AccelerateDecelerateInterpolator(),
+        onStart: (animation: Animation?) -> Unit = {},
+        onEnd: (animation: Animation?) -> Unit = {}
+    ): ScaleAnimation {
+        val scaleAnimation = ScaleAnimation(
+            fromX,
+            toX,
+            fromY,
+            toY,
+            Animation.RELATIVE_TO_SELF,
+            0.5F,
+            Animation.RELATIVE_TO_SELF,
+            0.5F
+        )
+        scaleAnimation.interpolator = interpolator
+        scaleAnimation.duration = duration
+        scaleAnimation.fillAfter = true
+        scaleAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
+                onStart.invoke(animation)
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                onEnd.invoke(animation)
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {
+            }
+        })
+        startAnimation(scaleAnimation)
+        return scaleAnimation
     }
 
 }

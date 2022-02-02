@@ -93,12 +93,10 @@ class Tooltip private constructor(
 
             tooltipView.setup(rect, tooltipParent)
 
-            val layoutParams = ViewGroup.LayoutParams(
+            tooltipParent.addView(overlay, ViewGroup.LayoutParams(
                 tooltipParent.width,
                 tooltipParent.height
-            )
-
-            tooltipParent.addView(overlay, layoutParams)
+            ))
 
             if (animIn == 0) {
                 displayListener?.onDisplay(tooltipView, true)

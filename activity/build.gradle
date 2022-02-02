@@ -10,8 +10,8 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    // Activity
-//    implementation "androidx.activity:activity:1.4.0"
+    // AppCompat
+    implementation 'androidx.appcompat:appcompat:1.4.1'
 
     // Annotation
     implementation "androidx.annotation:annotation:1.3.0"
