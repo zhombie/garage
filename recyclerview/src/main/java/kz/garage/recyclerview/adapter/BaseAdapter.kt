@@ -1,5 +1,6 @@
 package kz.garage.recyclerview.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ abstract class BaseAdapter<T> constructor(
 
     fun getData(): List<T> = data
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<T>?, notify: Boolean = true) {
         this.data = data ?: emptyList()
 
@@ -25,9 +27,9 @@ abstract class BaseAdapter<T> constructor(
         }
     }
 
-    protected fun getItem(position: Int): T? = data.getOrNull(position)
+    fun getItem(position: Int): T? = data.getOrNull(position)
 
-    protected fun getPosition(item: T): Int = data.indexOf(item)
+    fun getPosition(item: T): Int = data.indexOf(item)
 
     override fun getItemCount(): Int = data.size
 

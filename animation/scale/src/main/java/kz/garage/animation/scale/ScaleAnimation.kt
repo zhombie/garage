@@ -8,10 +8,10 @@ import android.view.animation.Animation
 import android.view.animation.Interpolator
 import android.view.animation.ScaleAnimation
 import java.lang.ref.WeakReference
-import kotlin.math.roundToInt
 
 // Inspired by: https://github.com/TheKhaeng/pushdown-anim-click,
-// https://gist.github.com/gokulkrizh/42aa995bd7845770588461fc7bf726be
+// https://gist.github.com/gokulkrizh/42aa995bd7845770588461fc7bf726be,
+// https://github.com/jd-alexander/LikeButton/blob/master/likebutton/src/main/java/com/like/LikeButton.java
 class ScaleAnimation internal constructor(
     private val viewReference: WeakReference<View>,
     val startInterpolator: Interpolator = DEFAULT_START_INTERPOLATOR,
@@ -73,37 +73,51 @@ class ScaleAnimation internal constructor(
 
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
-                startScaleAnimation = v.scaleAnimation(
-                    fromX = 1.0f,
-                    toX = scale,
-                    fromY = 1.0f,
-                    toY = scale,
-                    duration = startDuration,
-                    interpolator = startInterpolator,
-                    onStart = {
-                        onAnimationStart.invoke()
-                    }
-                )
-
+                v.isPressed = true
                 return true
             }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                endScaleAnimation = v.scaleAnimation(
-                    fromX = scale,
-                    toX = 1.0f,
-                    fromY = scale,
-                    toY = 1.0f,
-                    duration = endDuration,
-                    interpolator = endInterpolator,
-                    onEnd = {
-                        onAnimationEnd.invoke()
-                    }
-                )
-
-                if (isMotionEventInsideView(v, event)) {
-                    v.performClick()
+            MotionEvent.ACTION_MOVE -> {
+                val isInside = isMotionEventInsideView(v, event)
+                if (v.isPressed != isInside) {
+                    v.isPressed = isInside
+                    return true
                 }
+            }
+            MotionEvent.ACTION_UP -> {
+                if (v.isPressed) {
+                    startScaleAnimation = v.scaleAnimation(
+                        fromX = 1.0F,
+                        toX = scale,
+                        fromY = 1.0F,
+                        toY = scale,
+                        duration = startDuration,
+                        interpolator = startInterpolator,
+                        onStart = {
+                            onAnimationStart.invoke()
+                        },
+                        onEnd = {
+                            endScaleAnimation = v.scaleAnimation(
+                                fromX = scale,
+                                toX = 1.0F,
+                                fromY = scale,
+                                toY = 1.0F,
+                                duration = endDuration,
+                                interpolator = endInterpolator,
+                                onEnd = {
+                                    onAnimationEnd.invoke()
+                                }
+                            )
+                        }
+                    )
 
+                    v.performClick()
+                    v.isPressed = false
+
+                    return true
+                }
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                v.isPressed = false
                 return true
             }
         }
@@ -112,17 +126,8 @@ class ScaleAnimation internal constructor(
     }
 
     private fun isMotionEventInsideView(view: View, event: MotionEvent): Boolean {
-        val viewRect = Rect(
-            view.left,
-            view.top,
-            view.right,
-            view.bottom
-        )
-
-        return viewRect.contains(
-            view.left + event.x.roundToInt(),
-            view.top + event.y.roundToInt()
-        )
+        val rect = Rect(view.left, view.top, view.right, view.bottom)
+        return rect.contains(view.left + event.x.toInt(), view.top + event.y.toInt())
     }
 
     private fun View.scaleAnimation(
