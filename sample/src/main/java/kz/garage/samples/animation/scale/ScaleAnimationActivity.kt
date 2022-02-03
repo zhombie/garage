@@ -1,6 +1,7 @@
 package kz.garage.samples.animation.scale
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,8 @@ class ScaleAnimationActivity : AppCompatActivity() {
 
     private var adapter: ButtonsAdapter? = null
 
+    private var toast: Toast? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animation_scale)
@@ -31,15 +34,24 @@ class ScaleAnimationActivity : AppCompatActivity() {
         setupRecyclerView()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        toast?.cancel()
+        toast = null
+    }
+
     private fun setupButton() {
         button.setScaleAnimationOnClick {
-            toast("Click Action")
+            toast?.cancel()
+            toast = toast("Click Action")
         }
     }
 
     private fun setupRecyclerView() {
         adapter = ButtonsAdapter {
-            toast("Click Action: $it")
+            toast?.cancel()
+            toast = toast("Click Action: $it")
         }
 
         recyclerView.setLinearLayoutManager(LinearLayoutManager.HORIZONTAL)
