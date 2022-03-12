@@ -9,9 +9,10 @@ import kz.garage.recyclerview.adapter.viewholder.view.bind
 class SamplesAdapter constructor(
     samples: List<Sample>,
     private val onClickAction: (sample: Sample, position: Int) -> Unit
-) : BaseAdapter<Sample>(samples) {
-
-    override fun getLayoutId(): Int = R.layout.cell_sample
+) : BaseAdapter<Sample>(
+    layoutId = R.layout.cell_sample,
+    data = samples
+) {
 
     override fun onCreateViewHolder(view: View): BaseViewHolder<Sample> = ViewHolder(view)
 

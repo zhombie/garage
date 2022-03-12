@@ -10,12 +10,9 @@ import kz.garage.recyclerview.adapter.viewholder.view.bind
 
 class ButtonsAdapter constructor(
     private val onButtonClick: (item: String) -> Unit
-) : BaseAdapter<String>() {
+) : BaseAdapter<String>(layoutId = R.layout.cell_button) {
 
-    override fun getLayoutId(): Int = R.layout.cell_button
-
-    override fun onCreateViewHolder(view: View): BaseViewHolder<String> =
-        ViewHolder(view)
+    override fun onCreateViewHolder(view: View): BaseViewHolder<String> = ViewHolder(view)
 
     private inner class ViewHolder constructor(view: View) : BaseViewHolder<String>(view) {
         private val button by bind<MaterialButton>(R.id.button)

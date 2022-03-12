@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.garage.recyclerview.adapter.viewholder.BaseViewHolder
 
 abstract class BaseAdapter<T> constructor(
+    @LayoutRes
+    val layoutId: Int,
     private var data: List<T> = emptyList()
 ) : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
@@ -33,16 +35,16 @@ abstract class BaseAdapter<T> constructor(
 
     override fun getItemCount(): Int = data.size
 
-    @LayoutRes
-    protected abstract fun getLayoutId(): Int
-
-    protected abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> =
-        onCreateViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(getLayoutId(), parent, false)
-        )
+        onCreateViewHolder(inflateView(parent, layoutId))
+
+    abstract fun onCreateViewHolder(view: View): BaseViewHolder<T>
+
+    private fun inflateView(
+        parent: ViewGroup,
+        @LayoutRes layoutId: Int
+    ): View = LayoutInflater.from(parent.context)
+        .inflate(layoutId, parent, false)
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         getItem(position)?.let { holder.onBind(it, position) }
