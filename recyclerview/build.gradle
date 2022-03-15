@@ -1,6 +1,6 @@
 android {
     defaultConfig {
-        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     resourcePrefix 'recyclerview_'

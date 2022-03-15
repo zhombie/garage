@@ -1,6 +1,6 @@
 android {
     defaultConfig {
-        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     resourcePrefix 'lifecycle_viewmodel_'
@@ -11,5 +11,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // LiveData
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
 }

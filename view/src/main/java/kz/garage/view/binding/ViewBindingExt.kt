@@ -1,4 +1,4 @@
-package kz.garage.view
+package kz.garage.view.binding
 
 import android.view.View
 import androidx.annotation.IdRes
