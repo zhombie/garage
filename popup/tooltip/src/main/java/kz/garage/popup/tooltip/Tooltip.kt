@@ -71,13 +71,13 @@ class Tooltip private constructor(
     }
 
     internal fun getTextView(): TextView =
-        tooltipView.childView.getTextView()
+        tooltipView.childView.textView
 
     internal fun getStartImageView(): ImageView =
-        tooltipView.childView.getStartImageView()
+        tooltipView.childView.iconStart
 
     internal fun getEndImageView(): ImageView =
-        tooltipView.childView.getEndImageView()
+        tooltipView.childView.iconEnd
 
     fun show(duration: Long = 0, text: String? = null): Tooltip {
         refView.post {

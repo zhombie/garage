@@ -4,7 +4,6 @@ import android.content.Context
 import kz.garage.locale.matcher.LanguageMatchingAlgorithm
 import kz.garage.locale.matcher.MatchingAlgorithm
 import kz.garage.locale.utils.SystemLocaleRetriever.retrieve
-import kz.q19.common.locale.LocaleManagerDelegate
 import java.util.*
 
 object LocaleManager {

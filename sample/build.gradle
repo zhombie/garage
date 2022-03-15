@@ -78,6 +78,9 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // Activity
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+
     // AppCompat
     implementation 'androidx.appcompat:appcompat:1.4.1'
 
@@ -107,7 +110,7 @@ dependencies {
     def isRemoteDependencyEnabled = false
 
     if (isRemoteDependencyEnabled) {
-        def libraryVersion = version
+        def libraryVersion = project.version
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-funhouse:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"

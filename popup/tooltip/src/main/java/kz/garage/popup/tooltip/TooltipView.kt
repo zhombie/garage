@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.core.view.ViewCompat
 
@@ -46,7 +46,7 @@ class TooltipView @JvmOverloads constructor(
         setWillNotDraw(false)
 
         childView = ChildView(context, attrs, defStyleAttr)
-        childView.getTextView().setTextColor(Color.WHITE)
+        childView.textView.setTextColor(Color.WHITE)
         addView(childView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val resources = context.resources

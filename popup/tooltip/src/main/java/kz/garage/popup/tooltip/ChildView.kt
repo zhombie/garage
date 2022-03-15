@@ -16,31 +16,28 @@ class ChildView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val textView: TextView
-    private val iconStart: ImageView
-    private val iconEnd: ImageView
-
-    init {
-        textView = TextView(context, attrs, defStyleAttr)
-        textView.layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1F)
-
-        iconStart = ImageView(context, attrs, defStyleAttr)
-        iconStart.layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-
-        iconEnd = ImageView(context, attrs, defStyleAttr)
-        iconEnd.layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+    val textView by lazy(LazyThreadSafetyMode.NONE) {
+        TextView(context).apply {
+            layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1F)
+        }
     }
 
-    fun getTextView(): TextView = textView
+    val iconStart by lazy(LazyThreadSafetyMode.NONE) {
+        ImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+        }
+    }
 
-    fun getStartImageView(): ImageView = iconStart
-
-    fun getEndImageView(): ImageView = iconEnd
+    val iconEnd by lazy(LazyThreadSafetyMode.NONE) {
+        ImageView(context).apply {
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+        }
+    }
 
     fun attach() {
-        removeParent(iconStart)
-        removeParent(iconEnd)
-        removeParent(textView)
+        removeFromParent(iconStart)
+        removeFromParent(iconEnd)
+        removeFromParent(textView)
 
         if (iconStart.drawable != null) {
             val startIconLayoutParams = iconStart.layoutParams
@@ -68,7 +65,7 @@ class ChildView @JvmOverloads constructor(
         }
     }
 
-    private fun removeParent(view: View) {
+    private fun removeFromParent(view: View) {
         view.parent?.let {
             if (it is ViewGroup) {
                 it.removeView(view)

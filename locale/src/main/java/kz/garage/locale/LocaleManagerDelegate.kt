@@ -13,13 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package kz.q19.common.locale
+package kz.garage.locale
 
 import android.content.Context
-import kz.garage.locale.AppLocaleManager
-import kz.garage.locale.LocalePersistor
-import kz.garage.locale.LocaleResolver
-import kz.garage.locale.UnsupportedLocaleException
 import java.util.*
 
 /**

@@ -1,6 +1,5 @@
 package kz.garage.permission.context
 
-import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
