@@ -1,22 +1,20 @@
 package kz.garage.location.core
 
 import android.location.Location
-import android.location.LocationListener
 import android.os.Bundle
 import java.lang.ref.WeakReference
 
 class AbstractLocationListener internal constructor(
-    private val locationListenerReference: WeakReference<LocationListener>
-) : LocationListener {
+    private val locationListenerReference: WeakReference<LocationListenerCompat>
+) : LocationListenerCompat {
 
-    constructor(locationListener: LocationListener) : this(WeakReference(locationListener))
+    constructor(locationListener: LocationListenerCompat) : this(WeakReference(locationListener))
 
     override fun onLocationChanged(location: Location) {
         locationListenerReference.get()?.onLocationChanged(location)
     }
 
-    @Suppress("DEPRECATION")
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+    override fun onStatusChanged(provider: String, status: Int, extras: Bundle?) {
         super.onStatusChanged(provider, status, extras)
         locationListenerReference.get()?.onStatusChanged(provider, status, extras)
     }
