@@ -57,6 +57,10 @@
         <activity android:name=".samples.location.compass.CompassActivity" />
         <activity android:name=".samples.location.gms.GMSActivity" />
 
+        <!-- multimedia -->
+        <activity android:name=".samples.multimedia.MultimediaActivity" />
+        <activity android:name=".samples.multimedia.store.MultimediaStoreActivity" />
+
         <!-- permission -->
         <activity android:name=".samples.permission.PermissionActivity" />
 

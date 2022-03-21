@@ -1,7 +1,10 @@
 package kz.garage.multimedia.store.model
 
 import android.net.Uri
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Video constructor(
     override val id: Long,
     override val uri: Uri,
@@ -24,7 +27,7 @@ data class Video constructor(
     properties = properties,
     localFile = localFile,
     remoteAddress = remoteAddress
-), Media.Playable, Media.Visual {
+), Media.Playable, Media.Visual, Parcelable {
 
     constructor(
         uri: Uri,

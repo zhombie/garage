@@ -8,6 +8,7 @@ import kz.garage.samples.animation.AnimationActivity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.locale.LocaleActivity
 import kz.garage.samples.location.LocationActivity
+import kz.garage.samples.multimedia.MultimediaActivity
 import kz.garage.samples.permission.PermissionActivity
 import kz.garage.samples.popup.PopupActivity
 import kz.garage.samples.recyclerview.RecyclerViewActivity
@@ -30,6 +31,7 @@ class MainActivity : BaseNestedModuleActivity() {
             Sample("fragment", "Fragment", null),
             Sample("locale", "Locale", null),
             Sample("location", "Location", null),
+            Sample("multimedia", "Multimedia", null),
             Sample("permission", "Permission", null),
             Sample("popup", "Popup", null),
             Sample("recyclerview", "RecyclerView", null),
@@ -48,6 +50,8 @@ class MainActivity : BaseNestedModuleActivity() {
                 startActivity<LocaleActivity>()
             "location" ->
                 startActivity<LocationActivity>()
+            "multimedia" ->
+                startActivity<MultimediaActivity>()
             "permission" ->
                 startActivity<PermissionActivity>()
             "popup" ->

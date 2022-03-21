@@ -1,8 +1,9 @@
 package kz.garage.multimedia.store.model
 
 import android.net.Uri
+import android.os.Parcelable
 
-open class Media internal constructor(
+abstract class Media internal constructor(
     override val id: Long,
     override val uri: Uri,
     override val title: String?,
@@ -22,7 +23,7 @@ open class Media internal constructor(
     properties = properties,
     localFile = localFile,
     remoteAddress = remoteAddress
-) {
+), Parcelable {
 
     interface Playable {
         companion object {

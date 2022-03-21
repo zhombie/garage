@@ -1,7 +1,10 @@
 package kz.garage.multimedia.store.model
 
 import android.net.Uri
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Document constructor(
     override val id: Long,
     override val uri: Uri,
@@ -22,4 +25,4 @@ data class Document constructor(
     properties = properties,
     localFile = localFile,
     remoteAddress = remoteAddress
-)
+), Parcelable

@@ -6,7 +6,8 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 @Throws(FileNotFoundException::class)
-fun InputStream.getImageResolution(): Resolution {
+fun InputStream?.getImageResolution(): Resolution? {
+    if (this == null) return null
     val options = BitmapFactory.Options()
     options.inJustDecodeBounds = true
     BitmapFactory.decodeStream(this, null, options)

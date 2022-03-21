@@ -1,3 +1,5 @@
+apply plugin: 'kotlin-parcelize'
+
 android {
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'

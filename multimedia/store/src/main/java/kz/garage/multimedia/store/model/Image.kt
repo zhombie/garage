@@ -1,7 +1,9 @@
 package kz.garage.multimedia.store.model
 
 import android.net.Uri
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Image constructor(
     override val id: Long,
     override val uri: Uri,

@@ -1,7 +1,10 @@
 package kz.garage.multimedia.store.model
 
 import android.net.Uri
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Audio constructor(
     override val id: Long,
     override val uri: Uri,
@@ -24,12 +27,13 @@ data class Audio constructor(
     properties = properties,
     localFile = localFile,
     remoteAddress = remoteAddress
-), Media.Playable {
+), Media.Playable, Parcelable {
 
+    @Parcelize
     data class Album constructor(
         val id: Long,
         val title: String?,
         val artist: String?
-    )
+    ) : Parcelable
 
 }
