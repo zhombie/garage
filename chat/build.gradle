@@ -1,0 +1,17 @@
+apply plugin: 'kotlin-parcelize'
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'chat_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // multimedia-store
+    api project(':multimedia:store')
+}

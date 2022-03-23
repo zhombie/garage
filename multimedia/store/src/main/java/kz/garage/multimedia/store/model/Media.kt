@@ -4,15 +4,15 @@ import android.net.Uri
 import android.os.Parcelable
 
 abstract class Media internal constructor(
-    override val id: Long,
+    override val id: String,
     override val uri: Uri,
     override val title: String?,
     override val displayName: String?,
     override val folder: Folder?,
     override val history: History?,
     override val properties: Properties?,
-    override val localFile: LocalFile?,
-    override val remoteAddress: RemoteAddress?
+    override val publicFile: PublicFile?,
+    override val remoteFile: RemoteFile?
 ) : Content(
     id = id,
     uri = uri,
@@ -21,8 +21,8 @@ abstract class Media internal constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile,
-    remoteAddress = remoteAddress
+    publicFile = publicFile,
+    remoteFile = remoteFile
 ), Parcelable {
 
     interface Playable {
@@ -52,7 +52,7 @@ abstract class Media internal constructor(
             "folder=$folder, " +
             "history=$history, " +
             "properties=$properties, " +
-            "localFile=$localFile," +
-            "remoteAddress=$remoteAddress)"
+            "publicFile=$publicFile," +
+            "remoteAddress=$remoteFile)"
 
 }

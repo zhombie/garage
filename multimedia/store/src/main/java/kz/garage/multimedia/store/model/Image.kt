@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Image constructor(
-    override val id: Long,
+    override val id: String,
     override val uri: Uri,
     override val title: String?,
     override val displayName: String?,
@@ -13,8 +13,8 @@ data class Image constructor(
     override val history: History?,
     override val resolution: Resolution?,
     override val properties: Properties?,
-    override val localFile: LocalFile?,
-    override val remoteAddress: RemoteAddress?
+    override val publicFile: PublicFile?,
+    override val remoteFile: RemoteFile?
 ) : Media(
     id = id,
     uri = uri,
@@ -23,8 +23,8 @@ data class Image constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile,
-    remoteAddress = remoteAddress
+    publicFile = publicFile,
+    remoteFile = remoteFile
 ), Media.Visual {
 
     constructor(
@@ -39,15 +39,15 @@ data class Image constructor(
         history = null,
         resolution = null,
         properties = null,
-        localFile = null,
-        remoteAddress = null
+        publicFile = null,
+        remoteFile = null
     )
 
     constructor(
         uri: Uri,
         title: String,
         displayName: String,
-        localFile: LocalFile,
+        publicFile: PublicFile,
         history: History
     ) : this(
         id = generateId(),
@@ -58,8 +58,8 @@ data class Image constructor(
         history = history,
         resolution = null,
         properties = null,
-        localFile = localFile,
-        remoteAddress = null
+        publicFile = publicFile,
+        remoteFile = null
     )
 
 }

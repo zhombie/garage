@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Video constructor(
-    override val id: Long,
+    override val id: String,
     override val uri: Uri,
     override val title: String?,
     override val displayName: String?,
@@ -15,8 +15,8 @@ data class Video constructor(
     override val duration: Long,
     override val resolution: Resolution?,
     override val properties: Properties?,
-    override val localFile: LocalFile?,
-    override val remoteAddress: RemoteAddress?
+    override val publicFile: PublicFile?,
+    override val remoteFile: RemoteFile?
 ) : Media(
     id = id,
     uri = uri,
@@ -25,14 +25,14 @@ data class Video constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile,
-    remoteAddress = remoteAddress
+    publicFile = publicFile,
+    remoteFile = remoteFile
 ), Media.Playable, Media.Visual, Parcelable {
 
     constructor(
         uri: Uri,
         displayName: String,
-        localFile: LocalFile
+        publicFile: PublicFile
     ) : this(
         id = generateId(),
         uri = uri,
@@ -43,8 +43,8 @@ data class Video constructor(
         duration = Playable.UNDEFINED_DURATION,
         resolution = null,
         properties = null,
-        localFile = localFile,
-        remoteAddress = null
+        publicFile = publicFile,
+        remoteFile = null
     )
 
 }

@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Audio constructor(
-    override val id: Long,
+    override val id: String,
     override val uri: Uri,
     override val title: String?,
     override val displayName: String?,
@@ -15,8 +15,8 @@ data class Audio constructor(
     override val duration: Long,
     override val properties: Properties?,
     val album: Album?,
-    override val localFile: LocalFile?,
-    override val remoteAddress: RemoteAddress?
+    override val publicFile: PublicFile?,
+    override val remoteFile: RemoteFile?
 ) : Media(
     id = id,
     uri = uri,
@@ -25,8 +25,8 @@ data class Audio constructor(
     folder = folder,
     history = history,
     properties = properties,
-    localFile = localFile,
-    remoteAddress = remoteAddress
+    publicFile = publicFile,
+    remoteFile = remoteFile
 ), Media.Playable, Parcelable {
 
     @Parcelize

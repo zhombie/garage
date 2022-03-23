@@ -1,0 +1,144 @@
+package kz.garage.chat.model
+
+import android.location.Location
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kz.garage.chat.model.reply_markup.ReplyMarkup
+import kz.garage.multimedia.store.model.*
+
+@Parcelize
+data class Message internal constructor(
+    override val id: String,
+
+    val direction: Direction,
+
+    val createdAt: Long? = null,
+
+    val body: String? = null,
+    val contents: List<Content>? = null,
+    val location: Location? = null,
+    val replyMarkup: ReplyMarkup? = null,
+) : Entity(), Parcelable {
+
+    enum class Direction {
+        INCOMING,
+        OUTGOING
+    }
+
+    class Builder {
+        private var id: String? = null
+        private var direction: Direction? = null
+        private var createdAt: Long? = null
+        private var body: String? = null
+        private var contents: List<Content>? = null
+        private var location: Location? = null
+        private var replyMarkup: ReplyMarkup? = null
+
+        fun getId(): String? = id
+
+        fun getDirection(): Direction? = direction
+
+        fun getCreatedAt(): Long? = createdAt
+
+        fun getBody(): String? = body
+
+        fun getContents(): List<Content>? = contents
+
+        fun getLocation(): Location? = location
+
+        fun getReplyMarkup(): ReplyMarkup? = replyMarkup
+
+        fun setId(id: String?): Builder {
+            this.id = id
+            return this
+        }
+
+        fun setIncomingDirection(): Builder =
+            setDirection(Direction.INCOMING)
+
+        fun setOutgoingDirection(): Builder =
+            setDirection(Direction.OUTGOING)
+
+        fun setDirection(direction: Direction?): Builder {
+            this.direction = direction
+            return this
+        }
+
+        fun setCreatedAt(createdAt: Long?): Builder {
+            this.createdAt = createdAt
+            return this
+        }
+
+        fun setBody(body: String?): Builder {
+            this.body = body
+            return this
+        }
+
+        fun setContents(contents: List<Content>?): Builder {
+            this.contents = contents
+            return this
+        }
+
+        fun setLocation(location: Location?): Builder {
+            this.location = location
+            return this
+        }
+
+        fun setReplyMarkup(replyMarkup: ReplyMarkup?): Builder {
+            this.replyMarkup = replyMarkup
+            return this
+        }
+
+        fun clear(): Builder =
+            setId(null)
+                .setDirection(null)
+                .setCreatedAt(null)
+                .setBody(null)
+                .setContents(null)
+                .setLocation(null)
+                .setReplyMarkup(null)
+
+        fun build(): Message =
+            Message(
+                id = requireNotNull(id) { "${Message::class.java.simpleName} ID is not specified!" },
+                direction = requireNotNull(direction) { "${Message::class.java.simpleName} direction is not specified!" },
+                createdAt = createdAt,
+                body = body,
+                contents = contents,
+                location = location,
+                replyMarkup = replyMarkup
+            )
+    }
+
+    fun isEmpty(): Boolean =
+        body.isNullOrBlank()
+                && contents.isNullOrEmpty()
+                && location == null
+                && replyMarkup == null
+
+    fun isTextMessage(): Boolean =
+        !body.isNullOrBlank()
+                && contents.isNullOrEmpty()
+                && location == null
+                && replyMarkup == null
+
+    fun isTextMessageWithImages(): Boolean = isTextMessageWithContents<Image>()
+
+    fun isTextMessageWithVideos(): Boolean = isTextMessageWithContents<Video>()
+
+    fun isTextMessageWithAudio(): Boolean = isTextMessageWithContents<Audio>()
+
+    fun isTextMessageWithDocuments(): Boolean = isTextMessageWithContents<Document>()
+
+    inline fun <reified T> isTextMessageWithContents(): Boolean =
+        isTextMessageWithContents<T> { it.isAnyFileExists() }
+
+    inline fun <reified T> isTextMessageWithContents(
+        predicate: (content: Content) -> Boolean
+    ): Boolean =
+        !body.isNullOrBlank()
+                && (!contents.isNullOrEmpty() && contents.all { it is T && predicate.invoke(it) })
+                && location == null
+                && replyMarkup == null
+
+}

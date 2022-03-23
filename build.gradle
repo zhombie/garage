@@ -26,6 +26,7 @@ ext.projectArtifactId = { project ->
     switch (project.name) {
         // Single module
         case 'activity':
+        case 'chat':
         case 'context':
         case 'drawable':
         case 'fragment':

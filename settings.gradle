@@ -18,6 +18,9 @@ include ':activity'
 include ':animation:funhouse'
 include ':animation:scale'
 
+// chat
+include ':chat'
+
 // context
 include ':context'
 
