@@ -10,6 +10,9 @@ open class CallbackButton constructor(
     val payload: String? = null
 ) : TextButton(id = id, text = text), Parcelable {
 
-    constructor(text: String) : this(id = generateId(), text = text)
+    constructor(
+        text: String,
+        payload: String?
+    ) : this(id = generateId(), text = text, payload = payload)
 
 }
