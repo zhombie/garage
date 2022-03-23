@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.1'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
