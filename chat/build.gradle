@@ -13,5 +13,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // multimedia-store
-    api project(':multimedia:store')
+    implementation project(':multimedia:store')
 }
