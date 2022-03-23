@@ -4,6 +4,13 @@ import kz.garage.multimedia.store.model.Content
 import kz.garage.multimedia.store.model.Media
 import kz.garage.multimedia.store.model.Resolution
 
+fun Content.getIdAsLongOrNull(): Long? =
+    try {
+        id.toLongOrNull()
+    } catch (e: Exception) {
+        null
+    }
+
 /**
  * [Media.Playable.duration]
  */

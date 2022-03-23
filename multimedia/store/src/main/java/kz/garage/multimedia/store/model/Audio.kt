@@ -7,12 +7,12 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Audio constructor(
     override val id: String,
-    override val uri: Uri,
+    override val uri: Uri?,
     override val title: String?,
     override val displayName: String?,
     override val folder: Folder?,
     override val history: History?,
-    override val duration: Long,
+    override val duration: Long?,
     override val properties: Properties?,
     val album: Album?,
     override val publicFile: PublicFile?,
@@ -35,5 +35,23 @@ data class Audio constructor(
         val title: String?,
         val artist: String?
     ) : Parcelable
+
+    constructor(
+        id: String?,
+        title: String?,
+        remoteFile: RemoteFile?
+    ) : this(
+        id = id ?: generateId(),
+        uri = null,
+        title = title,
+        displayName = null,
+        folder = null,
+        history = null,
+        duration = null,
+        properties = null,
+        album = null,
+        publicFile = null,
+        remoteFile = remoteFile
+    )
 
 }

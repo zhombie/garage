@@ -1,6 +1,5 @@
 package kz.garage.samples.multimedia.store
 
-import android.net.Uri
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import com.google.android.material.button.MaterialButton
@@ -8,6 +7,7 @@ import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
 import kz.garage.activity.view.bind
 import kz.garage.locale.base.LocaleManagerBaseActivity
+import kz.garage.multimedia.store.model.Content
 import kz.garage.multimedia.store.model.Image
 
 class MultimediaStoreActivity : LocaleManagerBaseActivity() {
@@ -31,8 +31,9 @@ class MultimediaStoreActivity : LocaleManagerBaseActivity() {
                 bundle.putParcelable(
                     "image",
                     Image(
-                        uri = Uri.EMPTY,
-                        displayName = "Display name"
+                        id = Content.generateId(),
+                        title = "Image",
+                        remoteFile = Content.RemoteFile("https://google.com"),
                     )
                 )
             } else {

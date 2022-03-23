@@ -7,4 +7,8 @@ import kotlinx.parcelize.Parcelize
 open class TextButton constructor(
     override val id: String,
     open val text: String
-) : Button(), Parcelable
+) : Button(), Parcelable {
+
+    constructor(text: String) : this(id = generateId(), text = text)
+
+}

@@ -12,6 +12,16 @@ open class URLButton constructor(
 ) : TextButton(id = id, text = text), Parcelable {
 
     constructor(
+        text: String,
+        url: String
+    ) : this(id = generateId(), text = text, url = url)
+
+    constructor(
+        text: String,
+        uri: Uri
+    ) : this(text = text, url = uri.toString())
+
+    constructor(
         id: String,
         text: String,
         uri: Uri

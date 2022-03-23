@@ -19,7 +19,7 @@ import kotlin.random.Random
  */
 abstract class Content constructor(
     open val id: String,
-    open val uri: Uri,
+    open val uri: Uri?,
     open val title: String?,
     open val displayName: String?,
     open val folder: Folder?,
@@ -110,7 +110,15 @@ abstract class Content constructor(
             else -> null
         }
 
-    fun isStorageFileExists(): Boolean = uri != Uri.EMPTY
+    val availableFileUri: Uri?
+        get() = when {
+            isStorageFileExists() -> uri
+            isPublicFileExists() -> publicFile?.uri
+            isRemoteFileExists() -> remoteFile?.uri
+            else -> null
+        }
+
+    fun isStorageFileExists(): Boolean = uri != null && uri != Uri.EMPTY
 
     fun isPublicFileExists(): Boolean = publicFile?.exists() == true
 

@@ -48,6 +48,11 @@ data class Message internal constructor(
 
         fun getReplyMarkup(): ReplyMarkup? = replyMarkup
 
+        fun setRandomId(): Builder {
+            this.id = generateId()
+            return this
+        }
+
         fun setId(id: String?): Builder {
             this.id = id
             return this
@@ -73,6 +78,9 @@ data class Message internal constructor(
             this.body = body
             return this
         }
+
+        fun setContent(content: Content?): Builder =
+            setContents(if (content == null) null else listOf(content))
 
         fun setContents(contents: List<Content>?): Builder {
             this.contents = contents

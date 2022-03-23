@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 abstract class Media internal constructor(
     override val id: String,
-    override val uri: Uri,
+    override val uri: Uri?,
     override val title: String?,
     override val displayName: String?,
     override val folder: Folder?,
@@ -26,17 +26,12 @@ abstract class Media internal constructor(
 ), Parcelable {
 
     interface Playable {
-        companion object {
-            const val UNDEFINED_DURATION = -1L
-        }
-
         /**
          * [duration] - The duration time of the [Media]
          */
-        val duration: Long
+        val duration: Long?
 
-        fun isDurationUndefined(): Boolean =
-            duration == UNDEFINED_DURATION
+        fun hasDuration(): Boolean = (duration ?: -1L) >= 0
     }
 
     interface Visual {

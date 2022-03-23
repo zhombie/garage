@@ -8,4 +8,8 @@ open class CallbackButton constructor(
     override val id: String,
     override val text: String,
     val payload: String? = null
-) : TextButton(id = id, text = text), Parcelable
+) : TextButton(id = id, text = text), Parcelable {
+
+    constructor(text: String) : this(id = generateId(), text = text)
+
+}
