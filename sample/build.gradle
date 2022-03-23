@@ -114,6 +114,7 @@ dependencies {
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-funhouse:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"
+        implementation "com.github.zhombie.garage:chat:$libraryVersion"
         implementation "com.github.zhombie.garage:context:$libraryVersion"
         implementation "com.github.zhombie.garage:drawable:$libraryVersion"
         implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
@@ -140,6 +141,7 @@ dependencies {
         implementation project(':activity')
         implementation project(':animation:funhouse')
         implementation project(':animation:scale')
+        implementation project(':chat')
         implementation project(':context')
         implementation project(':drawable')
         implementation project(':file:extension')
