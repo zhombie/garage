@@ -30,6 +30,7 @@ ext.projectArtifactId = { project ->
         case 'context':
         case 'drawable':
         case 'fragment':
+        case 'gson':
         case 'json':
         case 'kotlin':
         case 'locale':

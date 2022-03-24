@@ -34,6 +34,9 @@ include ':file:size'
 // fragment
 include ':fragment'
 
+// gson
+include ':gson'
+
 // json
 include ':json'
 

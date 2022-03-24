@@ -120,6 +120,7 @@ dependencies {
         implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
         implementation "com.github.zhombie.garage:file-size:$libraryVersion"
         implementation "com.github.zhombie.garage:fragment:$libraryVersion"
+        implementation "com.github.zhombie.garage:gson:$libraryVersion"
         implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
@@ -147,6 +148,7 @@ dependencies {
         implementation project(':file:extension')
         implementation project(':file:size')
         implementation project(':fragment')
+        implementation project(':gson')
         implementation project(':json')
         implementation project(':kotlin')
         implementation project(':lifecycle:livedata')
