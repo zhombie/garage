@@ -6,29 +6,32 @@ import org.json.JSONObject
 
 /**
  * Usage
- * val firstName = json.getStringOrNull("first_name")
- * val lastName = json.getStringOrNull("last_name")
+ * val firstName = jsonObject.getStringOrNull("first_name")
+ * val lastName = jsonObject.getStringOrNull("last_name")
  */
 fun JSONObject.getIntOrNull(name: String): Int? =
     try {
         if (isNull(name)) null else getInt(name)
     } catch (e: JSONException) {
-        val strValue = getStringOrNull(name)
-        strValue?.toIntOrNull()
+        getStringOrNull(name)?.toIntOrNull()
     }
 
 fun JSONObject.getDoubleOrNull(name: String): Double? =
     try {
         if (isNull(name)) null else getDouble(name)
     } catch (e: JSONException) {
-        null
+        getStringOrNull(name)?.toDoubleOrNull()
     }
 
 fun JSONObject.getLongOrNull(name: String): Long? =
     try {
         if (isNull(name)) null else getLong(name)
     } catch (e: JSONException) {
-        null
+        try {
+            getStringOrNull(name)?.toLongOrNull()
+        } catch (e: IllegalArgumentException) {
+            null
+        }
     }
 
 fun JSONObject.getStringOrNull(name: String): String? =
@@ -66,9 +69,24 @@ fun JSONObject.getJSONArrayOrEmpty(name: String): JSONArray =
         JSONArray()
     }
 
+inline fun <reified T> JSONObject.getAsList(name: String): List<T> =
+    try {
+        if (isNull(name)) {
+            emptyList()
+        } else {
+            optJSONArray(name)?.toMutableList() ?: emptyList()
+        }
+    } catch (e: JSONException) {
+        emptyList()
+    }
+
 inline fun <reified T> JSONObject.getAsMutableList(name: String): MutableList<T> =
     try {
-        if (isNull(name)) mutableListOf() else optJSONArray(name)?.toMutableList() ?: mutableListOf()
+        if (isNull(name)) {
+            mutableListOf()
+        } else {
+            optJSONArray(name)?.toMutableList() ?: mutableListOf()
+        }
     } catch (e: JSONException) {
         mutableListOf()
     }
