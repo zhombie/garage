@@ -23,6 +23,9 @@ data class Notification constructor(
 
         fun getCreatedAt(): Long? = createdAt
 
+        fun setRandomId(): Builder =
+            setId(generateId())
+
         fun setId(id: String?): Builder {
             this.id = id
             return this

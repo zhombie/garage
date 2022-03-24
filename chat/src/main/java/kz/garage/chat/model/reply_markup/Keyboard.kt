@@ -2,8 +2,13 @@ package kz.garage.chat.model.reply_markup
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import kz.garage.chat.model.reply_markup.button.Button
 
 @Parcelize
 data class Keyboard constructor(
     override val rows: List<Row>
-) : ReplyMarkup(), Parcelable
+) : ReplyMarkup(), Parcelable {
+
+    constructor(rows: Collection<List<Button>>) : this(rows.map { Row(it) })
+
+}

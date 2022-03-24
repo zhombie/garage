@@ -21,8 +21,8 @@ data class Message internal constructor(
 ) : Entity(), Parcelable {
 
     enum class Direction {
-        INCOMING,
-        OUTGOING
+        OUTGOING,
+        INCOMING
     }
 
     class Builder {
@@ -48,10 +48,8 @@ data class Message internal constructor(
 
         fun getReplyMarkup(): ReplyMarkup? = replyMarkup
 
-        fun setRandomId(): Builder {
-            this.id = generateId()
-            return this
-        }
+        fun setRandomId(): Builder =
+            setId(generateId())
 
         fun setId(id: String?): Builder {
             this.id = id
