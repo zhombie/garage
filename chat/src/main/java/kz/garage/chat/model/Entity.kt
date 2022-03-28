@@ -12,4 +12,6 @@ abstract class Entity : Parcelable {
 
     abstract val id: String
 
+    abstract val createdAt: Long?
+
 }

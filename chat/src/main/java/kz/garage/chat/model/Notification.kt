@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class Notification constructor(
     override val id: String,
 
-    val createdAt: Long? = null,
+    override val createdAt: Long? = null,
 
     val body: String
 ) : Entity(), Parcelable {

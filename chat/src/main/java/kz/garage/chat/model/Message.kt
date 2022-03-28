@@ -12,7 +12,7 @@ data class Message internal constructor(
 
     val direction: Direction,
 
-    val createdAt: Long? = null,
+    override val createdAt: Long? = null,
 
     val body: String? = null,
     val contents: List<Content>? = null,
