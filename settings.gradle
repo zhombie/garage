@@ -70,6 +70,9 @@ include ':popup:tooltip'
 // recyclerview
 include ':recyclerview'
 
+// retrofit
+include ':retrofit:download'
+
 // text
 include ':text'
 

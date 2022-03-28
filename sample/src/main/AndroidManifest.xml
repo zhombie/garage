@@ -71,6 +71,9 @@
         <!-- recyclerview -->
         <activity android:name=".samples.recyclerview.RecyclerViewActivity" />
 
+        <!-- retrofit -->
+        <activity android:name=".samples.download.RetrofitDownloadActivity" />
+
         <!-- window -->
         <activity android:name=".samples.window.WindowActivity" />
         <activity android:name=".samples.window.keyboard.KeyboardActivity" />

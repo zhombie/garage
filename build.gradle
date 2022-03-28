@@ -68,6 +68,9 @@ ext.projectArtifactId = { project ->
 
         // popup
         case 'tooltip':
+
+        // retrofit
+        case 'download':
             return project.parent.name + '-' + project.name
     }
     return null

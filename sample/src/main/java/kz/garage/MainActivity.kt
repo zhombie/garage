@@ -5,6 +5,7 @@ import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.activity.Activity
 import kz.garage.samples.animation.AnimationActivity
+import kz.garage.samples.download.RetrofitDownloadActivity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.locale.LocaleActivity
 import kz.garage.samples.location.LocationActivity
@@ -28,6 +29,7 @@ class MainActivity : BaseNestedModuleActivity() {
         listOf(
             Sample("activity", "Activity", null),
             Sample("animation", "Animation", null),
+            Sample("download", "Download", null),
             Sample("fragment", "Fragment", null),
             Sample("locale", "Locale", null),
             Sample("location", "Location", null),
@@ -44,6 +46,8 @@ class MainActivity : BaseNestedModuleActivity() {
                 startActivity<Activity>()
             "animation" ->
                 startActivity<AnimationActivity>()
+            "download" ->
+                startActivity<RetrofitDownloadActivity>()
             "fragment" ->
                 startActivity<FragmentActivity>()
             "locale" ->

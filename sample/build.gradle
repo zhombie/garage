@@ -72,6 +72,12 @@ android {
     }
 }
 
+ext {
+    coroutines_version = '1.6.0'
+    okhttp_version = '4.9.3'
+    retrofit_version = '2.9.0'
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
@@ -94,17 +100,30 @@ dependencies {
     implementation "com.google.android.material:material:1.5.0"
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.0.0'
+    implementation 'com.google.android.gms:play-services-basement:18.0.1'
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+
+    // OkHTTPClient
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:okhttp-tls:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // Retrofit & relevant converters
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // Library
     def isRemoteDependencyEnabled = false
@@ -162,6 +181,7 @@ dependencies {
         implementation project(':permission')
         implementation project(':popup:tooltip')
         implementation project(':recyclerview')
+        implementation project(':retrofit:download')
         implementation project(':text')
         implementation project(':textview')
         implementation project(':view')
