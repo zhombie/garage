@@ -1,4 +1,4 @@
-package kz.garage.samples.download
+package kz.garage.samples.retrofit.download
 
 import kz.garage.retrofit.download.DownloadStateListener
 import okhttp3.ResponseBody

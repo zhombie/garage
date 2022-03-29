@@ -72,7 +72,8 @@
         <activity android:name=".samples.recyclerview.RecyclerViewActivity" />
 
         <!-- retrofit -->
-        <activity android:name=".samples.download.RetrofitDownloadActivity" />
+        <activity android:name=".samples.retrofit.RetrofitActivity" />
+        <activity android:name=".samples.retrofit.download.RetrofitDownloadActivity" />
 
         <!-- window -->
         <activity android:name=".samples.window.WindowActivity" />

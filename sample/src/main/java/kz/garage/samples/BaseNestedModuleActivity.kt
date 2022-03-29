@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kz.garage.R
 import kz.garage.Sample
+import kz.garage.SamplesAdapter
 import kz.garage.activity.view.bind
 import kz.garage.recyclerview.layoutmanager.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
-import kz.garage.SamplesAdapter
 
 abstract class BaseNestedModuleActivity : AppCompatActivity() {
 
@@ -25,6 +25,8 @@ abstract class BaseNestedModuleActivity : AppCompatActivity() {
     protected abstract fun getHeaderTitle(): String
 
     protected abstract fun getSamples(): List<Sample>
+
+    protected fun getSortedSamples(): List<Sample> = getSamples().sortedBy { it.title }
 
     protected abstract fun onSampleClicked(sample: Sample)
 
@@ -44,7 +46,7 @@ abstract class BaseNestedModuleActivity : AppCompatActivity() {
         recyclerView.setup {
             setVerticalLinearLayoutManager()
 
-            samplesAdapter = SamplesAdapter(getSamples()) { sample, _ ->
+            samplesAdapter = SamplesAdapter(getSortedSamples()) { sample, _ ->
                 onSampleClicked(sample)
             }
             adapter = samplesAdapter

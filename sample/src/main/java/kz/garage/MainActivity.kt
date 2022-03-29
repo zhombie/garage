@@ -5,7 +5,6 @@ import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.activity.Activity
 import kz.garage.samples.animation.AnimationActivity
-import kz.garage.samples.download.RetrofitDownloadActivity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.locale.LocaleActivity
 import kz.garage.samples.location.LocationActivity
@@ -13,6 +12,7 @@ import kz.garage.samples.multimedia.MultimediaActivity
 import kz.garage.samples.permission.PermissionActivity
 import kz.garage.samples.popup.PopupActivity
 import kz.garage.samples.recyclerview.RecyclerViewActivity
+import kz.garage.samples.retrofit.RetrofitActivity
 import kz.garage.samples.window.WindowActivity
 
 class MainActivity : BaseNestedModuleActivity() {
@@ -29,7 +29,6 @@ class MainActivity : BaseNestedModuleActivity() {
         listOf(
             Sample("activity", "Activity", null),
             Sample("animation", "Animation", null),
-            Sample("download", "Download", null),
             Sample("fragment", "Fragment", null),
             Sample("locale", "Locale", null),
             Sample("location", "Location", null),
@@ -37,6 +36,7 @@ class MainActivity : BaseNestedModuleActivity() {
             Sample("permission", "Permission", null),
             Sample("popup", "Popup", null),
             Sample("recyclerview", "RecyclerView", null),
+            Sample("retrofit", "Retrofit", null),
             Sample("window", "Window", null)
         )
 
@@ -46,8 +46,6 @@ class MainActivity : BaseNestedModuleActivity() {
                 startActivity<Activity>()
             "animation" ->
                 startActivity<AnimationActivity>()
-            "download" ->
-                startActivity<RetrofitDownloadActivity>()
             "fragment" ->
                 startActivity<FragmentActivity>()
             "locale" ->
@@ -62,6 +60,8 @@ class MainActivity : BaseNestedModuleActivity() {
                 startActivity<PopupActivity>()
             "recyclerview" ->
                 startActivity<RecyclerViewActivity>()
+            "retrofit" ->
+                startActivity<RetrofitActivity>()
             "window" ->
                 startActivity<WindowActivity>()
         }
