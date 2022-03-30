@@ -1,9 +1,7 @@
 package kz.garage.retrofit.download
 
-import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
-import okhttp3.internal.headersContentLength
 
 class DownloadProgressInterceptor : Interceptor {
 
@@ -11,8 +9,6 @@ class DownloadProgressInterceptor : Interceptor {
         val request = chain.request()
 
         val response = chain.proceed(request)
-
-        Log.d("DownloadProgressInterceptor", "intercept() -> response.headersContentLength(): ${response.headersContentLength()}")
 
         val listener = request.tag(DownloadStateListener::class.java)
         if (listener is DownloadStateListener) {

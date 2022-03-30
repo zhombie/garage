@@ -1,6 +1,5 @@
 package kz.garage.retrofit.download
 
-import android.util.Log
 import okhttp3.ResponseBody
 import java.io.File
 import java.io.FileOutputStream
@@ -12,16 +11,9 @@ class FileWriter constructor(
     val bufferSize: Int = 4 * 1024
 ) {
 
-    companion object {
-        private val TAG = FileWriter::class.java.simpleName
-    }
-
     @Volatile
     var isActive: Boolean = false
-        private set(value) {
-            field = value
-            Log.d(TAG, "isActive: $value")
-        }
+        private set
 
     private var inputStream: InputStream? = null
     private var outputStream: OutputStream? = null
@@ -51,9 +43,11 @@ class FileWriter constructor(
             }
         }
             .onSuccess {
+                isActive = false
                 return outputFile
             }
             .onFailure {
+                isActive = false
                 it.printStackTrace()
             }
         return null
