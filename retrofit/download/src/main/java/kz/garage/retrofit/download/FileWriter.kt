@@ -1,5 +1,6 @@
 package kz.garage.retrofit.download
 
+import android.util.Log
 import okhttp3.ResponseBody
 import java.io.File
 import java.io.FileOutputStream
@@ -19,19 +20,23 @@ class FileWriter constructor(
     private var inputStream: InputStream? = null
     private var outputStream: OutputStream? = null
 
+    @Throws(CancellationException::class)
     fun write(responseBody: ResponseBody?): File? =
         write(responseBody?.byteStream())
 
+    @Throws(CancellationException::class)
     fun write(inputStream: InputStream?): File? {
         if (inputStream == null) return null
         this.inputStream = inputStream
         runCatching {
-            isActive = true
-
             var totalBytes = 0
             outputStream = FileOutputStream(outputFile)
             outputStream?.use { buffer ->
                 inputStream.use { inputStream ->
+                    if (!isActive) {
+                        isActive = true
+                    }
+
                     val bytes = ByteArray(bufferSize)
                     var length: Int
                     while (inputStream.read(bytes).also { length = it } >= 0) {
@@ -48,12 +53,16 @@ class FileWriter constructor(
         }
             .onSuccess {
                 isActive = false
+
                 return outputFile
             }
             .onFailure {
                 isActive = false
+
                 if (it is CancellationException) {
                     throw it
+                } else {
+                    Log.e("FileWriter", it.toString())
                 }
             }
         return null
