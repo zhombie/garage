@@ -1,18 +1,32 @@
 package kz.garage.file.extension
 
 enum class Extension constructor(val value: String) {
+    // Image
+    BMP("bmp"),
+
     JPG("jpg"),
     JPEG("jpeg"),
 
     PNG("png"),
 
+    GIF("gif"),
+
+    // Text
     TXT("txt"),
 
+    // Microsoft Word
     DOC("doc"),
     DOCX("docx"),
 
+    // Microsoft PowerPoint
+    PPT("ppt"),
+    PPTX("pptx"),
+
+    // Microsoft Excel
     XLS("xls"),
     XLSX("xlsx"),
+
+    CSV("csv"),
 
     PDF("pdf"),
 
@@ -34,6 +48,7 @@ enum class Extension constructor(val value: String) {
 
     FLAC("flac"),
 
+    // Video
     MP4("mp4"),
     MOV("mov"),
     WEBM("webm"),
