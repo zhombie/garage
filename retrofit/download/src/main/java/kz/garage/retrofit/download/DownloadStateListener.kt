@@ -2,7 +2,9 @@ package kz.garage.retrofit.download
 
 fun interface DownloadStateListener {
 
-    sealed class State constructor(open val contentLength: Long) {
+    sealed class State private constructor(
+        open val contentLength: Long
+    ) {
 
         val isContentLengthUnknown: Boolean
             get() = contentLength <= 0

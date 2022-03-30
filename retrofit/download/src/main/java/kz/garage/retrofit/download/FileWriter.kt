@@ -5,6 +5,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
+import java.util.concurrent.CancellationException
 
 class FileWriter constructor(
     val outputFile: File,
@@ -34,7 +35,10 @@ class FileWriter constructor(
                     val bytes = ByteArray(bufferSize)
                     var length: Int
                     while (inputStream.read(bytes).also { length = it } >= 0) {
-                        if (!isActive) break
+                        if (!isActive) {
+                            closeQuietly()
+                            throw CancellationException("User cancelled IO streams!")
+                        }
                         totalBytes += length
                         buffer.write(bytes, 0, length)
                     }
@@ -48,14 +52,18 @@ class FileWriter constructor(
             }
             .onFailure {
                 isActive = false
-                it.printStackTrace()
+                if (it is CancellationException) {
+                    throw it
+                }
             }
         return null
     }
 
     fun cancel() {
         isActive = false
+    }
 
+    private fun closeQuietly() {
         try {
             outputStream?.close()
         } catch (e: Exception) {

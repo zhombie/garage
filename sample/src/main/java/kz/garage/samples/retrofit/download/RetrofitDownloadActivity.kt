@@ -99,7 +99,14 @@ class RetrofitDownloadActivity : AppCompatActivity() {
                         val filename = "DOWNLOAD_${System.currentTimeMillis()}"
 
                         fileWriter = FileWriter(outputFile = File(directory, filename))
-                        val outputFile = fileWriter?.write(responseBody)
+
+                        val outputFile = try {
+                            fileWriter?.write(responseBody)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            state = null
+                            null
+                        }
 
                         Log.d(TAG, "[RESULT] outputFile: $outputFile")
                     }

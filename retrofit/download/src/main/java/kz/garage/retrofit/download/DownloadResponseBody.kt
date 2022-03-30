@@ -27,6 +27,7 @@ class DownloadResponseBody constructor(
     private fun source(source: Source): Source {
         return object : ForwardingSource(source) {
             private val totalContentLength = contentLength()
+
             private var totalBytesRead = 0L
 
             @Throws(IOException::class)
