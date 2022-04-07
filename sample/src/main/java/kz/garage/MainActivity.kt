@@ -2,7 +2,6 @@ package kz.garage
 
 import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.samples.BaseNestedModuleActivity
 import kz.garage.samples.activity.Activity
 import kz.garage.samples.animation.AnimationActivity
 import kz.garage.samples.fragment.FragmentActivity

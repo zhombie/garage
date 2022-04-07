@@ -4,7 +4,7 @@ import kz.garage.R
 import kz.garage.Sample
 import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.samples.BaseNestedModuleActivity
+import kz.garage.BaseNestedModuleActivity
 import kz.garage.samples.multimedia.store.MultimediaStoreActivity
 
 class MultimediaActivity : BaseNestedModuleActivity() {

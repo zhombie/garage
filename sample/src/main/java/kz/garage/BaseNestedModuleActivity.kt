@@ -1,13 +1,10 @@
-package kz.garage.samples
+package kz.garage
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import kz.garage.R
-import kz.garage.Sample
-import kz.garage.SamplesAdapter
 import kz.garage.activity.view.bind
 import kz.garage.recyclerview.layoutmanager.setVerticalLinearLayoutManager
 import kz.garage.recyclerview.setup
