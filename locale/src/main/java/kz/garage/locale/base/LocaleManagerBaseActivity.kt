@@ -40,6 +40,7 @@ abstract class LocaleManagerBaseActivity : AppCompatActivity() {
         ActivityRecreationHelper.recreate(this, true)
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     protected fun onSetLocale(locale: Locale) {
     }
 
