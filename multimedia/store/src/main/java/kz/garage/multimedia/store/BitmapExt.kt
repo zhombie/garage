@@ -8,8 +8,13 @@ import java.io.InputStream
 @Throws(FileNotFoundException::class)
 fun InputStream?.getImageResolution(): Resolution? {
     if (this == null) return null
-    val options = BitmapFactory.Options()
-    options.inJustDecodeBounds = true
+    val options = BitmapFactory.Options().apply {
+        inJustDecodeBounds = true
+    }
     BitmapFactory.decodeStream(this, null, options)
-    return Resolution(options.outWidth, options.outHeight)
+    return if (options.outWidth > 0 && options.outHeight > 0) {
+        Resolution(options.outWidth, options.outHeight)
+    } else {
+        null
+    }
 }

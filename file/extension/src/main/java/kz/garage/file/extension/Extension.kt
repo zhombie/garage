@@ -9,6 +9,10 @@ enum class Extension constructor(val value: String) {
 
     PNG("png"),
 
+    WEBP("webp"),
+
+    RAW("raw"),
+
     GIF("gif"),
 
     // Text
@@ -30,6 +34,11 @@ enum class Extension constructor(val value: String) {
 
     PDF("pdf"),
 
+    EPUB("epub"),
+
+    PAGES("pages"),
+
+    HTM("htm"),
     HTML("html"),
 
     MP3("mp3"),
@@ -53,5 +62,11 @@ enum class Extension constructor(val value: String) {
     MOV("mov"),
     WEBM("webm"),
     MKV("mkv"),
-    AVI("avi")
+    AVI("avi"),
+
+    // Archive
+    SEVEN_ZIP("7zip"),
+    RAR("rar"),
+    ZIP("zip"),
+    ZIPX("zipx")
 }

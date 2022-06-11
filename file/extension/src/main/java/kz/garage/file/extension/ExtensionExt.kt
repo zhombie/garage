@@ -10,4 +10,6 @@ inline fun Extension.isAudio(): Boolean = isInstance(Extensions.AUDIO)
 
 inline fun Extension.isDocument(): Boolean = isInstance(Extensions.DOCUMENT)
 
+inline fun Extension.isArchive(): Boolean = isInstance(Extensions.ARCHIVE)
+
 inline fun Extension.isInstance(extensions: Extensions): Boolean = this in extensions
