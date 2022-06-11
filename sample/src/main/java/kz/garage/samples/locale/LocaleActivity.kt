@@ -20,7 +20,7 @@ class LocaleActivity : LocaleManagerBaseActivity() {
 
         button.setOnClickListener {
             AlertDialog.Builder(this)
-                .setItems(arrayOf("En", "Kaz", "Rus")) { dialog, which ->
+                .setItems(arrayOf("en", "kk", "ru")) { dialog, which ->
                     dialog.dismiss()
 
                     val locale = when (which) {
