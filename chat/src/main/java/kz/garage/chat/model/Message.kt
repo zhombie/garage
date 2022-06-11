@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package kz.garage.chat.model
 
 import android.location.Location
@@ -116,6 +118,10 @@ data class Message internal constructor(
             )
     }
 
+    fun isIncoming(): Boolean = direction == Direction.INCOMING
+
+    fun isOutgoing(): Boolean = direction == Direction.OUTGOING
+
     fun isEmpty(): Boolean =
         body.isNullOrBlank()
                 && contents.isNullOrEmpty()
@@ -125,6 +131,28 @@ data class Message internal constructor(
     fun isTextMessage(): Boolean =
         !body.isNullOrBlank()
                 && contents.isNullOrEmpty()
+                && location == null
+                && replyMarkup == null
+
+    fun isNullableTextMessageWithImages(): Boolean =
+        isNullableTextMessageWithContents<Image>()
+
+    fun isNullableTextMessageWithVideos(): Boolean =
+        isNullableTextMessageWithContents<Video>()
+
+    fun isNullableTextMessageWithAudio(): Boolean =
+        isNullableTextMessageWithContents<Audio>()
+
+    fun isNullableTextMessageWithDocuments(): Boolean =
+        isNullableTextMessageWithContents<Document>()
+
+    inline fun <reified T> isNullableTextMessageWithContents(): Boolean =
+        isNullableTextMessageWithContents<T> { it.isAnyFileExists() }
+
+    inline fun <reified T> isNullableTextMessageWithContents(
+        predicate: (content: Content) -> Boolean
+    ): Boolean =
+        (!contents.isNullOrEmpty() && contents.all { it is T && predicate.invoke(it) })
                 && location == null
                 && replyMarkup == null
 
