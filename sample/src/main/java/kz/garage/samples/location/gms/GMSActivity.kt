@@ -157,7 +157,10 @@ class GMSActivity : AppCompatActivity() {
             )
             .addOnCompleteListener(this) {
                 if (it.isSuccessful && it.isComplete) {
-                    Log.d(TAG, "checkLocationSettings() -> [SUCCESS] ${it.result.locationSettingsStates}")
+                    Log.d(
+                        TAG,
+                        "checkLocationSettings() -> [SUCCESS] ${it.result.locationSettingsStates}"
+                    )
                     requestLocationUpdates()
                 } else {
                     Log.d(TAG, "checkLocationSettings() -> [FAILED] ${it.exception}")
@@ -211,12 +214,16 @@ class GMSActivity : AppCompatActivity() {
         textView.text = "Location Status: $isAvailable"
     }
 
-    private fun onLocationReceived(location: Location) {
-        if (location.isMocked()) {
-            Log.e(TAG, "onLocationReceived() -> mock: $location")
-        }
+    private fun onLocationReceived(location: Location?) {
+        if (location == null) {
+            Log.e(TAG, "onLocationReceived() -> location is null")
+        } else {
+            if (location.isMocked()) {
+                Log.e(TAG, "onLocationReceived() -> mocked: $location")
+            }
 
-        textView.text = location.toString()
+            textView.text = location.toString()
+        }
     }
 
     override fun onDestroy() {

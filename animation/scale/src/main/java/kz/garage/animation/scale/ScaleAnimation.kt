@@ -77,18 +77,18 @@ class ScaleAnimation internal constructor(
                     .scaleY(scale)
                     .setInterpolator(CycleInterpolator(0.5F))  // In order to repeat
                     .setListener(object : ViewPropertyAnimatorListener {
-                        override fun onAnimationStart(view: View?) {
+                        override fun onAnimationStart(view: View) {
                             isAnimationRunning = true
                             onAnimationStart.invoke()
                         }
 
-                        override fun onAnimationEnd(view: View?) {
+                        override fun onAnimationEnd(view: View) {
                             isAnimationRunning = false
                             onAnimationEnd.invoke()
                             onClickAction.invoke(it)
                         }
 
-                        override fun onAnimationCancel(view: View?) {
+                        override fun onAnimationCancel(view: View) {
                             isAnimationRunning = false
                         }
                     })

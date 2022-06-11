@@ -73,7 +73,7 @@ android {
 }
 
 ext {
-    coroutines_version = '1.6.0'
+    coroutines_version = '1.6.2'
     okhttp_version = '4.9.3'
     retrofit_version = '2.9.0'
 }
@@ -88,29 +88,29 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.4.0'
 
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
 
     // Core
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
 
     // Fragment
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
 
     // Material Design Components
-    implementation "com.google.android.material:material:1.5.0"
+    implementation 'com.google.android.material:material:1.6.1'
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.0.1'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-basement:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 
     // OkHTTPClient
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
