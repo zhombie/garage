@@ -19,7 +19,8 @@ include ':animation:funhouse'
 include ':animation:scale'
 
 // chat
-include ':chat'
+include ':chat:chat-core'
+include ':chat:chat-ui'
 
 // context
 include ':context'
@@ -51,9 +52,9 @@ include ':lifecycle:viewmodel'
 include ':locale'
 
 // location
-include ':location:core'
-include ':location:compass'
-include ':location:gms'
+include ':location:location-core'
+include ':location:location-compass'
+include ':location:location-gms'
 
 // material
 include ':material:tablayout'

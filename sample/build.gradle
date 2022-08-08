@@ -12,14 +12,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '31.0.0'
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId 'kz.garage'
 
         minSdkVersion 23
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         versionCode project.ext.version_code
         versionName project.version
@@ -73,7 +73,7 @@ android {
 }
 
 ext {
-    coroutines_version = '1.6.2'
+    coroutines_version = '1.6.4'
     okhttp_version = '4.9.3'
     retrofit_version = '2.9.0'
 }
@@ -85,7 +85,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // Activity
-    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
 
     // AppCompat
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -94,19 +94,19 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
 
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.4.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.1'
 
     // Material Design Components
     implementation 'com.google.android.material:material:1.6.1'
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.0.2'
+    implementation 'com.google.android.gms:play-services-basement:18.1.0'
     implementation 'com.google.android.gms:play-services-location:20.0.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.1.0'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
@@ -133,7 +133,8 @@ dependencies {
         implementation "com.github.zhombie.garage:activity:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-funhouse:$libraryVersion"
         implementation "com.github.zhombie.garage:animation-scale:$libraryVersion"
-        implementation "com.github.zhombie.garage:chat:$libraryVersion"
+        implementation "com.github.zhombie.garage:chat:chat-core:$libraryVersion"
+        implementation "com.github.zhombie.garage:chat:chat-ui:$libraryVersion"
         implementation "com.github.zhombie.garage:context:$libraryVersion"
         implementation "com.github.zhombie.garage:drawable:$libraryVersion"
         implementation "com.github.zhombie.garage:file-extension:$libraryVersion"
@@ -145,9 +146,9 @@ dependencies {
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-viewmodel:$libraryVersion"
         implementation "com.github.zhombie.garage:locale:$libraryVersion"
-        implementation "com.github.zhombie.garage:location-compass:$libraryVersion"
-        implementation "com.github.zhombie.garage:location-core:$libraryVersion"
-        implementation "com.github.zhombie.garage:location-gms:$libraryVersion"
+        implementation "com.github.zhombie.garage:location:location-core:$libraryVersion"
+        implementation "com.github.zhombie.garage:location:location-compass:$libraryVersion"
+        implementation "com.github.zhombie.garage:location:location-gms:$libraryVersion"
         implementation "com.github.zhombie.garage:material-tablayout:$libraryVersion"
         implementation "com.github.zhombie.garage:multimedia-store:$libraryVersion"
         implementation "com.github.zhombie.garage:permission:$libraryVersion"
@@ -161,7 +162,8 @@ dependencies {
         implementation project(':activity')
         implementation project(':animation:funhouse')
         implementation project(':animation:scale')
-        implementation project(':chat')
+        implementation project(':chat:chat-core')
+        implementation project(':chat:chat-ui')
         implementation project(':context')
         implementation project(':drawable')
         implementation project(':file:extension')
@@ -173,9 +175,9 @@ dependencies {
         implementation project(':lifecycle:livedata')
         implementation project(':lifecycle:viewmodel')
         implementation project(':locale')
-        implementation project(':location:compass')
-        implementation project(':location:core')
-        implementation project(':location:gms')
+        implementation project(':location:location-core')
+        implementation project(':location:location-compass')
+        implementation project(':location:location-gms')
         implementation project(':material:tablayout')
         implementation project(':multimedia:store')
         implementation project(':permission')

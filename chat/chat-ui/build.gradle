@@ -1,0 +1,23 @@
+apply plugin: 'kotlin-parcelize'
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'chat_ui_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    // Material Design Components
+    implementation 'com.google.android.material:material:1.6.1'
+
+    implementation project(':chat:chat-core')
+    implementation project(':multimedia:store')
+}

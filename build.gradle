@@ -12,7 +12,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // Google Services
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.gms:google-services:4.3.13'
 
         // Secrets Gradle Plugin
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
@@ -22,11 +22,12 @@ buildscript {
 /**
  * Shared configs across subprojects
  */
-ext.projectArtifactId = { project ->
+ext.projectArtifactId = { Project project ->
+    println "Artifact ID -> project: [$project]"
+
     switch (project.name) {
         // Single module
         case 'activity':
-        case 'chat':
         case 'context':
         case 'drawable':
         case 'fragment':
@@ -47,6 +48,10 @@ ext.projectArtifactId = { project ->
         case 'funhouse':
         case 'scale':
 
+        // chat
+        case 'chat-core':
+        case 'chat-ui':
+
         // file
         case 'extension':
         case 'size':
@@ -56,9 +61,9 @@ ext.projectArtifactId = { project ->
         case 'viewmodel':
 
         // location
-        case 'core':
-        case 'compass':
-        case 'gms':
+        case 'location-core':
+        case 'location-compass':
+        case 'location-gms':
 
         // material
         case 'tablayout':
@@ -95,7 +100,7 @@ allprojects {
 /**
  * Publishing and signing info
  */
-subprojects { project ->
+subprojects { Project project ->
     println "Subproject: ${project.name}"
 
     if (getSampleModuleName(project) != null) return
@@ -106,12 +111,12 @@ subprojects { project ->
     apply plugin: 'maven-publish'
 
     android {
-        compileSdkVersion 31
-        buildToolsVersion "31.0.0"
+        compileSdkVersion 33
+        buildToolsVersion '30.0.3'
 
         defaultConfig {
             minSdkVersion 23
-            targetSdkVersion 31
+            targetSdkVersion 33
 
             versionCode project.ext.version_code
             versionName project.version
@@ -157,7 +162,7 @@ subprojects { project ->
 
                     pom {
                         name = project.name
-                        url = "https://github.com/zhombie/garage"
+                        url = 'https://github.com/zhombie/garage'
 
                         developers {
                             developer {
@@ -185,11 +190,11 @@ subprojects { project ->
 }
 
 
-static def getSampleModuleName(project) {
-    return getModuleName(project, "sample")
+static def getSampleModuleName(Project project) {
+    return getModuleName(project, 'sample')
 }
 
-static def getModuleName(project, comparator) {
+static def getModuleName(Project project, String comparator) {
     if (project.name == comparator) {
         println "Project [${project.name}] is processed"
         return project.name
@@ -197,7 +202,7 @@ static def getModuleName(project, comparator) {
     return null
 }
 
-static def getParentFolderModuleName(project) {
+static def getParentFolderModuleName(Project project) {
     def allProjects = project.getAllprojects()
     if (allProjects.size() > 1) {
         def name = allProjects.first().name

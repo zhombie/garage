@@ -1,0 +1,18 @@
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'location_compass_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Core
+    implementation 'androidx.core:core-ktx:1.8.0'
+
+    // LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+}
