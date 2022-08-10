@@ -9,11 +9,12 @@ import kz.garage.activity.keyboard.isKeyboardVisible
 import kz.garage.activity.keyboard.showKeyboard
 import kz.garage.activity.view.bind
 import kz.garage.kotlin.simpleNameOf
+import kz.garage.samples.chat.ChatActivity
 
 class Activity : AppCompatActivity() {
 
     companion object {
-        private val TAG = simpleNameOf<Activity>()
+        private val TAG = simpleNameOf<ChatActivity>()
     }
 
     private val button by bind<MaterialButton>(R.id.button)

@@ -18,6 +18,10 @@ dependencies {
     // Material Design Components
     implementation 'com.google.android.material:material:1.6.1'
 
-    implementation project(':chat:chat-core')
-    implementation project(':multimedia:store')
+    api project(':chat:chat-core')
+    api project(':multimedia:store-ext')
+    implementation project(":recyclerview")
+
+    // Core
+    implementation "androidx.core:core-ktx:1.8.0"
 }

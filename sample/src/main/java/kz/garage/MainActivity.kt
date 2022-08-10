@@ -2,7 +2,7 @@ package kz.garage
 
 import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.samples.activity.Activity
+import kz.garage.samples.chat.ChatActivity
 import kz.garage.samples.animation.AnimationActivity
 import kz.garage.samples.fragment.FragmentActivity
 import kz.garage.samples.locale.LocaleActivity
@@ -42,7 +42,7 @@ class MainActivity : BaseNestedModuleActivity() {
     override fun onSampleClicked(sample: Sample) {
         when (sample.id) {
             "activity" ->
-                startActivity<Activity>()
+                startActivity<ChatActivity>()
             "animation" ->
                 startActivity<AnimationActivity>()
             "fragment" ->

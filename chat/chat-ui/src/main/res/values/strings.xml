@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_ui_open_file">Open file</string>
+    <string name="chat_ui_file_download">File download</string>
+    <string name="chat_ui_cancel">Cancel</string>
+</resources>

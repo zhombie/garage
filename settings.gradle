@@ -61,6 +61,7 @@ include ':material:tablayout'
 
 // multimedia
 include ':multimedia:store'
+include ':multimedia:store-ext'
 
 // permission
 include ':permission'

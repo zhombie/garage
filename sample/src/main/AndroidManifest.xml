@@ -37,7 +37,7 @@
         </activity>
 
         <!-- activity -->
-        <activity android:name=".samples.activity.Activity" />
+        <activity android:name=".samples.chat.ChatActivity" />
 
         <!-- animation -->
         <activity android:name=".samples.animation.AnimationActivity" />

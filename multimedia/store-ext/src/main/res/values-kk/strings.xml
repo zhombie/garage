@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="multimedia_store_ext_file">Файл</string>
+    <string name="multimedia_store_ext_html_text">HTML мәтіні</string>
+    <string name="multimedia_store_ext_text_file">Мәтіндік файл</string>
+    <string name="multimedia_store_ext_microsoft_excel_document">Microsoft Excel құжаты</string>
+    <string name="multimedia_store_ext_microsoft_power_point_document">Microsoft PowerPoint құжаты</string>
+    <string name="multimedia_store_ext_microsoft_word_document">Microsoft Word құжаты</string>
+    <string name="multimedia_store_ext_pdf_file">PDF құжаты</string>
+</resources>

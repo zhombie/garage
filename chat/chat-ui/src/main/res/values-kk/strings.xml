@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_ui_open_file">Файлды ашу</string>
+    <string name="chat_ui_file_download">Файлды жүктеу</string>
+    <string name="chat_ui_cancel">Шығу</string>
+</resources>

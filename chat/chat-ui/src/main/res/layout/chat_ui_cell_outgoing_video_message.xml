@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/chat_ui_message_horizontal_margin"
+    android:layout_marginEnd="@dimen/chat_ui_horizontal_padding"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/chat_ui_bg_top_right_rounded_purple"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <kz.garage.chat.ui.components.MessageImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <kz.garage.chat.ui.components.MessageTimeView
+                android:id="@+id/durationView"
+                style="@style/ChatUi.Chat.Message.TimeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/chat_ui_bg_rounded_transparent_black"
+                android:drawableStart="@drawable/chat_ui_ic_camera_on_filled_white_16dp"
+                android:drawablePadding="3dp"
+                android:drawableTint="@color/chat_ui_white"
+                android:paddingLeft="7.5dp"
+                android:paddingTop="2.5dp"
+                android:paddingRight="7.5dp"
+                android:paddingBottom="2.5dp"
+                android:textColor="@color/chat_ui_white"
+                tools:text="04:20" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/chat_ui_ic_play_white_24dp"
+                android:tint="@color/chat_ui_white" />
+
+        </FrameLayout>
+
+        <kz.garage.chat.ui.components.HTMLTextView
+            android:id="@+id/textView"
+            style="@style/ChatUi.Chat.Message.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/chat_ui_message_text_vertical_padding"
+            android:layout_marginBottom="@dimen/chat_ui_message_text_vertical_padding"
+            android:gravity="start"
+            android:paddingLeft="@dimen/chat_ui_message_text_horizontal_padding"
+            android:paddingRight="@dimen/chat_ui_message_text_horizontal_padding"
+            android:textColor="@color/chat_ui_white"
+            android:visibility="gone"
+            tools:text="Message"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <kz.garage.chat.ui.components.MessageTimeView
+        android:id="@+id/timeView"
+        style="@style/ChatUi.Chat.Message.TimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/chat_ui_message_time_margin_top"
+        android:layout_marginEnd="@dimen/chat_ui_message_time_margin_right"
+        tools:text="04:20" />
+
+</LinearLayout>

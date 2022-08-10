@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChatUi.Chat.Message.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:textAppearance">@style/ChatUi.Chat.Message.TextView.TextAppearance</item>
+    </style>
+
+    <style name="ChatUi.Chat.Message.TextView.TextAppearance" parent="ChatUi.TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/chat_ui_light_black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ChatUi.Chat.Message.TimeView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:textAppearance">@style/ChatUi.Chat.Message.TimeView.TextAppearance</item>
+    </style>
+
+    <style name="ChatUi.Chat.Message.TimeView.TextAppearance" parent="ChatUi.TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/chat_ui_cloudy</item>
+        <item name="android:textSize">@dimen/chat_ui_message_time_text_size</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+</resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/chat_ui_horizontal_padding"
+    android:layout_marginEnd="@dimen/chat_ui_message_horizontal_margin"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_ui_bg_top_left_rounded_grayish"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <kz.garage.chat.ui.components.MessageImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:visibility="gone"
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
+
+        <kz.garage.chat.ui.components.ChatUiMessageContentView
+            android:id="@+id/contentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:chat_ui_theme_mode="light"
+            tools:visibility="visible" />
+
+        <kz.garage.chat.ui.components.ChatUiMessageAudioPlayerView
+            android:id="@+id/audioPlayerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:chat_ui_theme_mode="light"
+            tools:visibility="visible" />
+
+        <kz.garage.chat.ui.components.HTMLTextView
+            android:id="@+id/textView"
+            style="@style/ChatUi.Chat.Message.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/chat_ui_message_text_vertical_padding"
+            android:layout_marginBottom="@dimen/chat_ui_message_text_vertical_padding"
+            android:gravity="start"
+            android:paddingLeft="@dimen/chat_ui_message_text_horizontal_padding"
+            android:paddingRight="@dimen/chat_ui_message_text_horizontal_padding"
+            android:visibility="gone"
+            tools:text="👋 Приветствую! Меня зовут Qwerty.\n\nМне нужно несколько секунд, чтобы посмотреть Вашу переписку. Пожалуйста, оставайтесь на линии."
+            tools:visibility="gone" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="2"
+        tools:layout_marginTop="10dp"
+        tools:listitem="@layout/chat_ui_cell_inline_button" />
+
+    <kz.garage.chat.ui.components.MessageTimeView
+        android:id="@+id/timeView"
+        style="@style/ChatUi.Chat.Message.TimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/chat_ui_message_time_margin_left"
+        android:layout_marginTop="@dimen/chat_ui_message_time_margin_top"
+        tools:text="04:20" />
+
+</LinearLayout>

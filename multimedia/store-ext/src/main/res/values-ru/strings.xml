@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="multimedia_store_ext_file">Файл</string>
+    <string name="multimedia_store_ext_html_text">HTML текст</string>
+    <string name="multimedia_store_ext_microsoft_excel_document">Документ Microsoft Excel</string>
+    <string name="multimedia_store_ext_microsoft_power_point_document">Документ Microsoft PowerPoint</string>
+    <string name="multimedia_store_ext_microsoft_word_document">Документ Microsoft Word</string>
+    <string name="multimedia_store_ext_pdf_file">PDF документ</string>
+    <string name="multimedia_store_ext_text_file">Текстовый файл</string>
+</resources>

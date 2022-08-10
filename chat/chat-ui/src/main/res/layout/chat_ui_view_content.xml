@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="200dp"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/chat_ui_message_media_horizontal_padding"
+    android:paddingTop="@dimen/chat_ui_message_media_vertical_padding"
+    android:paddingRight="@dimen/chat_ui_message_media_horizontal_padding"
+    android:paddingBottom="@dimen/chat_ui_message_media_vertical_padding">
+
+    <FrameLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="@dimen/chat_ui_message_media_indicator_size"
+        android:layout_height="@dimen/chat_ui_message_media_indicator_size"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/chat_ui_message_media_name_horizontal_padding"
+        android:background="@drawable/chat_ui_ic_circle_purple">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iconView"
+            android:layout_width="@dimen/chat_ui_message_media_icon_size"
+            android:layout_height="@dimen/chat_ui_message_media_icon_size"
+            android:layout_gravity="center"
+            android:src="@drawable/chat_ui_ic_download_white" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:indeterminateBehavior="cycle"
+            android:max="100"
+            app:indicatorDirectionCircular="clockwise"
+            app:trackColor="@color/chat_ui_transparent"
+            tools:progress="25" />
+
+    </FrameLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/indicatorLayout"
+        android:ellipsize="middle"
+        android:fontFamily="sans-serif"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.0"
+        android:lineSpacingExtra="0sp"
+        android:maxLines="2"
+        android:singleLine="false"
+        android:textAllCaps="false"
+        android:textColor="@color/chat_ui_light_black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="988b8432....63646098a1.jpg" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/subtitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleView"
+        android:layout_alignStart="@id/titleView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2.5dp"
+        android:fontFamily="sans-serif"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.0"
+        android:lineSpacingExtra="0sp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAllCaps="false"
+        android:textColor="@color/chat_ui_light_black"
+        android:textSize="10sp"
+        android:textStyle="normal"
+        tools:ignore="SmallSp"
+        tools:text="PDF Документ" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/descriptionView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtitleView"
+        android:layout_alignStart="@id/subtitleView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="3.5dp"
+        android:fontFamily="sans-serif"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.0"
+        android:lineSpacingExtra="0sp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/chat_ui_purple_blue"
+        android:textSize="10sp"
+        tools:ignore="SmallSp"
+        tools:text="Скачать файл" />
+
+</RelativeLayout>

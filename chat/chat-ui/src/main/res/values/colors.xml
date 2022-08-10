@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="chat_ui_very_light_blue">#8CC5FF</color>
+    <color name="chat_ui_light_blue">#409EFF</color>
+    <color name="chat_ui_moderate_blue">#5579D7</color>
+    <color name="chat_ui_purple_blue">#446BEA</color>
+    <color name="chat_ui_dark_purple">#2A3048</color>
+
+    <color name="chat_ui_transparent">#00000000</color>
+    <color name="chat_ui_white_alpha">#BBFFFFFF</color>
+    <color name="chat_ui_white">#FFFFFF</color>
+    <color name="chat_ui_ghost_white">#FAFBFF</color>
+    <color name="chat_ui_light_gray">#D3D3D3</color>
+    <color name="chat_ui_gray">#BDBDBD</color>
+    <color name="chat_ui_dark_grayish_blue">#909399</color>
+    <color name="chat_ui_dark_gray">#8D8D8D</color>
+    <color name="chat_ui_dark_grayish_pink">#7B797A</color>
+    <color name="chat_ui_very_dark_grayish_blue">#606266</color>
+    <color name="chat_ui_gunmetal">#4A4A4A</color>
+    <color name="chat_ui_very_dark_gray">#474747</color>
+    <color name="chat_ui_light_black">#333333</color>
+    <color name="chat_ui_black_alpha">#BB000000</color>
+    <color name="chat_ui_black">#000000</color>
+
+    <color name="chat_ui_cloudy">#B4BACD</color>
+    <color name="chat_ui_gull_gray">#989FB5</color>
+    <color name="chat_ui_light_slate_gray">#8290A0</color>
+
+    <color name="chat_ui_tart_orange">#F8504E</color>
+    <color name="chat_ui_red">#EE1D4D</color>
+
+    <color name="chat_ui_lime_green">#85D089</color>
+    <color name="chat_ui_soft_green">#74BE8D</color>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chat_ui_extended_fab_icon_size">30dp</dimen>
+
+    <dimen name="chat_ui_horizontal_padding">20dp</dimen>
+
+    <dimen name="chat_ui_toolbar_height">52dp</dimen>
+
+    <dimen name="chat_ui_progress_circle_size">45dp</dimen>
+    <dimen name="chat_ui_progress_track_thickness">4dp</dimen>
+    <dimen name="chat_ui_progress_text_max_width">200dp</dimen>
+
+    <dimen name="chat_ui_dialog_horizontal_padding">24dp</dimen>
+
+    <dimen name="chat_ui_message_horizontal_margin">50dp</dimen>
+    <dimen name="chat_ui_message_vertical_margin">10dp</dimen>
+    <dimen name="chat_ui_notification_vertical_margin">25dp</dimen>
+    <dimen name="chat_ui_message_background_corner_radius">8.3dp</dimen>
+    <dimen name="chat_ui_message_media_horizontal_padding">10dp</dimen>
+    <dimen name="chat_ui_message_media_vertical_padding">10dp</dimen>
+    <dimen name="chat_ui_message_media_name_horizontal_padding">9dp</dimen>
+    <dimen name="chat_ui_message_media_icon_size">18dp</dimen>
+    <dimen name="chat_ui_message_media_indicator_size">45dp</dimen>
+    <dimen name="chat_ui_message_image_min_width">180dp</dimen>
+    <dimen name="chat_ui_message_image_min_height">180dp</dimen>
+    <dimen name="chat_ui_message_image_max_width">250dp</dimen>
+    <dimen name="chat_ui_message_image_max_height">310dp</dimen>
+    <dimen name="chat_ui_message_text_horizontal_padding">12dp</dimen>
+    <dimen name="chat_ui_message_text_vertical_padding">10dp</dimen>
+    <dimen name="chat_ui_message_time_margin_left">5dp</dimen>
+    <dimen name="chat_ui_message_time_margin_right">5dp</dimen>
+    <dimen name="chat_ui_message_time_margin_top">2.5dp</dimen>
+    <dimen name="chat_ui_message_time_text_size">10sp</dimen>
+
+    <dimen name="chat_ui_border_stroke_width">0.005dp</dimen>
+
+    <dimen name="chat_ui_call_control_button_size">62dp</dimen>
+</resources>

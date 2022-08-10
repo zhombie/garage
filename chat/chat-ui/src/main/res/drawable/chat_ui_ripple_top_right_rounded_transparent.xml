@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/chat_ui_black_alpha" />
+            <corners
+                android:radius="@dimen/chat_ui_message_background_corner_radius"
+                android:topRightRadius="0dp" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/chat_ui_message_background_corner_radius"
+                android:topRightRadius="0dp" />
+        </shape>
+    </item>
+
+</ripple>

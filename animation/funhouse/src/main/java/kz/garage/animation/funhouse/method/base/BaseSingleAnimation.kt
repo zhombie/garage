@@ -14,19 +14,19 @@ internal abstract class BaseSingleAnimation : BaseAnimation() {
         val listener = getListener()
         if (listener != null) {
             animatorSet.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator?) {
+                override fun onAnimationStart(animation: Animator) {
                     listener.onStart(view, animation)
                 }
 
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     listener.onEnd(view, animation)
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
+                override fun onAnimationCancel(animation: Animator) {
                     listener.onCancel(view, animation)
                 }
 
-                override fun onAnimationRepeat(animation: Animator?) {
+                override fun onAnimationRepeat(animation: Animator) {
                     listener.onRepeat(view, animation)
                 }
             })

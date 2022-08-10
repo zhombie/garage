@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChatUi.BaseShapeAppearance" parent="ShapeAppearance.MaterialComponents" />
+
+    <style name="ChatUi.ShapeAppearance.Circle" parent="ChatUi.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ChatUi.ShapeAppearance.Rounded.Small" parent="ChatUi.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ChatUi.ShapeAppearance.Rounded.Medium" parent="ChatUi.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18.9dp</item>
+    </style>
+
+    <style name="ChatUi.ShapeAppearance.Rounded.Large" parent="ChatUi.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">26dp</item>
+    </style>
+
+    <style name="ChatUi.ShapeAppearance.Rounded.Huge" parent="ChatUi.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">33dp</item>
+    </style>
+
+</resources>

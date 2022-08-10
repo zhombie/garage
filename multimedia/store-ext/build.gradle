@@ -1,0 +1,20 @@
+apply plugin: 'kotlin-parcelize'
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'multimedia_store_ext_'
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Annotation
+    implementation 'androidx.annotation:annotation:1.4.0'
+
+    api project(':multimedia:store')
+    api project(':file:extension')
+}

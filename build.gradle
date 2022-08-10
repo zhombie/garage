@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
 
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
 
         // Google Services
         classpath 'com.google.gms:google-services:4.3.13'
@@ -70,6 +70,7 @@ ext.projectArtifactId = { Project project ->
 
         // multimedia
         case 'store':
+        case 'store-ext':
 
         // popup
         case 'tooltip':
@@ -139,9 +140,6 @@ subprojects { Project project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
-        }
 
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->
