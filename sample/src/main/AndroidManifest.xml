@@ -27,17 +27,16 @@
             android:value="@string/google_maps_api_key" />
 
         <!-- Entry Point -->
-        <activity
-            android:name=".samples.chat.ChatActivity"
+        <activity android:name=".samples.chat.ChatActivity"/>
+
+        <!-- activity -->
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- activity -->
-        <activity android:name=".MainActivity" />
 
         <!-- animation -->
         <activity android:name=".samples.animation.AnimationActivity" />
