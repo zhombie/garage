@@ -10,15 +10,18 @@ import kz.garage.chat.ui.R
 import kz.garage.chat.ui.components.HTMLTextView
 import kz.garage.chat.ui.components.MessageImageView
 import kz.garage.chat.ui.components.MessageTimeView
+import kz.garage.chat.ui.imageloader.ChatUiImageLoader
 import kz.garage.multimedia.store.model.Image
 import kz.garage.recyclerview.adapter.viewholder.view.bind
 
 internal abstract class BaseImageMessageViewHolder constructor(
     view: View,
+    override val imageLoader: ChatUiImageLoader,
     override val contentSourceProvider: ContentSourceProvider,
     override val callback: ChatMessagesAdapter.Callback? = null
 ) : BaseViewHolder(
     view = view,
+    imageLoader = imageLoader,
     contentSourceProvider = contentSourceProvider,
     callback = callback
 ) {
@@ -32,15 +35,23 @@ internal abstract class BaseImageMessageViewHolder constructor(
 
         val image = if (message.contents.isNullOrEmpty()) null else message.contents?.first()
         if (image is Image) {
-            val uri = contentSourceProvider.provide(image)
+            val source = contentSourceProvider.provide(image)
 
 //            Logger.debug(TAG, "bind() -> uri: $uri")
 
-            if (uri == null) {
+            if (source == null) {
                 imageView.setImageDrawable(null)
 
                 imageView.toggleVisibility(false)
             } else {
+                imageLoader.enqueue(
+                    ChatUiImageLoader.Request.Builder(context)
+                        .setData(source.uri)
+                        .into(imageView)
+                        .build()
+                )
+
+//                callback?.load(imageView, image.uri!!)
 //                imageView.load(uri) {
 //                    setCrossfade(true)
 //                    setSize(SOSWidgetImageLoader.Request.Size.Inherit)

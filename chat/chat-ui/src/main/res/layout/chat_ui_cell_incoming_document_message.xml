@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/chat_ui_bg_top_left_rounded_grayish"
+        android:background="?attr/chat_ui_incoming_message_background"
         android:orientation="vertical">
 
         <kz.garage.chat.ui.components.ChatUiMessageContentView

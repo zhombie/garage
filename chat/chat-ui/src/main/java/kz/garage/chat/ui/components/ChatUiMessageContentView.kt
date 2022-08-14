@@ -48,7 +48,7 @@ internal class ChatUiMessageContentView @JvmOverloads constructor(
         context.obtainStyledAttributes(attrs, R.styleable.ChatUiMessageContentView).use {
             when (it.getInt(R.styleable.ChatUiMessageContentView_chat_ui_theme_mode, -1)) {
                 Theme.DARK -> {
-                    background = it.getDrawable(R.styleable.ChatUiMessageContentView_android_background)
+                    background = it.getDrawable(R.styleable.ChatUiMessageContentView_chat_ui_background)
                         ?: Themes.getDrawable(context, Themes.Dark.background)
                     indicatorBackgroundColor =
                         Themes.getColorAsColorStateList(context, Themes.Dark.iconBackgroundColor)
@@ -63,7 +63,7 @@ internal class ChatUiMessageContentView @JvmOverloads constructor(
                     )
                 }
                 else -> {
-                    background = it.getDrawable(R.styleable.ChatUitMessageContentView_android_background)
+                    background = it.getDrawable(R.styleable.ChatUiMessageContentView_chat_ui_background)
                         ?: Themes.getDrawable(context, Themes.Light.background)
                     indicatorBackgroundColor =
                         Themes.getColorAsColorStateList(context, Themes.Light.iconBackgroundColor)

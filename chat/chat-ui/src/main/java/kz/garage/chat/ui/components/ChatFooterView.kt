@@ -11,16 +11,16 @@ import com.google.android.material.internal.TextWatcherAdapter
 import com.google.android.material.textfield.TextInputLayout
 import kz.garage.chat.ui.R
 
-internal class ChatFooterView @JvmOverloads constructor(
+class ChatFooterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val attachmentSelectionButton: MaterialButton
+    private var attachmentSelectionButton: MaterialButton
     private val inputView: TextInputLayout
-    private val messageSendButton: MaterialButton
+    private var messageSendButton: MaterialButton
 
     var isAttachmentSelectionButtonEnabled: Boolean = false
         private set
@@ -28,36 +28,44 @@ internal class ChatFooterView @JvmOverloads constructor(
     var isMessageSendButtonEnabled: Boolean = false
         private set
 
-    var callback: Callback? = null
+    var callback:   Callback? = null
 
     private val messageMaxLength: Int
 
     init {
-        attachmentSelectionButton = buildAttachmentSelectionButton()
-        inputView = findViewById(R.id.inputView)
-        messageSendButton = buildMessageSendButtonButton()
+        val view = inflate(context, R.layout.chat_ui_view_chat_footer, this)
 
-        attachmentSelectionButton.setOnClickListener { callback?.onMediaSelectionButtonClicked() }
+        attachmentSelectionButton = buildAttachmentSelectionButton()
+        inputView = view.findViewById(R.id.inputView)
+        messageSendButton = buildMessageSendButtonButton()
+        messageSendButton = findViewById(R.id.sendMessageButton)
+        attachmentSelectionButton = view.findViewById(R.id.mediaSelectionButton)
+
+        attachmentSelectionButton.setOnClickListener { callback?.onSelectAttachment() }
 
         messageSendButton.setOnClickListener {
             if (isMessageSendButtonEnabled) {
                 return@setOnClickListener
             } else {
-                callback?.onSendMessageButtonClicked(
-                    inputView.editText?.text?.toString() ?: return@setOnClickListener
-                )
+                if (inputView.editText?.text?.toString().isNullOrBlank()){
+                    return@setOnClickListener
+                }else{
+                    callback?.onSendMessage(
+                        inputView.editText?.text?.toString() ?: return@setOnClickListener)
+                    inputView?.editText?.text?.clear()
+                }
             }
         }
 
-        messageMaxLength = context.resources.getInteger(R.integer.sos_widget_message_max_length)
+        messageMaxLength = context.resources.getInteger(R.integer.chat_ui_message_max_length)
     }
 
     private fun buildAttachmentSelectionButton(): AttachmentSelectionButton {
-        return AttachmentSelectionButton()
+        return AttachmentSelectionButton(context)
     }
 
     private fun buildMessageSendButtonButton(): MessageSendButton {
-        return MessageSendButton()
+        return MessageSendButton(context)
     }
 
     fun clearInputViewText() {

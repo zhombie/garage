@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chatFooterView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/chat_ui_white"
+    android:paddingStart="10dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="@dimen/chat_ui_horizontal_padding"
+    android:paddingBottom="10dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mediaSelectionButton"
+        style="@style/ChatUi.CircleIconButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="?attr/chat_ui_attachment_selection_button_background_tint"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textStyle="normal"
+        app:icon="?attr/chat_ui_attachment_selection_button_icon"
+        app:iconTint="?attr/chat_ui_attachment_selection_button_icon_tint"
+        app:layout_constraintBottom_toBottomOf="@id/inputView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/inputView"
+        app:layout_constraintTop_toTopOf="@id/inputView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2.5dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="1.5dp"
+        android:maxHeight="135dp"
+        app:boxBackgroundMode="none"
+        app:counterEnabled="false"
+        app:errorEnabled="false"
+        app:expandedHintEnabled="false"
+        app:helperTextEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_max="135dp"
+        app:layout_constraintLeft_toRightOf="@id/mediaSelectionButton"
+        app:layout_constraintRight_toLeftOf="@id/sendMessageButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/chat_ui_text_input_background"
+            android:cursorVisible="true"
+            android:fontFamily="sans-serif"
+            android:hint="@string/chat_ui_message"
+            android:includeFontPadding="false"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="1sp"
+            android:maxLength="@integer/chat_ui_message_max_length"
+            android:maxLines="5"
+            android:minHeight="45dp"
+            android:paddingStart="17.5dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="17.5dp"
+            android:paddingBottom="10dp"
+            android:singleLine="false"
+            android:textColor="#0F0F2B"
+            android:textColorHint="#E8E8E8"
+            android:textSize="16sp"
+            app:textInputLayoutFocusedRectEnabled="false"
+            tools:text="Тестовое сообщение" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sendMessageButton"
+        style="@style/ChatUi.CircleIconButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="?attr/chat_ui_on_send_button_background_tint"
+        app:icon="?attr/chat_ui_on_send_button_icon"
+        app:iconSize="17.5dp"
+        app:iconTint="?attr/chat_ui_on_send_button_icon_tint"
+        app:layout_constraintBottom_toBottomOf="@id/inputView"
+        app:layout_constraintLeft_toRightOf="@id/inputView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/inputView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

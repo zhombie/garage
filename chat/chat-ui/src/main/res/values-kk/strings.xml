@@ -3,4 +3,20 @@
     <string name="chat_ui_open_file">Файлды ашу</string>
     <string name="chat_ui_file_download">Файлды жүктеу</string>
     <string name="chat_ui_cancel">Шығу</string>
+    <string name="chat_ui_message">Хабарлама</string>
+
+    <string name="chat_ui_attention">Назар аударыңыз</string>
+    <string name="chat_ui_error_mocked_location">
+        Сіз жалған GPS қолданбасын қолданып жатқан сияқтысыз. Қосымшаны пайдалану кезінде оны өшіріңіз
+    </string>
+    <string name="chat_ui_yes">Иә</string>
+    <string name="chat_ui_no">Жоқ</string>
+    <string name="chat_ui_open_link">Сілтемеге өту</string>
+    <string name="chat_ui_go_to_link_confirmation">Шынымен %s сілтемесі арқылы өткіңіз келе ме?</string>
+    <string name="chat_ui_user_confirmation_end_call">Сіз шынымен диалогты аяқтағыңыз келе ме?</string>
+    <string name="chat_ui_media_selection">Құжат таңдау</string>
+    <string name="chat_ui_image">Сурет</string>
+    <string name="chat_ui_video">Бейне</string>
+    <string name="chat_ui_audio">Аудио</string>
+    <string name="chat_ui_document">Құжат/файл</string>
 </resources>

@@ -1,10 +1,10 @@
 package kz.garage.samples.location
 
+import kz.garage.BaseNestedModuleActivity
 import kz.garage.R
 import kz.garage.Sample
 import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.BaseNestedModuleActivity
 import kz.garage.samples.location.compass.CompassActivity
 import kz.garage.samples.location.core.CoreActivity
 import kz.garage.samples.location.gms.GMSActivity

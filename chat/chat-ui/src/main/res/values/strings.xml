@@ -3,4 +3,22 @@
     <string name="chat_ui_open_file">Open file</string>
     <string name="chat_ui_file_download">File download</string>
     <string name="chat_ui_cancel">Cancel</string>
+    <string name="chat_ui_message">Message</string>
+
+    <string name="chat_ui_ok" translatable="false">OK</string>
+    <string name="chat_ui_attention">Attention</string>
+    <string name="chat_ui_error_mocked_location">
+        It seems that you are using fake GPS app. Please, turn it off when using an app
+    </string>
+    <string name="chat_ui_yes">Yes</string>
+    <string name="chat_ui_no">No</string>
+    <string name="chat_ui_open_link">Open link</string>
+    <string name="chat_ui_go_to_link_confirmation">Do you want to open %s ?</string>
+    <string name="chat_ui_user_confirmation_end_call">Are you sure you want to end the dialogue?</string>
+    <string name="chat_ui_media_selection">Media selection</string>
+    <string name="chat_ui_image">Image</string>
+    <string name="chat_ui_video">Video</string>
+    <string name="chat_ui_audio">Audio</string>
+    <string name="chat_ui_document">Document/file</string>
+
 </resources>

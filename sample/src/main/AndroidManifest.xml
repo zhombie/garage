@@ -28,7 +28,7 @@
 
         <!-- Entry Point -->
         <activity
-            android:name=".MainActivity"
+            android:name=".samples.chat.ChatActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
         </activity>
 
         <!-- activity -->
-        <activity android:name=".samples.chat.ChatActivity" />
+        <activity android:name=".MainActivity" />
 
         <!-- animation -->
         <activity android:name=".samples.animation.AnimationActivity" />

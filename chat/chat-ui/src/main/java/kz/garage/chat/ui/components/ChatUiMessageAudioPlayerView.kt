@@ -51,7 +51,7 @@ internal class ChatUiMessageAudioPlayerView @JvmOverloads constructor(
         context.obtainStyledAttributes(attrs, R.styleable.ChatUiMessageAudioPlayerView).use {
             when (it.getInt(R.styleable.ChatUiMessageAudioPlayerView_chat_ui_theme_mode, -1)) {
                 Theme.DARK -> {
-                    background = it.getDrawable(R.styleable.ChatUiMessageAudioPlayerView_android_backgroud)
+                    background = it.getDrawable(R.styleable.ChatUiMessageAudioPlayerView_chat_ui_background)
                         ?: Themes.getDrawable(context, Themes.Dark.background)
                     indicatorBackgroundColor =
                         Themes.getColorAsColorStateList(context, Themes.Dark.iconBackgroundColor)
@@ -84,7 +84,7 @@ internal class ChatUiMessageAudioPlayerView @JvmOverloads constructor(
                         ?: Themes.getColorAsColorStateList(context, Themes.Dark.sliderThumbColor)
                 }
                 else -> {
-                    background = it.getDrawable(R.styleable.ChatUiMessageAudioPlayerView_android_background)
+                    background = it.getDrawable(R.styleable.ChatUiMessageAudioPlayerView_chat_ui_background)
                         ?: Themes.getDrawable(context, Themes.Light.background)
                     indicatorBackgroundColor =
                         Themes.getColorAsColorStateList(context, Themes.Light.iconBackgroundColor)

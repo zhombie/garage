@@ -35,4 +35,7 @@
     <dimen name="chat_ui_border_stroke_width">0.005dp</dimen>
 
     <dimen name="chat_ui_call_control_button_size">62dp</dimen>
+
+    <dimen name="chat_ui_chat_horizontal_padding">5dp</dimen>
+    <dimen name="chat_ui_chat_vertical_padding">5dp</dimen>
 </resources>

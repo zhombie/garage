@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.garage.chat.ui.ChatMessagesAdapter
 import kz.garage.chat.ui.ContentSourceProvider
 import kz.garage.chat.ui.components.HTMLTextView
+import kz.garage.chat.ui.imageloader.ChatUiImageLoader
 
 internal abstract class BaseViewHolder constructor(
     view: View,
+    open val imageLoader: ChatUiImageLoader? = null,
     open val contentSourceProvider: ContentSourceProvider,
     open val callback: ChatMessagesAdapter.Callback? = null
 ) : RecyclerView.ViewHolder(view) {
@@ -59,5 +61,4 @@ internal abstract class BaseViewHolder constructor(
             }
         }
     }
-
 }

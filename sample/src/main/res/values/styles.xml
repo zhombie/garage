@@ -4,6 +4,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="chat_ui_incoming_message_background">@drawable/chat_ui_bg_top_left_rounded_grayish</item>
+        <item name="chat_ui_outgoing_message_background">@drawable/rounded_purple</item>
+
+        <item name="chat_ui_on_send_button_background_tint">@color/chat_ui_button_text_white_to_purple_blue_2</item>
+        <item name="chat_ui_on_send_button_icon_tint">@color/chat_ui_button_text_purple_blue_to_white_2</item>
+        <item name="chat_ui_on_send_button_icon">@drawable/chat_ui_ic_arrow_up_white</item>
+
+        <item name="chat_ui_attachment_selection_button_background_tint">@color/chat_ui_button_text_white_to_purple_blue_2</item>
+        <item name="chat_ui_attachment_selection_button_icon_tint">@color/chat_ui_button_text_purple_blue_to_white_2</item>
+        <item name="chat_ui_attachment_selection_button_icon">@drawable/chat_ui_ic_plus</item>
+
+
+        <item name="chat_ui_text_input_background">@drawable/chat_ui_bg_rounded_stroke_transparent</item>
+
     </style>
 
 </resources>

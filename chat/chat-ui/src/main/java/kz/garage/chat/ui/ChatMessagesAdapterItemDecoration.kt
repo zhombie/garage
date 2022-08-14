@@ -7,7 +7,7 @@ import androidx.annotation.Dimension
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-internal class ChatMessagesAdapterItemDecoration constructor(
+class ChatMessagesAdapterItemDecoration constructor(
     context: Context,
     @Dimension
     private val messageVerticalSpacing: Int = context.resources.getDimensionPixelOffset(R.dimen.chat_ui_message_vertical_margin),

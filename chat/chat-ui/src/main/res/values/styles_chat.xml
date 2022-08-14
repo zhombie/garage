@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<!--    <style name="ChatUI">-->
+<!--        <item name="chat_ui_incoming_message_background">@drawable/chat_ui_bg_top_left_rounded_grayish</item>-->
+<!--    </style>-->
+
     <style name="ChatUi.Chat.Message.TextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:includeFontPadding">false</item>
         <item name="android:lineSpacingExtra">0dp</item>

@@ -2,4 +2,21 @@
 <resources>
     <string name="chat_ui_open_file">Открыть файл</string>
     <string name="chat_ui_file_download">Скачать файл</string>
+    <string name="chat_ui_cancel">Выйти</string>
+    <string name="chat_ui_message">Сообщение</string>
+
+    <string name="chat_ui_attention">Внимание</string>
+    <string name="chat_ui_error_mocked_location">
+        Похоже, вы используете поддельное приложение GPS. Пожалуйста, выключите его при использовании приложения
+    </string>
+    <string name="chat_ui_yes">Да</string>
+    <string name="chat_ui_no">Нет</string>
+    <string name="chat_ui_open_link">Открыть ссылу</string>
+    <string name="chat_ui_go_to_link_confirmation">Вы хотите открыть %s ?</string>
+    <string name="chat_ui_user_confirmation_end_call">Вы действительно хотите завершить диалог?</string>
+    <string name="chat_ui_media_selection">Выбор вложения</string>
+    <string name="chat_ui_image">Фото</string>
+    <string name="chat_ui_video">Видео</string>
+    <string name="chat_ui_audio">Аудио</string>
+    <string name="chat_ui_document">Документ/файл</string>
 </resources>

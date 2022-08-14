@@ -7,10 +7,16 @@ import kz.garage.chat.core.model.getDisplayCreatedAt
 import kz.garage.chat.ui.ContentSourceProvider
 import kz.garage.chat.ui.R
 import kz.garage.chat.ui.components.MessageTimeView
-import kz.garage.recyclerview.adapter.viewholder.view.bind
 import kz.garage.chat.ui.vh.base.BaseViewHolder
+import kz.garage.recyclerview.adapter.viewholder.view.bind
 
-internal class NotificationMessageViewHolder constructor(view: View, override val contentSourceProvider: ContentSourceProvider) : BaseViewHolder(view, contentSourceProvider) {
+internal class NotificationMessageViewHolder constructor(
+    view: View,
+    override val contentSourceProvider: ContentSourceProvider
+) : BaseViewHolder(
+    view = view,
+    contentSourceProvider = contentSourceProvider
+) {
 
     companion object : LayoutResourceProvider() {
         override fun getLayoutId(): Int = R.layout.chat_ui_cell_notification_message

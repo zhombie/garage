@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="chat_ui_message_max_length" type="integer">3000</item>
+</resources>

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="@drawable/chat_ui_bg_top_right_rounded_purple"
+        android:background="?attr/chat_ui_outgoing_message_background"
         android:orientation="vertical">
 
         <kz.garage.chat.ui.components.HTMLTextView

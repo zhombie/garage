@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChatUi.AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!--Title color-->
+        <!--<item name="android:textColorPrimary">@color/chat_ui_black</item>-->
+
+        <!--List item color-->
+        <!--<item name="textColorAlertDialogListItem">@color/chat_ui_black</item>-->
+
+        <!--Dialog background-->
+        <!--<item name="popupMenuBackground">@drawable/chat_ui_bg_dialog</item>-->
+        <!--<item name="android:windowBackground">@drawable/chat_ui_bg_dialog</item>-->
+
+        <item name="alertDialogStyle">@style/ChatUi.AlertDialogStyle</item>
+
+        <!--Background dim-->
+        <item name="android:backgroundDimAmount">0.7</item>
+
+        <!--Background-->
+        <item name="android:background">@color/chat_ui_white</item>
+
+        <!--Shape appearance-->
+        <item name="shapeAppearanceMediumComponent">@style/ChatUi.ShapeAppearance.Rounded.Small
+        </item>
+
+        <!--Item RadioButton or CheckBox color-->
+        <item name="colorControlNormal">@color/chat_ui_dark_grayish_pink</item>
+        <item name="colorControlActivated">@color/chat_ui_light_blue</item>
+
+        <!--Positive button style-->
+        <item name="buttonBarPositiveButtonStyle">@style/ChatUi.Alert.Button.Positive</item>
+
+        <!--Negative button style-->
+        <item name="buttonBarNegativeButtonStyle">@style/ChatUi.Alert.Button.Negative</item>
+
+        <!--Negative button style-->
+        <item name="buttonBarNeutralButtonStyle">@style/ChatUi.Alert.Button.Neutral</item>
+
+        <!--Padding-->
+        <item name="listPreferredItemPaddingLeft">@dimen/chat_ui_dialog_horizontal_padding</item>
+        <item name="listPreferredItemPaddingRight">@dimen/chat_ui_dialog_horizontal_padding
+        </item>
+
+        <item name="materialAlertDialogTitleTextStyle">@style/ChatUi.Alert.TitleText</item>
+
+        <item name="materialAlertDialogBodyTextStyle">@style/ChatUi.Alert.BodyText</item>
+
+        <!--Size-->
+        <!--<item name="windowMinWidthMinor">95%</item>-->
+        <!--<item name="windowMinWidthMajor">95%</item>-->
+        <!--<item name="android:windowMinWidthMajor">95%</item>-->
+        <!--<item name="android:windowMinWidthMinor">95%</item>-->
+    </style>
+
+    <style name="ChatUi.AlertDialogStyle" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/ChatUi.ShapeAppearance.Rounded.Small</item>
+    </style>
+
+    <style name="ChatUi.Alert.TitleText" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textAppearance">@style/ChatUi.Alert.TitleTextAppearance</item>
+        <item name="android:textColor">@color/chat_ui_light_black</item>
+    </style>
+
+    <style name="ChatUi.Alert.BodyText" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textAppearance">@style/ChatUi.Alert.BodyTextAppearance</item>
+        <item name="android:textColor">@color/chat_ui_light_black</item>
+    </style>
+
+    <style name="ChatUi.Alert.TitleTextAppearance" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ChatUi.Alert.BodyTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ChatUi.Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/chat_ui_light_blue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="backgroundTint">@color/chat_ui_transparent</item>
+        <item name="rippleColor">@color/chat_ui_ripple</item>
+
+        <item name="background">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ChatUi.Alert.Button.Negative" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/chat_ui_dark_grayish_blue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="backgroundTint">@color/chat_ui_transparent</item>
+        <item name="rippleColor">@color/chat_ui_ripple</item>
+
+        <item name="background">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ChatUi.Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton.Dialog.Flush">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/chat_ui_gunmetal</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="backgroundTint">@color/chat_ui_transparent</item>
+        <item name="rippleColor">@color/chat_ui_ripple</item>
+
+        <item name="background">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+
+</resources>

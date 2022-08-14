@@ -8,27 +8,18 @@ import kz.garage.chat.core.model.Entity
 import kz.garage.chat.core.model.Message
 import kz.garage.chat.core.model.Notification
 import kz.garage.chat.core.model.reply_markup.button.Button
-import kz.garage.chat.ui.vh.IncomingAudioMessageViewHolder
-import kz.garage.chat.ui.vh.IncomingDocumentMessageViewHolder
-import kz.garage.chat.ui.vh.IncomingImageMessageViewHolder
-import kz.garage.chat.ui.vh.IncomingRichContentMessageViewHolder
-import kz.garage.chat.ui.vh.IncomingTextMessageViewHolder
-import kz.garage.chat.ui.vh.NotificationMessageViewHolder
-import kz.garage.chat.ui.vh.OutgoingAudioMessageViewHolder
-import kz.garage.chat.ui.vh.OutgoingDocumentMessageViewHolder
-import kz.garage.chat.ui.vh.OutgoingImageMessageViewHolder
-import kz.garage.chat.ui.vh.OutgoingTextMessageViewHolder
-import kz.garage.chat.ui.vh.OutgoingVideoMessageViewHolder
+import kz.garage.chat.ui.imageloader.ChatUiImageLoader
+import kz.garage.chat.ui.vh.*
+import kz.garage.chat.ui.vh.base.BaseAudioPlayerViewHolder
 import kz.garage.multimedia.store.model.Audio
 import kz.garage.multimedia.store.model.Document
 import kz.garage.multimedia.store.model.Image
 import kz.garage.multimedia.store.model.Video
-import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.*
-import kz.garage.chat.ui.vh.base.BaseAudioPlayerViewHolder
-import kz.garage.chat.ui.vh.base.BaseDocumentMessageViewHolder
-import kz.garage.chat.ui.vh.base.BaseRichContentMessageViewHolder
+import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.IncomingVideoMessageViewHolder
+import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.OutgoingRichContentMessageViewHolder
 
 class ChatMessagesAdapter constructor(
+    private val imageLoader: ChatUiImageLoader,
     private val contentSourceProvider: ContentSourceProvider,
     private val callback: Callback? = null
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -214,6 +205,7 @@ class ChatMessagesAdapter constructor(
             ViewType.OUTGOING_IMAGE_MESSAGE ->
                 OutgoingImageMessageViewHolder(
                     parent.inflate(OutgoingImageMessageViewHolder.getLayoutId()),
+                    imageLoader,
                     contentSourceProvider,
                     callback
                 )
@@ -250,7 +242,8 @@ class ChatMessagesAdapter constructor(
                 )
             ViewType.INCOMING_IMAGE_MESSAGE ->
                 IncomingImageMessageViewHolder(
-                    parent.inflate(IncomingImageMessageViewHolder.getLayoutId()),
+                    view = parent.inflate(IncomingImageMessageViewHolder.getLayoutId()),
+                    imageLoader = imageLoader,
                     contentSourceProvider,
                     callback
                 )
@@ -385,5 +378,4 @@ class ChatMessagesAdapter constructor(
         // Long click
         fun onMessageLongClicked(text: String) {}
     }
-
 }

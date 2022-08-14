@@ -60,12 +60,12 @@ class Tooltip private constructor(
 
         if (closeOnParentDetach) {
             refView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
-                override fun onViewDetachedFromWindow(v: View?) {
+                override fun onViewDetachedFromWindow(v: View) {
                     closeNow()
-                    v?.removeOnAttachStateChangeListener(this)
+                    v.removeOnAttachStateChangeListener(this)
                 }
 
-                override fun onViewAttachedToWindow(v: View?) {}
+                override fun onViewAttachedToWindow(v: View) {}
             })
         }
     }

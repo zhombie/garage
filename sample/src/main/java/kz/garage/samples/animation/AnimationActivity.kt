@@ -1,10 +1,10 @@
 package kz.garage.samples.animation
 
+import kz.garage.BaseNestedModuleActivity
 import kz.garage.R
 import kz.garage.Sample
 import kz.garage.activity.intent.startActivity
 import kz.garage.kotlin.simpleNameOf
-import kz.garage.BaseNestedModuleActivity
 import kz.garage.samples.animation.funhouse.FunhouseActivity
 import kz.garage.samples.animation.scale.ScaleAnimationActivity
 

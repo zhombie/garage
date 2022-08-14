@@ -5,8 +5,22 @@
         <enum name="dark" value="1" />
     </attr>
 
+    <attr name="chat_ui_background" format="reference|color" />
     <attr name="chat_ui_background_color" format="color" />
     <attr name="chat_ui_title_text_color" format="color" />
+
+    <attr name="chat_ui_incoming_message_background" format="reference|color" />
+    <attr name="chat_ui_outgoing_message_background" format="reference|color" />
+
+    <attr name="chat_ui_on_send_button_background_tint" format="reference|color" />
+    <attr name="chat_ui_on_send_button_icon_tint" format="reference|color" />
+    <attr name="chat_ui_on_send_button_icon" format="integer" />
+
+    <attr name="chat_ui_attachment_selection_button_background_tint" format="reference|color" />
+    <attr name="chat_ui_attachment_selection_button_icon_tint" format="reference|color" />
+    <attr name="chat_ui_attachment_selection_button_icon" format="reference|integer" />
+
+    <attr name="chat_ui_text_input_background" format="reference|color" />
 
     <declare-styleable name="ChatUiProgressView">
         <attr name="chat_ui_background_color" />
@@ -19,13 +33,13 @@
 
     <declare-styleable name="ChatUiMessageContentView">
         <attr name="chat_ui_theme_mode" />
-        <attr name="android:background" />
+        <attr name="chat_ui_background" />
         <attr name="chat_ui_title_text_color" />
     </declare-styleable>
 
     <declare-styleable name="ChatUiMessageAudioPlayerView">
         <attr name="chat_ui_theme_mode" />
-        <attr name="android:background" />
+        <attr name="chat_ui_background" />
         <attr name="chat_ui_title_text_color" />
         <attr name="chat_ui_time_text_color" format="color" />
         <attr name="chat_ui_slider_inactive_track_color" format="color" />

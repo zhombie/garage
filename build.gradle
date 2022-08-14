@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.6.21'
    
     repositories {
         google()
@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
 
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // Google Services
         classpath 'com.google.gms:google-services:4.3.13'
@@ -140,6 +140,9 @@ subprojects { Project project ->
             targetCompatibility JavaVersion.VERSION_11
         }
 
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_11.toString()
+        }
 
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->

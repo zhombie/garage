@@ -1,6 +1,5 @@
 package kz.garage.chat.ui.vh.base
 
-import android.text.format.Formatter
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
