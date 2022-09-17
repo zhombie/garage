@@ -7,9 +7,6 @@ android {
 }
 
 dependencies {
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     // GMS
     implementation 'com.google.android.gms:play-services-location:20.0.0'
 }

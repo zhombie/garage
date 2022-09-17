@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.7.10'
    
     repositories {
         google()
@@ -12,7 +12,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // Google Services
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.gms:google-services:4.3.14'
 
         // Secrets Gradle Plugin
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
@@ -50,6 +50,10 @@ ext.projectArtifactId = { project ->
         // file
         case 'extension':
         case 'size':
+
+        // image
+        case 'load':
+        case 'coil':
 
         // lifecycle
         case 'livedata':
@@ -106,12 +110,12 @@ subprojects { project ->
     apply plugin: 'maven-publish'
 
     android {
-        compileSdkVersion 31
-        buildToolsVersion "31.0.0"
+        compileSdkVersion 33
+        buildToolsVersion "30.0.3"
 
         defaultConfig {
             minSdkVersion 23
-            targetSdkVersion 31
+            targetSdkVersion 33
 
             versionCode project.ext.version_code
             versionName project.version

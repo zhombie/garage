@@ -12,14 +12,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '31.0.0'
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId 'kz.garage'
 
         minSdkVersion 23
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         versionCode project.ext.version_code
         versionName project.version
@@ -73,40 +73,38 @@ android {
 }
 
 ext {
-    coroutines_version = '1.6.2'
-    okhttp_version = '4.9.3'
+    coil_version = '2.2.1'
+    coroutines_version = '1.6.4'
+    okhttp_version = '4.10.0'
     retrofit_version = '2.9.0'
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     // Activity
-    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
 
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 
     // Core
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
 
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.4.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.2'
 
     // Material Design Components
     implementation 'com.google.android.material:material:1.6.1'
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.0.2'
+    implementation 'com.google.android.gms:play-services-basement:18.1.0'
     implementation 'com.google.android.gms:play-services-location:20.0.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.1.1'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
@@ -120,6 +118,11 @@ dependencies {
     // Retrofit & relevant converters
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Coil
+    implementation "io.coil-kt:coil:$coil_version"
+    implementation "io.coil-kt:coil-gif:$coil_version"
+    implementation "io.coil-kt:coil-video:$coil_version"
 
     // Kotlin Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -140,6 +143,8 @@ dependencies {
         implementation "com.github.zhombie.garage:file-size:$libraryVersion"
         implementation "com.github.zhombie.garage:fragment:$libraryVersion"
         implementation "com.github.zhombie.garage:gson:$libraryVersion"
+        implementation "com.github.zhombie.garage:image-load:$libraryVersion"
+        implementation "com.github.zhombie.garage:image-coil:$libraryVersion"
         implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
@@ -168,6 +173,8 @@ dependencies {
         implementation project(':file:size')
         implementation project(':fragment')
         implementation project(':gson')
+        implementation project(':image:load')
+        implementation project(':image:coil')
         implementation project(':json')
         implementation project(':kotlin')
         implementation project(':lifecycle:livedata')

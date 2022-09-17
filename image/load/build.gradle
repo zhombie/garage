@@ -1,0 +1,15 @@
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'image_load_'
+}
+
+dependencies {
+    // Annotation
+    implementation 'androidx.annotation:annotation:1.4.0'
+
+    // AppCompat Resources
+    implementation 'androidx.appcompat:appcompat-resources:1.5.1'
+}

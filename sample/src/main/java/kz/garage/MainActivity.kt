@@ -5,6 +5,7 @@ import kz.garage.kotlin.simpleNameOf
 import kz.garage.samples.activity.Activity
 import kz.garage.samples.animation.AnimationActivity
 import kz.garage.samples.fragment.FragmentActivity
+import kz.garage.samples.image.ImageActivity
 import kz.garage.samples.locale.LocaleActivity
 import kz.garage.samples.location.LocationActivity
 import kz.garage.samples.multimedia.MultimediaActivity
@@ -29,6 +30,7 @@ class MainActivity : BaseNestedModuleActivity() {
             Sample("activity", "Activity", null),
             Sample("animation", "Animation", null),
             Sample("fragment", "Fragment", null),
+            Sample("image", "Image", null),
             Sample("locale", "Locale", null),
             Sample("location", "Location", null),
             Sample("multimedia", "Multimedia", null),
@@ -47,6 +49,8 @@ class MainActivity : BaseNestedModuleActivity() {
                 startActivity<AnimationActivity>()
             "fragment" ->
                 startActivity<FragmentActivity>()
+            "image" ->
+                startActivity<ImageActivity>()
             "locale" ->
                 startActivity<LocaleActivity>()
             "location" ->

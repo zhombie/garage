@@ -1,5 +1,6 @@
 package kz.garage.samples.multimedia.store
 
+import android.os.Build
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import com.google.android.material.button.MaterialButton
@@ -25,9 +26,9 @@ class MultimediaStoreActivity : LocaleManagerBaseActivity() {
         setup(null)
 
         button.setOnClickListener {
-            val image = bundle.getParcelable<Image>("image")
-
-            if (image == null) {
+            if (bundle.containsKey("image")) {
+                bundle.clear()
+            } else {
                 bundle.putParcelable(
                     "image",
                     Image(
@@ -36,11 +37,16 @@ class MultimediaStoreActivity : LocaleManagerBaseActivity() {
                         remoteFile = Content.RemoteFile("https://google.com"),
                     )
                 )
-            } else {
-                bundle.clear()
             }
 
-            setup(bundle.getParcelable("image"))
+            setup(
+                if (Build.VERSION.SDK_INT >= 33) {
+                    bundle.getParcelable("image", Image::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    bundle.getParcelable("image")
+                }
+            )
         }
     }
 

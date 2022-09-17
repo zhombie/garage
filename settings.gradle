@@ -37,6 +37,10 @@ include ':fragment'
 // gson
 include ':gson'
 
+// image
+include ':image:load'
+include ':image:coil'
+
 // json
 include ':json'
 

@@ -1,0 +1,21 @@
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'image_load_coil_'
+}
+
+ext {
+    coil_version = '2.2.1'
+}
+
+dependencies {
+    // Coil
+    api "io.coil-kt:coil:$coil_version"
+    api "io.coil-kt:coil-gif:$coil_version"
+    api "io.coil-kt:coil-video:$coil_version"
+
+    // image-load
+    implementation project(':image:load')
+}

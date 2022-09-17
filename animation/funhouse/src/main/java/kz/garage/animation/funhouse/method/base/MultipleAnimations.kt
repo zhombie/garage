@@ -15,19 +15,19 @@ internal data class MultipleAnimations constructor(
         val listener = getListener()
         if (listener != null) {
             animatorSet.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator?) {
+                override fun onAnimationStart(animation: Animator) {
                     listener.onStart(view, animation)
                 }
 
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     listener.onEnd(view, animation)
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
+                override fun onAnimationCancel(animation: Animator) {
                     listener.onCancel(view, animation)
                 }
 
-                override fun onAnimationRepeat(animation: Animator?) {
+                override fun onAnimationRepeat(animation: Animator) {
                     listener.onRepeat(view, animation)
                 }
             })
@@ -54,7 +54,7 @@ internal data class MultipleAnimations constructor(
 
                             if (!before.isNullOrEmpty()) {
                                 before.forEach {
-                                    before(it.describe(view) )
+                                    before(it.describe(view))
                                 }
                             }
                         }
@@ -73,13 +73,13 @@ internal data class MultipleAnimations constructor(
 
                     if (!after.isNullOrEmpty()) {
                         after.forEach {
-                            after(it.describe(view) )
+                            after(it.describe(view))
                         }
                     }
 
                     if (!before.isNullOrEmpty()) {
                         before.forEach {
-                            before(it.describe(view) )
+                            before(it.describe(view))
                         }
                     }
                 }
@@ -92,5 +92,5 @@ internal data class MultipleAnimations constructor(
 
         animatorSet.start()
     }
-    
+
 }

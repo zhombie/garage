@@ -7,9 +7,6 @@ android {
 }
 
 dependencies {
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
