@@ -147,6 +147,7 @@ dependencies {
         implementation "com.github.zhombie.garage:gson:$libraryVersion"
         implementation "com.github.zhombie.garage:image-load:$libraryVersion"
         implementation "com.github.zhombie.garage:image-coil:$libraryVersion"
+        implementation "com.github.zhombie.garage:image-preview:$libraryVersion"
         implementation "com.github.zhombie.garage:json:$libraryVersion"
         implementation "com.github.zhombie.garage:kotlin:$libraryVersion"
         implementation "com.github.zhombie.garage:lifecycle-livedata:$libraryVersion"
@@ -177,6 +178,7 @@ dependencies {
         implementation project(':gson')
         implementation project(':image:load')
         implementation project(':image:coil')
+        implementation project(':image:preview')
         implementation project(':json')
         implementation project(':kotlin')
         implementation project(':lifecycle:livedata')

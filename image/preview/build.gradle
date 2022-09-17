@@ -1,0 +1,20 @@
+android {
+    namespace 'kz.garage.image.preview'
+
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'image_preview_'
+}
+
+dependencies {
+    // Fragment
+    implementation 'androidx.fragment:fragment-ktx:1.5.2'
+
+    // Material Design Components
+    implementation 'com.google.android.material:material:1.6.1'
+
+    // image-load
+    implementation project(':image:load')
+}

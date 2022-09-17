@@ -51,7 +51,8 @@
 
         <!-- image -->
         <activity android:name=".samples.image.ImageActivity" />
-        <activity android:name=".samples.image.coil.CoilActivity" />
+        <activity android:name=".samples.image.load.coil.CoilActivity" />
+        <activity android:name=".samples.image.preview.PreviewActivity" />
 
         <!-- locale -->
         <activity android:name=".samples.locale.LocaleActivity" />

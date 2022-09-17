@@ -1,10 +1,8 @@
-package kz.garage.image.load.coil
+package kz.garage.image.load
 
 import android.content.Context
-import kz.garage.image.load.ImageLoader
-import kz.garage.image.load.ImageLoaderFactory
 
-object Coil {
+object Instance {
 
     private var imageLoader: ImageLoader? = null
     private var imageLoaderFactory: ImageLoaderFactory? = null

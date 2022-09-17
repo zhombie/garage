@@ -56,6 +56,7 @@ ext.projectArtifactId = { Project project ->
         // image
         case 'load':
         case 'coil':
+        case 'preview':
 
         // lifecycle
         case 'livedata':

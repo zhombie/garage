@@ -4,18 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".samples.image.load.coil.CoilActivity">
+    tools:context=".samples.image.preview.PreviewActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Button" />
 
 </LinearLayout>

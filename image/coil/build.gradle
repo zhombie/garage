@@ -19,5 +19,5 @@ dependencies {
     api "io.coil-kt:coil-video:$coil_version"
 
     // image-load
-    implementation project(':image:load')
+    api project(':image:load')
 }

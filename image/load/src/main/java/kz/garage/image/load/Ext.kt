@@ -1,14 +1,11 @@
-package kz.garage.image.load.coil
+package kz.garage.image.load
 
 import android.content.Context
 import android.net.Uri
 import android.widget.ImageView
-import kz.garage.image.load.Disposable
-import kz.garage.image.load.ImageLoader
-import kz.garage.image.load.Request
 
 inline val Context.imageLoader: ImageLoader
-    get() = Coil.getImageLoader(this)
+    get() = Instance.getImageLoader(this)
 
 inline fun ImageView.load(
     uri: String?,

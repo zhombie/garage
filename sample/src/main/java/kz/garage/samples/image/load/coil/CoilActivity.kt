@@ -1,4 +1,4 @@
-package kz.garage.samples.image.coil
+package kz.garage.samples.image.load.coil
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,14 +7,17 @@ import com.google.android.material.textview.MaterialTextView
 import kz.garage.R
 import kz.garage.activity.view.bind
 import kz.garage.image.load.Transformation
-import kz.garage.image.load.coil.dispose
-import kz.garage.image.load.coil.load
+import kz.garage.image.load.dispose
+import kz.garage.image.load.load
 import kz.garage.kotlin.simpleNameOf
 
 class CoilActivity : AppCompatActivity() {
 
     companion object {
         private val TAG = simpleNameOf<CoilActivity>()
+
+        private const val IMAGE_URL =
+            "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
     }
 
     private val imageView by bind<ShapeableImageView>(R.id.imageView)
@@ -26,7 +29,7 @@ class CoilActivity : AppCompatActivity() {
 
         textView.text = null
 
-        imageView.load("https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png") {
+        imageView.load(IMAGE_URL) {
             setTransformations(Transformation.CircleCrop)
 
             listener(
