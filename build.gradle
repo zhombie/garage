@@ -22,7 +22,9 @@ buildscript {
 /**
  * Shared configs across subprojects
  */
-ext.projectArtifactId = { project ->
+ext.projectArtifactId = { Project project ->
+    println "Artifact ID -> project: [$project]"
+
     switch (project.name) {
         // Single module
         case 'activity':
@@ -99,7 +101,7 @@ allprojects {
 /**
  * Publishing and signing info
  */
-subprojects { project ->
+subprojects { Project project ->
     println "Subproject: ${project.name}"
 
     if (getSampleModuleName(project) != null) return
@@ -111,7 +113,7 @@ subprojects { project ->
 
     android {
         compileSdkVersion 33
-        buildToolsVersion "30.0.3"
+        buildToolsVersion '30.0.3'
 
         defaultConfig {
             minSdkVersion 23
@@ -161,7 +163,7 @@ subprojects { project ->
 
                     pom {
                         name = project.name
-                        url = "https://github.com/zhombie/garage"
+                        url = 'https://github.com/zhombie/garage'
 
                         developers {
                             developer {
@@ -189,11 +191,11 @@ subprojects { project ->
 }
 
 
-static def getSampleModuleName(project) {
+static def getSampleModuleName(Project project) {
     return getModuleName(project, "sample")
 }
 
-static def getModuleName(project, comparator) {
+static def getModuleName(Project project, String comparator) {
     if (project.name == comparator) {
         println "Project [${project.name}] is processed"
         return project.name
@@ -201,7 +203,7 @@ static def getModuleName(project, comparator) {
     return null
 }
 
-static def getParentFolderModuleName(project) {
+static def getParentFolderModuleName(Project project) {
     def allProjects = project.getAllprojects()
     if (allProjects.size() > 1) {
         def name = allProjects.first().name
