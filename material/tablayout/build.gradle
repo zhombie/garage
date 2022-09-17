@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.material.tablayout'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

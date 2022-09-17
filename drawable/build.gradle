@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.drawable'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

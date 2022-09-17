@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.view'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

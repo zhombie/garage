@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.lifecycle.livedata'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

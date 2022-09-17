@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.file.size'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

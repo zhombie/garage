@@ -1,6 +1,8 @@
 apply plugin: 'kotlin-parcelize'
 
 android {
+    namespace 'kz.garage.multimedia.store'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

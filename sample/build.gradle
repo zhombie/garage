@@ -12,6 +12,8 @@ plugins {
 }
 
 android {
+    namespace 'kz.garage'
+
     compileSdkVersion 33
     buildToolsVersion '30.0.3'
 

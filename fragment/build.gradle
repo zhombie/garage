@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.fragment'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

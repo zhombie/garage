@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.lifecycle.viewmodel'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

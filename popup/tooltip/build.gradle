@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.popup.tooltip'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }

@@ -1,4 +1,6 @@
 android {
+    namespace 'kz.garage.recyclerview'
+
     defaultConfig {
         consumerProguardFiles 'consumer-rules.pro'
     }
