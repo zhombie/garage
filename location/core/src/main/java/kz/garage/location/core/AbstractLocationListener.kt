@@ -14,6 +14,7 @@ class AbstractLocationListener internal constructor(
         locationListenerReference.get()?.onLocationChanged(location)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onStatusChanged(provider: String, status: Int, extras: Bundle?) {
         super.onStatusChanged(provider, status, extras)
         locationListenerReference.get()?.onStatusChanged(provider, status, extras)

@@ -16,6 +16,7 @@ inline fun Context.createLocationListener(
             onLocationChanged.invoke(location)
         }
 
+        @Deprecated("Deprecated in Java")
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle?) {
             try {
                 super.onStatusChanged(provider, status, extras)
