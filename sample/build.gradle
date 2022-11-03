@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId 'kz.garage'
 
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 33
 
         versionCode project.ext.version_code

@@ -121,7 +121,7 @@ subprojects { Project project ->
         buildToolsVersion '30.0.3'
 
         defaultConfig {
-            minSdkVersion 23
+            minSdkVersion 21
             targetSdkVersion 33
 
             versionCode project.ext.version_code
