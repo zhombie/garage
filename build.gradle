@@ -1,13 +1,13 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
-   
+    ext.kotlin_version = '1.7.20'
+
     repositories {
         google()
         mavenCentral()
     }
-   
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:7.3.1'
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -27,57 +27,61 @@ ext.projectArtifactId = { Project project ->
 
     switch (project.name) {
         // Single module
-        case 'activity':
-        case 'chat':
-        case 'context':
-        case 'drawable':
-        case 'fragment':
-        case 'gson':
-        case 'json':
-        case 'kotlin':
-        case 'locale':
-        case 'permission':
-        case 'recyclerview':
-        case 'text':
-        case 'textview':
-        case 'view':
-        case 'window':
+        case [
+                'activity',
+                'chat',
+                'context',
+                'drawable',
+                'fragment',
+                'gson',
+                'json',
+                'kotlin',
+                'locale',
+                'permission',
+                'recyclerview',
+                'text',
+                'textview',
+                'view',
+                'window'
+        ]:
             return project.name
 
         // Nested module
-        // animation
-        case 'funhouse':
-        case 'scale':
+        case [
+                // animation
+                'funhouse',
+                'scale',
 
-        // file
-        case 'extension':
-        case 'size':
+                // file
+                'extension',
+                'size',
 
-        // image
-        case 'load':
-        case 'coil':
-        case 'preview':
+                // image
+                'load',
+                'coil',
+                'preview',
 
-        // lifecycle
-        case 'livedata':
-        case 'viewmodel':
+                // lifecycle
+                'livedata',
+                'viewmodel',
 
-        // location
-        case 'core':
-        case 'compass':
-        case 'gms':
+                // location
+                'core',
+                'compass',
+                'gms',
 
-        // material
-        case 'tablayout':
+                // material
+                'tablayout',
 
-        // multimedia
-        case 'store':
+                // multimedia
+                'store',
 
-        // popup
-        case 'tooltip':
+                // popup
+                'tooltip',
 
-        // retrofit
-        case 'download':
+                // retrofit
+                'download'
+        ]:
             return project.parent.name + '-' + project.name
     }
     return null
@@ -183,7 +187,7 @@ subprojects { Project project ->
                         }
                     }
 
-    //                from components.release
+//                    from components.release
                     artifact "$buildDir/outputs/aar/$project.name-release.aar"
                 }
             }

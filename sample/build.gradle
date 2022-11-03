@@ -75,7 +75,7 @@ android {
 }
 
 ext {
-    coil_version = '2.2.1'
+    coil_version = '2.2.2'
     coroutines_version = '1.6.4'
     okhttp_version = '4.10.0'
     retrofit_version = '2.9.0'
@@ -85,7 +85,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Activity
-    implementation 'androidx.activity:activity-ktx:1.5.1'
+    implementation 'androidx.activity:activity-ktx:1.6.1'
 
     // AppCompat
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -94,19 +94,19 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
 
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.5.2'
+    implementation 'androidx.fragment:fragment-ktx:1.5.4'
 
     // Material Design Components
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
 
     // Google Play Services
     implementation 'com.google.android.gms:play-services-basement:18.1.0'
-    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.maps.android:android-maps-utils:2.4.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.1.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
