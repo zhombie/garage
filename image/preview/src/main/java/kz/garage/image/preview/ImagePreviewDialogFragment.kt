@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.textview.MaterialTextView
 import kz.garage.image.load.dispose
 import kz.garage.image.load.load
 
@@ -49,9 +49,9 @@ class ImagePreviewDialogFragment : DialogFragment() {
         }
     }
 
-    private var imageView: ShapeableImageView? = null
-    private var closeButton: MaterialButton? = null
-    private var textView: MaterialTextView? = null
+    private var imageView: AppCompatImageView? = null
+    private var closeButton: AppCompatImageButton? = null
+    private var textView: AppCompatTextView? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
