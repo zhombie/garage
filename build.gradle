@@ -162,6 +162,7 @@ subprojects { Project project ->
         publishing {
             publications {
                 aar(MavenPublication) {
+                    from components.release
                     groupId project.group
                     artifactId project.ext.artifactId
                     version project.version
