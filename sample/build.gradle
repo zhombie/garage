@@ -75,8 +75,8 @@ android {
 }
 
 ext {
-    coil_version = '2.2.2'
-    coroutines_version = '1.6.4'
+    coil_version = '2.3.0'
+    coroutines_version = '1.7.1'
     okhttp_version = '4.10.0'
     retrofit_version = '2.9.0'
 }
@@ -85,32 +85,32 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Activity
-    implementation 'androidx.activity:activity-ktx:1.6.1'
+    implementation 'androidx.activity:activity-ktx:1.7.1'
 
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     // Core
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
 
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.5.4'
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
 
     // Material Design Components
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.9.0'
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.1.0'
-    implementation 'com.google.android.gms:play-services-location:21.0.0'
+    implementation 'com.google.android.gms:play-services-basement:18.2.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:3.4.0'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.11'
 
     // OkHTTPClient
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"

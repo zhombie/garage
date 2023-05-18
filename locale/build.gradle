@@ -10,5 +10,5 @@ android {
 
 dependencies {
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
