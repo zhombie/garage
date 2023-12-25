@@ -99,12 +99,12 @@ class TooltipView @JvmOverloads constructor(
         bubblePath = drawBubble(w.toFloat(), h.toFloat())
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         bubblePath?.let { bubblePath ->
-            canvas?.drawPath(bubblePath, bubblePaint)
-            canvas?.drawPath(bubblePath, borderPaint)
+            canvas.drawPath(bubblePath, bubblePaint)
+            canvas.drawPath(bubblePath, borderPaint)
         }
     }
 

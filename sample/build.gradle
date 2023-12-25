@@ -14,14 +14,13 @@ plugins {
 android {
     namespace 'kz.garage'
 
-    compileSdkVersion 33
-    buildToolsVersion '30.0.3'
+    compileSdk 34
 
     defaultConfig {
         applicationId 'kz.garage'
 
-        minSdkVersion 21
-        targetSdkVersion 33
+        minSdk 21
+        targetSdk 34
 
         versionCode project.ext.version_code
         versionName project.version
@@ -65,7 +64,7 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    configurations.all {
+    configurations.configureEach {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             if (details.requested.group == 'org.jetbrains.kotlin') {
                 details.useVersion kotlin_version
@@ -75,9 +74,9 @@ android {
 }
 
 ext {
-    coil_version = '2.3.0'
-    coroutines_version = '1.7.1'
-    okhttp_version = '4.10.0'
+    coil_version = '2.5.0'
+    coroutines_version = '1.7.3'
+    okhttp_version = '4.12.0'
     retrofit_version = '2.9.0'
 }
 
@@ -85,32 +84,32 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Activity
-    implementation 'androidx.activity:activity-ktx:1.7.1'
+    implementation 'androidx.activity:activity-ktx:1.8.2'
 
     // AppCompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
 
     // Core
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
 
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
 
     // Material Design Components
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.11.0'
 
     // Google Play Services
     implementation 'com.google.android.gms:play-services-basement:18.2.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-    implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    implementation 'com.google.maps.android:android-maps-utils:3.4.0'
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    implementation 'com.google.maps.android:android-maps-utils:3.8.2'
 
     // Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.5.0'
 
     // LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.11'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 
     // OkHTTPClient
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"

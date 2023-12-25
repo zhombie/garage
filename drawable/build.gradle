@@ -10,8 +10,8 @@ android {
 
 dependencies {
     // Annotation
-    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
 
     // Core
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
 }
