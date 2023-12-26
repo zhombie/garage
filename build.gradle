@@ -139,13 +139,19 @@ subprojects { Project project ->
             buildConfig false
         }
 
+        publishing {
+            singleVariant("release") {
+                withSourcesJar()
+            }
+        }
+
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_11
-            targetCompatibility JavaVersion.VERSION_11
+            sourceCompatibility JavaVersion.VERSION_17
+            targetCompatibility JavaVersion.VERSION_17
         }
 
         kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
+            jvmTarget = JavaVersion.VERSION_17.toString()
         }
 
         configurations.configureEach {
@@ -160,8 +166,9 @@ subprojects { Project project ->
     afterEvaluate {
         publishing {
             publications {
-                aar(MavenPublication) {
-//                    from components.release
+                release(MavenPublication) {
+                    from components.release
+
                     groupId project.group
                     artifactId project.ext.artifactId
                     version project.version
