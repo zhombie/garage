@@ -1,9 +1,9 @@
 package kz.garage.image.preview
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
-fun AppCompatActivity.showImagePreview(
+fun FragmentActivity.showImagePreview(
     uri: String,
     caption: String? = null
 ): ImagePreviewDialogFragment {
@@ -13,7 +13,7 @@ fun AppCompatActivity.showImagePreview(
     )
 }
 
-fun AppCompatActivity.showImagePreview(
+fun FragmentActivity.showImagePreview(
     uri: Uri,
     caption: String? = null
 ): ImagePreviewDialogFragment {
