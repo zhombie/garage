@@ -10,8 +10,8 @@ android {
 
 dependencies {
     // Annotation
-    implementation 'androidx.annotation:annotation:1.7.1'
+    implementation 'androidx.annotation:annotation:1.9.1'
 
     // AppCompat Resources
-    implementation 'androidx.appcompat:appcompat-resources:1.6.1'
+    implementation 'androidx.appcompat:appcompat-resources:1.7.0'
 }
