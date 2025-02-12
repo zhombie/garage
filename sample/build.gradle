@@ -14,13 +14,13 @@ plugins {
 android {
     namespace 'kz.garage'
 
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId 'kz.garage'
 
         minSdk 21
-        targetSdk 34
+        targetSdk 35
 
         versionCode project.ext.version_code
         versionName project.version

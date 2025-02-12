@@ -117,11 +117,11 @@ subprojects { Project project ->
     apply plugin: 'maven-publish'
 
     android {
-        compileSdk 34
+        compileSdk 35
 
         defaultConfig {
             minSdk 21
-            targetSdk 34
+            targetSdk 35
 
             versionCode project.ext.version_code
             versionName project.version
