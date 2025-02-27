@@ -10,7 +10,7 @@ android {
 
 dependencies {
     // Fragment
-    implementation 'androidx.fragment:fragment-ktx:1.8.5'
+    implementation 'androidx.fragment:fragment-ktx:1.8.6'
 
     // Core
     implementation 'androidx.core:core-ktx:1.15.0'
